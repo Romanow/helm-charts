@@ -1,0 +1,56 @@
+apiVersion: v1
+entries:
+  frontend:
+  - apiVersion: v2
+    appVersion: v1.0
+    created: "2022-12-26T11:28:25.427718364Z"
+    description: Frontend
+    digest: 122056be6e00d961577fc0bebc4942a78fa2e647c04fca4417fffd889087bc1d
+    keywords:
+    - frontend
+    - react
+    - nginx
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: frontend
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/frontend-1.0.0/frontend-1.0.0.tgz
+    version: 1.0.0
+  java-service:
+  - apiVersion: v2
+    appVersion: v1.0
+    created: "2022-12-26T11:28:25.540299282Z"
+    description: Spring Boot application
+    digest: ebfaf2aeaa0619ba82dba4e349d20dc0a3c901b51277170a71012331041a85eb
+    keywords:
+    - spring boot
+    - java
+    - kotlin
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: java-service
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/java-service-1.0.0/java-service-1.0.0.tgz
+    version: 1.0.0
+  postgres:
+  - apiVersion: v2
+    appVersion: "15"
+    created: "2022-12-26T11:28:25.65576817Z"
+    description: Postgres Database
+    digest: 5db56d752a7c4fa8a3353eb99c9def71b4c96024aa02da3f62bb79e30b0f98ec
+    keywords:
+    - postgres
+    - database
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: postgres
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/postgres-1.0.0/postgres-1.0.0.tgz
+    version: 1.0.0
+generated: "2022-12-26T11:28:25.65577817Z"
