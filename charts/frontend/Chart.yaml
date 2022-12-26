@@ -1,0 +1,13 @@
+apiVersion: v2
+name: frontend
+type: application
+description: Frontend
+version: 1.0.0
+appVersion: "v1.0"
+keywords:
+  - frontend
+  - react
+  - nginx
+maintainers:
+  - name: Romanov Alexey
+    email: romanowalex@mail.ru

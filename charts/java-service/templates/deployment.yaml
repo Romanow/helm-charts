@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/component: application
+    app.kubernetes.io/managed-by: helm
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "{{ .Values.metrics.path }}"
+        prometheus.io/port: "{{ .Values.port }}"
+      labels:
+        app: {{ .Release.Name }}
+        app.kubernetes.io/name: {{ .Chart.Name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+        app.kubernetes.io/component: application
+        app.kubernetes.io/managed-by: helm
+    spec:
+      containers:
+        - name: {{ .Release.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            requests:
+              memory: "{{ .Values.resources.requests.memory }}"
+              cpu: "{{ .Values.resources.requests.cpu }}"
+            limits:
+              memory: "{{ .Values.resources.limits.memory }}"
+              cpu: "{{ .Values.resources.limits.cpu }}"
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "{{ .Values.profile }}"
+            {{ if .Values.database.name }}
+            - name: DATABASE_NAME
+              value: "{{ .Values.database.name }}"
+            {{- end }}
+            - name: DATABASE_HOST
+              value: "{{ .Values.database.host }}"
+            - name: DATABASE_PORT
+              value: "{{ .Values.database.port }}"
+            - name: DATABASE_USER
+              value: "{{ .Values.database.username }}"
+            - name: DATABAES_PASSWORD
+              value: "{{ .Values.database.password }}"
+            - name: CIRCUIT_BREAKER_ENABLED
+              value: "{{ .Values.circuitBreaker.enabled }}"
+            - name: JAEGER_ENABLED
+              value: "{{ .Values.tracing.enabled }}"
+            {{ if .Values.tracing.host }}
+            - name: JAEGER_HOST
+              value: "{{ .Values.tracing.host }}"
+            {{- end }}
+            {{ if .Values.tracing.port }}
+            - name: JAEGER_PORT
+              value: "{{ .Values.tracing.port }}"
+          {{- end }}
+          livenessProbe:
+            initialDelaySeconds: 60
+            failureThreshold: 10
+            periodSeconds: 10
+            httpGet:
+              path: /manage/health/liveness
+              port: {{ .Values.port }}
+          readinessProbe:
+            initialDelaySeconds: 60
+            failureThreshold: 10
+            periodSeconds: 10
+            httpGet:
+              path: /manage/health/readiness
+              port: {{ .Values.port }}
+          ports:
+            - name: {{ .Chart.Name }}
+              containerPort: {{ .Values.port }}
+          volumeMounts:
+            - name: {{ .Chart.Name }}-logs-volume
+              mountPath: "/var/log/{{ .Values.logFolder | default .Release.Name }}/"
+
+        - name: {{ .Release.Name }}-filebeat
+          image: "docker.elastic.co/beats/filebeat:{{ .Values.filebeat.version }}"
+          resources:
+            requests:
+              memory: "{{ .Values.filebeat.resources.requests.memory }}"
+              cpu: "{{ .Values.filebeat.resources.requests.cpu }}"
+            limits:
+              memory: "{{ .Values.filebeat.resources.limits.memory }}"
+              cpu: "{{ .Values.filebeat.resources.limits.cpu }}"
+          volumeMounts:
+            - name: {{ .Chart.Name }}-logs-volume
+              mountPath: "/var/log/{{ .Values.logFolder | default .Release.Name }}/"
+            - name: {{ .Chart.Name }}-config-volume
+              mountPath: /usr/share/filebeat/filebeat.yml
+              subPath: filebeat.yml
+      volumes:
+        - name: {{ .Chart.Name }}-logs-volume
+        - name: {{ .Chart.Name }}-config-volume
+          configMap:
+            name: {{ .Release.Name }}
+            defaultMode: 420

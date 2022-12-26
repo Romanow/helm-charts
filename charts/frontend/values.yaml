@@ -1,0 +1,20 @@
+image:
+  pullPolicy: IfNotPresent
+  repository:
+  tag:
+
+port: 3000
+serviceName:
+
+ingress:
+  enabled: true
+  name:
+  domain: romanow-alex.ru
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi

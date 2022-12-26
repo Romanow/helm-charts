@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/component: application
+    app.kubernetes.io/managed-by: helm
+data:
+  {{- if .Values.filebeat.enabled }}
+  filebeat.yml: |-
+    monitoring.enabled: false
+    filebeat.inputs:
+      - type: log
+        json:
+          add_error_key: true
+          keys_under_root: true
+          overwrite_keys: true
+        paths:
+          - '/var/log/{{ .Release.Name }}/*.log'
+    output.logstash:
+      hosts: [ '{{ .Values.filebeat.logstash.host }}:{{ .Values.filebeat.logstash.port }}' ]
+  {{- end }}

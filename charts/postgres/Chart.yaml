@@ -1,0 +1,12 @@
+apiVersion: v2
+name: postgres
+type: application
+description: Postgres Database
+version: 1.0.0
+appVersion: "15"
+keywords:
+  - postgres
+  - database
+maintainers:
+  - name: Romanov Alexey
+    email: romanowalex@mail.ru

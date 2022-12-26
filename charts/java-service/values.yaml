@@ -1,0 +1,57 @@
+image:
+  pullPolicy: IfNotPresent
+  repository:
+  tag:
+
+ingress:
+  enabled: true
+  name:
+  domain: romanow-alex.ru
+
+replicas: 1
+port: 8080
+serviceName:
+profile: k8s
+logFolder:
+
+database:
+  name:
+  host: postgres
+  port: 5432
+  username: program
+  password: test
+
+metrics:
+  path: "/manage/prometheus"
+  username: management
+  password: passwd
+
+circuitBreaker:
+  enabled: false
+
+tracing:
+  enabled: false
+  host:
+  port:
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 1024Mi
+  limits:
+    cpu: 500m
+    memory: 1024Mi
+
+filebeat:
+  enabled: false
+  version: 7.15.0
+  logstash:
+    host: logstash.logging.svc.cluster.local
+    port: 5044
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 50m
+      memory: 128Mi
