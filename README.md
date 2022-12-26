@@ -1,7 +1,10 @@
 # Helm Charts
 
-```shell
-$ kind create cluster --config kind.yml 
+[![Release Charts](https://github.com/Romanow/helm-charts/actions/workflows/charts-release.yaml/badge.svg?branch=master)](https://github.com/Romanow/helm-charts/actions/workflows/charts-release.yaml)
 
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+## Develop
+
+```shell
+$ brew install pre-commit
+$ pre-commit install
 ```
