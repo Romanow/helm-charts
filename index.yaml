@@ -21,6 +21,23 @@ entries:
   java-service:
   - apiVersion: v2
     appVersion: v1.0
+    created: "2022-12-27T08:19:35.375098601Z"
+    description: Spring Boot application
+    digest: 89be6177f291a9902400fb4ba336c4b787723fbff178d5d71456a1905ed4a01d
+    keywords:
+    - spring boot
+    - java
+    - kotlin
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: java-service
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/java-service-1.0.2/java-service-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: v1.0
     created: "2022-12-27T07:52:30.299238584Z"
     description: Spring Boot application
     digest: 5b1d3bfa84da2a14925381d31f6c6614c7bbf7f9cd8089ab84eda09c1324a76f
@@ -70,4 +87,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/postgres-1.0.0/postgres-1.0.0.tgz
     version: 1.0.0
-generated: "2022-12-27T07:52:30.435196446Z"
+generated: "2022-12-27T08:19:35.486117029Z"
