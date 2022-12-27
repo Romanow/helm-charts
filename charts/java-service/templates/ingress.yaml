@@ -28,4 +28,4 @@ spec:
                 name: {{ .Release.Name }}
                 port:
                   number: {{ .Values.port }}
-  {{- end }}
+  {{ end }}

@@ -44,7 +44,7 @@ spec:
             {{ if .Values.database.name }}
             - name: DATABASE_NAME
               value: "{{ .Values.database.name }}"
-            {{- end }}
+            {{ end }}
             - name: DATABASE_HOST
               value: "{{ .Values.database.host }}"
             - name: DATABASE_PORT
@@ -60,34 +60,41 @@ spec:
             {{ if .Values.tracing.host }}
             - name: JAEGER_HOST
               value: "{{ .Values.tracing.host }}"
-            {{- end }}
+            {{ end }}
             {{ if .Values.tracing.port }}
             - name: JAEGER_PORT
               value: "{{ .Values.tracing.port }}"
-          {{- end }}
+            {{- end }}
+            {{- range $secret := .Values.secrets }}
+            - name: {{ $secret.name }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $secret.secretName }}
+                  key: {{ $secret.secretKey }}
+            {{- end }}
           livenessProbe:
-            initialDelaySeconds: 60
+            initialDelaySeconds: {{ .Values.liveness.delay }}
+            periodSeconds: {{ .Values.liveness.timeout }}
             failureThreshold: 10
-            periodSeconds: 10
             httpGet:
-              path: /manage/health/liveness
+              path: {{ .Values.liveness.path }}
               port: {{ .Values.port }}
           readinessProbe:
-            initialDelaySeconds: 60
+            initialDelaySeconds: {{ .Values.readiness.delay }}
+            periodSeconds: {{ .Values.readiness.timeout }}
             failureThreshold: 10
-            periodSeconds: 10
             httpGet:
-              path: /manage/health/readiness
+              path: {{ .Values.readiness.path }}
               port: {{ .Values.port }}
           ports:
             - name: {{ .Chart.Name }}
               containerPort: {{ .Values.port }}
           volumeMounts:
-            {{- if .Values.filebeat.enabled }}
+            {{ if .Values.filebeat.enabled }}
             - name: {{ .Chart.Name }}-logs-volume
               mountPath: "/var/log/{{ .Values.logFolder | default .Release.Name }}/"
-            {{- end}}
-        {{- if .Values.filebeat.enabled }}
+        {{ end}}
+        {{ if .Values.filebeat.enabled }}
         - name: {{ .Release.Name }}-filebeat
           image: "docker.elastic.co/beats/filebeat:{{ .Values.filebeat.version }}"
           resources:
@@ -103,7 +110,7 @@ spec:
             - name: {{ .Chart.Name }}-config-volume
               mountPath: /usr/share/filebeat/filebeat.yml
               subPath: filebeat.yml
-      {{- end }}
+      {{ end }}
       volumes:
         - name: {{ .Chart.Name }}-logs-volume
         - name: {{ .Chart.Name }}-config-volume

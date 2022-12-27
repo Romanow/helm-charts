@@ -1,4 +1,4 @@
-{{- if .Values.ingress.enabled }}
+{{ if .Values.ingress.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -28,4 +28,4 @@ spec:
                 name: {{ .Release.Name }}
                 port:
                   number: {{ .Values.port }}
-  {{- end }}
+  {{ end }}
