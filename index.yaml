@@ -3,6 +3,23 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: v1.0
+    created: "2022-12-27T12:16:40.558054248Z"
+    description: Frontend
+    digest: ac638502a9e6bf8b369309dce09ae12766090c557cb9f230adc2c7072d6d4831
+    keywords:
+    - frontend
+    - react
+    - nginx
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: frontend
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/frontend-1.0.1/frontend-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: v1.0
     created: "2022-12-26T11:28:25.427718364Z"
     description: Frontend
     digest: 122056be6e00d961577fc0bebc4942a78fa2e647c04fca4417fffd889087bc1d
@@ -87,4 +104,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/postgres-1.0.0/postgres-1.0.0.tgz
     version: 1.0.0
-generated: "2022-12-27T08:19:35.486117029Z"
+generated: "2022-12-27T12:16:40.558066448Z"
