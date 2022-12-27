@@ -50,4 +50,4 @@ spec:
               port: 80
           ports:
             - name: {{ .Chart.Name }}
-              containerPort: {{ .Values.port }}
+              containerPort: 80
