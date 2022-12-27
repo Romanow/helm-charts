@@ -2,7 +2,7 @@ apiVersion: v2
 name: java-service
 type: application
 description: Spring Boot application
-version: 1.0.0
+version: 1.0.1
 appVersion: "v1.0"
 keywords:
   - spring boot
