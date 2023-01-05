@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/component: database
+    app.kubernetes.io/managed-by: helm
+data:
+  users_roles: |-
+    kibana_admin:{{ .Values.security.name }}
+    logstash_admin:{{ .Values.security.name }}
+    superuser:{{ .Values.security.name }}
+  users: |-
+    {{ .Values.security.name }}:$2a$10$rJB8uIS8lQL0z1QCDNUDyeqCCl3Ir2zmhvoeFeJvOXeIR0SEgi7Gy

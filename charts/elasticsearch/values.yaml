@@ -1,0 +1,25 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: docker.elastic.co/elasticsearch/elasticsearch
+  tag: 7.15.0
+
+serviceName:
+replicas: 3
+clusterName: logs
+
+security:
+  enabled: true
+  name: logging
+  password: qwerty
+
+ports:
+  http: 9200
+  communication: 9300
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 1024Mi
+  limits:
+    cpu: 500m
+    memory: 2048Mi

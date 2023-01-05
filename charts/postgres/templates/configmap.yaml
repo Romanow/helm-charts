@@ -14,12 +14,12 @@ data:
     CREATE USER {{ $user.name }} WITH PASSWORD '{{ $user.password }}';
     {{- end }}
 
-    {{- range $database := .Values.datases }}
+    {{- range $database := .Values.databases }}
     CREATE DATABASE {{ $database.name }};
     GRANT ALL PRIVILEGES ON DATABASE {{ $database.name }} TO {{ $database.user }};
-  {{- end }}
+    {{- end }}
   20-grant-privileges-to-public.sh: |
     export PGPASSWORD={{ .Values.defaultDatabase.password }}
-    {{- range $database := .Values.datases }}
+    {{- range $database := .Values.databases }}
     psql -U {{ $.Values.defaultDatabase.user }} -d {{ $database.name }} -c "GRANT ALL PRIVILEGES ON SCHEMA public TO {{ $database.user }};"
     {{ end }}

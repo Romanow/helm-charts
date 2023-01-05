@@ -15,7 +15,7 @@ users:
   - name: program
     password: test
 
-datases:
+databases:
   - name: services
     user: program
 

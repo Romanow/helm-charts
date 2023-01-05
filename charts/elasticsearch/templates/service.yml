@@ -1,0 +1,23 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Values.serviceName | default .Release.Name }}
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/component: database
+    app.kubernetes.io/managed-by: helm
+spec:
+  selector:
+    app: {{ .Release.Name }}
+  clusterIP: None
+  ports:
+    - name: http
+      protocol: TCP
+      port: {{ .Values.ports.http }}
+      targetPort: {{ .Values.ports.http }}
+    - name: communication
+      protocol: TCP
+      port: {{ .Values.ports.communication }}
+      targetPort: {{ .Values.ports.communication }}

@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app.kubernetes.io/name: {{ .Release.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/component: database
+    app.kubernetes.io/managed-by: helm
+spec:
+  serviceName: {{ .Release.Name }}-cluster
+  replicas: {{ .Values.replicas | int }}
+  podManagementPolicy: Parallel
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      name: {{ .Release.Name }}
+      labels:
+        app: {{ .Release.Name }}
+        app.kubernetes.io/name: {{ .Chart.Name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+        app.kubernetes.io/component: database
+        app.kubernetes.io/managed-by: helm
+    spec:
+      terminationGracePeriodSeconds: 10
+      initContainers:
+        - name: fix-permissions
+          image: busybox
+          command: [ "sh", "-c", "chown -R 1000:1000 /usr/share/elasticsearch/data" ]
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: {{ .Release.Name }}-data-volume
+              mountPath: /usr/share/elasticsearch/data
+
+        - name: increase-vm-max-map
+          image: busybox
+          command: [ "sysctl", "-w", "vm.max_map_count=262144" ]
+          securityContext:
+            privileged: true
+
+        - name: increase-fd-ulimit
+          image: busybox
+          command: [ "sh", "-c", "ulimit -n 65536" ]
+          securityContext:
+            privileged: true
+
+      containers:
+        - name: {{ .Release.Name }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - name: http
+              containerPort: {{ .Values.ports.http }}
+            - name: communication
+              containerPort: {{ .Values.ports.communication }}
+          resources:
+            requests:
+              memory: {{ .Values.resources.requests.memory }}
+              cpu: {{ .Values.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu }}
+          volumeMounts:
+            - name: {{ .Chart.Name }}-configmap-volume
+              mountPath: /usr/share/elasticsearch/config/users
+              subPath: users
+            - name: {{ .Chart.Name }}-configmap-volume
+              mountPath: /usr/share/elasticsearch/config/users_roles
+              subPath: users_roles
+            - name: {{ .Chart.Name }}-data-volume
+              mountPath: /usr/share/elasticsearch/data
+          env:
+            - name: cluster.name
+              value: {{ .Values.clusterName }}
+            - name: node.name
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: xpack.security.enabled
+              value: "{{ .Values.security.enabled }}"
+            - name: discovery.seed_hosts
+              value: {{ include "clusterHosts" . | quote }}
+            - name: cluster.initial_master_nodes
+              value: {{ include "clusterMasterNodes" . | quote }}
+      volumes:
+        - name: {{ .Chart.Name }}-data-volume
+        - name: {{ .Chart.Name }}-configmap-volume
+          configMap:
+            name: {{ .Release.Name }}

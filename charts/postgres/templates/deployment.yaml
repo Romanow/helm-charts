@@ -47,10 +47,10 @@ spec:
           volumeMounts:
             - name: db-data
               mountPath: /var/lib/postgresql/data
-            - name: postgres-config-map
+            - name: postgres-configmap-volume
               mountPath: /docker-entrypoint-initdb.d/
       volumes:
         - name: db-data
-        - name: postgres-config-map
+        - name: postgres-configmap-volume
           configMap:
             name: {{ .Release.Name }}
