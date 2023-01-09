@@ -34,7 +34,7 @@ spec:
           securityContext:
             privileged: true
           volumeMounts:
-            - name: {{ .Release.Name }}-data-volume
+            - name: {{ .Chart.Name }}-data-volume
               mountPath: /usr/share/elasticsearch/data
 
         - name: increase-vm-max-map
