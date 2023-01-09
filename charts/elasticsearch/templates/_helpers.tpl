@@ -1,15 +1,17 @@
-{{- define "clusterHosts" -}}
-{{ $list := list }}
+{{ define "clusterHosts" }}
+{{- $list := list -}}
 {{- range $i, $e := until (.Values.replicas | int) -}}
-{{ $.Release.Name }}-cluster-{{ $i }}.{{ $.Release.Name }}
+{{- $name := printf "%s-cluster-%d.%s" $.Release.Name $i $.Release.Name -}}
+{{- $list = append $list $name -}}
 {{- end -}}
-{{ join ", " $list }}
-{{- end -}}
+{{- join ", " $list -}}
+{{ end }}
 
-{{- define "clusterMasterNodes" -}}
-{{ $list := list }}
+{{ define "clusterMasterNodes" }}
+{{- $list := list -}}
 {{- range $i, $e := until (.Values.replicas | int) -}}
-{{ $.Release.Name }}-cluster-{{ $i }}
+{{- $name := printf "%s-cluster-%d" $.Release.Name $i -}}
+{{- $list = append $list $name -}}
 {{- end -}}
-{{ join "," $list }}
-{{- end -}}
+{{- join ", " $list -}}
+{{ end }}
