@@ -1,0 +1,12 @@
+apiVersion: v2
+name: influxdb
+type: application
+description: InfluxDB
+version: 1.0.0
+appVersion: "1.8.4"
+keywords:
+  - influxdb
+  - database
+maintainers:
+  - name: Romanov Alexey
+    email: romanowalex@mail.ru

@@ -1,0 +1,19 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: influxdb
+  tag: 1.8.4
+
+serviceName:
+ports:
+  api: 8086
+  external: 32086
+
+database: k6
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 512Mi
+  limits:
+    cpu: 200m
+    memory: 512Mi
