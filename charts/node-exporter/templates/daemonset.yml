@@ -3,7 +3,7 @@ kind: DaemonSet
 metadata:
   name: {{ .Release.Name }}
   labels:
-    app.kubernetes.io/name: {{ .Release.Name }}
+    app.kubernetes.io/name: {{ .Chart.Name }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
     app.kubernetes.io/component: monitoring
@@ -43,7 +43,7 @@ spec:
               cpu: {{ .Values.resources.requests.cpu }}
           ports:
             - name: {{ .Chart.Name }}
-              containerPort: {{ .Values.port }}
+              containerPort: {{ .Values.ports.internal }}
           volumeMounts:
             - name: proc
               mountPath: /host/proc

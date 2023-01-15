@@ -14,7 +14,7 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: {{ .Release.Name }}
+      name: {{ .Values.serviceName | default .Release.Name }}
       port:
         number: {{ .Values.port }}
   rules:
@@ -25,7 +25,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ .Release.Name }}
+                name: {{ .Values.serviceName | default .Release.Name }}
                 port:
                   number: {{ .Values.port }}
   {{ end }}

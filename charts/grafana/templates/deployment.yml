@@ -1,32 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}
+  name: {{ .Release.Name }}
   labels:
     app.kubernetes.io/name: {{ .Chart.Name }}
-    app.kubernetes.io/version: "{{ .Values.version }}"
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
     app.kubernetes.io/component: monitoring
-    app.kubernetes.io/part-of: todo-list
     app.kubernetes.io/managed-by: helm
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}
+      app: {{ .Release.Name }}
   template:
     metadata:
-      name: {{ .Chart.Name }}
       labels:
-        app: {{ .Chart.Name }}
+        app: {{ .Release.Name }}
         app.kubernetes.io/name: {{ .Chart.Name }}
-        app.kubernetes.io/version: "{{ .Values.version }}"
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
         app.kubernetes.io/component: monitoring
-        app.kubernetes.io/part-of: todo-list
         app.kubernetes.io/managed-by: helm
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "grafana/grafana:{{ .Values.version }}"
+        - name: {{ .Release.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
             limits:
               memory: {{ .Values.resources.limits.memory }}
@@ -56,4 +56,4 @@ spec:
         - name: {{ .Chart.Name }}-config-volume
           configMap:
             defaultMode: 420
-            name: {{ .Chart.Name }}-configmap
+            name: {{ .Release.Name }}

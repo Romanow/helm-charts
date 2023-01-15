@@ -1,5 +1,13 @@
-version: v2.40.0
-port: 9090
+image:
+  pullPolicy: IfNotPresent
+  repository: postgres
+  tag: v2.40.0
+
+ports:
+  internal: 9090
+  external:
+
+serviceName:
 
 resources:
   requests:

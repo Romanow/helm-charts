@@ -16,5 +16,5 @@ spec:
     - name: {{ .Chart.Name }}
       protocol: TCP
       port: {{ .Values.ports.internal }}
-      targetPort: {{ .Values.ports.internal }}
+      targetPort: {{ .Chart.Name }}
       nodePort: {{ .Values.ports.external }}

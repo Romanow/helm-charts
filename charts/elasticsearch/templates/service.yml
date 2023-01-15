@@ -16,8 +16,8 @@ spec:
     - name: http
       protocol: TCP
       port: {{ .Values.ports.http }}
-      targetPort: {{ .Values.ports.http }}
+      targetPort: {{ .Chart.Name }}-http
     - name: communication
       protocol: TCP
       port: {{ .Values.ports.communication }}
-      targetPort: {{ .Values.ports.communication }}
+      targetPort: {{ .Chart.Name }}-communication

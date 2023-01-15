@@ -10,9 +10,9 @@ metadata:
     app.kubernetes.io/managed-by: helm
 spec:
   selector:
-    app: {{ .Chart.Name }}
+    app: {{ .Release.Name }}
   ports:
     - name: {{ .Chart.Name }}
       protocol: TCP
-      port: {{ .Values.port }}
-      targetPort: {{ .Values.port }}
+      port: {{ .Values.ports.internal }}
+      targetPort: {{ .Chart.Name }}

@@ -3,17 +3,17 @@ global:
   evaluation_interval: 5s
 
 scrape_configs:
-  - job_name: 'node-exporter'
+  - job_name: "node-exporter"
     kubernetes_sd_configs:
       - role: endpoints
     relabel_configs:
       - source_labels: [ __meta_kubernetes_endpoints_name ]
-        regex: 'node-exporter-service'
+        regex: "node-exporter-service"
         action: keep
   ##########################################
   ##########################################
   ##########################################
-  - job_name: 'kubernetes-apiservers'
+  - job_name: "kubernetes-apiservers"
     kubernetes_sd_configs:
       - role: endpoints
     scheme: https
@@ -28,7 +28,7 @@ scrape_configs:
   ##########################################
   ##########################################
   ##########################################
-  - job_name: 'kubernetes-nodes'
+  - job_name: "kubernetes-nodes"
     scheme: https
     tls_config:
       ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
@@ -47,13 +47,13 @@ scrape_configs:
   ##########################################
   ##########################################
   ##########################################
-  - job_name: 'kube-state-metrics'
+  - job_name: "kube-state-metrics"
     static_configs:
-      - targets: [ 'kube-state-metrics-service.kube-system.svc.cluster.local:8080' ]
+      - targets: [ "kube-state-metrics-service.kube-system.svc.cluster.local:8080" ]
   ##########################################
   ##########################################
   ##########################################
-  - job_name: 'kubernetes-cadvisor'
+  - job_name: "kubernetes-cadvisor"
     scheme: https
     tls_config:
       ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
@@ -72,7 +72,7 @@ scrape_configs:
   ##########################################
   ##########################################
   ##########################################
-  - job_name: 'kubernetes-service-endpoints'
+  - job_name: "kubernetes-service-endpoints"
     kubernetes_sd_configs:
       - role: endpoints
     relabel_configs:
@@ -103,7 +103,7 @@ scrape_configs:
   ##########################################
   ##########################################
   ##########################################
-  - job_name: 'kubernetes-pods'
+  - job_name: "kubernetes-pods"
     kubernetes_sd_configs:
       - role: pod
     relabel_configs:

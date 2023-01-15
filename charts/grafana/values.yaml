@@ -1,9 +1,17 @@
-version: 8.3.4
-port: 3000
-domain: grafana.romanow-alex.ru
+image:
+  pullPolicy: IfNotPresent
+  repository: grafana/grafana
+  tag: 8.3.4
 
-prometheusService: prometheus-service
-influxService: influxdb-service
+port: 3000
+
+ingress:
+  enabled: true
+  name: grafana
+  domain: romanow-alex.ru
+
+prometheusService: prometheus
+influxService: influxdb
 
 dashboards:
   - k6-results
