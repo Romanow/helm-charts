@@ -106,6 +106,22 @@ entries:
   influxdb:
   - apiVersion: v2
     appVersion: 1.8.4
+    created: "2023-01-15T19:09:50.528720172Z"
+    description: InfluxDB
+    digest: de07315d926bd67aebcd62712b1ac559921539bbeaef63069c9fc8b5fb258741
+    keywords:
+    - influxdb
+    - database
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: influxdb
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/influxdb-1.0.2/influxdb-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 1.8.4
     created: "2023-01-15T18:41:00.064837083Z"
     description: InfluxDB
     digest: 75c8964a2264991d1954c8b60fae2d1b3542c3d3e43983c7914979ef8dff2972
@@ -292,6 +308,22 @@ entries:
   prometheus:
   - apiVersion: v2
     appVersion: 2.40.0
+    created: "2023-01-15T19:09:50.654692712Z"
+    description: Prometheus mertics collector
+    digest: 507904416e88590f672772489cec9d7f98fc50730f3b885dd5f4dc8b12232766
+    keywords:
+    - prometheus
+    - monitoring
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: prometheus
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.3/prometheus-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: 2.40.0
     created: "2023-01-15T18:57:56.173215783Z"
     description: Prometheus mertics collector
     digest: 47d5661472683f0b782c7a085c91631fc3d6e623f260938c99b95dddb3adae96
@@ -338,4 +370,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.0/prometheus-1.0.0.tgz
     version: 1.0.0
-generated: "2023-01-15T18:57:56.173245883Z"
+generated: "2023-01-15T19:09:50.654747913Z"
