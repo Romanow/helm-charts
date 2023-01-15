@@ -9,7 +9,10 @@ ingress:
   domain: romanow-alex.ru
 
 replicas: 1
-port: 8080
+ports:
+  internal: 8080
+  external:
+
 serviceName:
 profile: k8s
 logFolder:

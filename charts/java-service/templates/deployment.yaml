@@ -18,7 +18,7 @@ spec:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/path: "{{ .Values.metrics.path }}"
-        prometheus.io/port: "{{ .Values.port }}"
+        prometheus.io/port: "{{ .Values.ports.internal }}"
       labels:
         app: {{ .Release.Name }}
         app.kubernetes.io/name: {{ .Chart.Name }}
@@ -82,17 +82,17 @@ spec:
             failureThreshold: 10
             httpGet:
               path: {{ .Values.liveness.path }}
-              port: {{ .Values.port }}
+              port: {{ .Values.ports.internal }}
           readinessProbe:
             initialDelaySeconds: {{ .Values.readiness.delay }}
             periodSeconds: {{ .Values.readiness.timeout }}
             failureThreshold: 10
             httpGet:
               path: {{ .Values.readiness.path }}
-              port: {{ .Values.port }}
+              port: {{ .Values.ports.internal }}
           ports:
             - name: {{ .Chart.Name }}
-              containerPort: {{ .Values.port }}
+              containerPort: {{ .Values.ports.internal }}
           volumeMounts:
             {{ if .Values.filebeat.enabled }}
             - name: {{ .Chart.Name }}-logs-volume
