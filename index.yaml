@@ -3,6 +3,22 @@ entries:
   elasticsearch:
   - apiVersion: v2
     appVersion: 7.15.0
+    created: "2023-01-15T18:40:59.652548252Z"
+    description: Elasticsearch database
+    digest: 00036b680121688c66abc677baa286df68152b9d69e3505e0a0c04c54710b166
+    keywords:
+    - elasticsearch
+    - database
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: elasticsearch
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/elasticsearch-1.0.1/elasticsearch-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 7.15.0
     created: "2023-01-15T17:47:37.496554417Z"
     description: Elasticsearch database
     digest: 400fc5e908fe98d2aa90f0aa5a9ade15cd55cb915aef6d0680568433bf7f8817
@@ -54,6 +70,23 @@ entries:
     version: 1.0.0
   grafana:
   - apiVersion: v2
+    appVersion: 8.3.4
+    created: "2023-01-15T18:40:59.851940109Z"
+    description: Grafana
+    digest: 60a21bfea3f33c8907526d90cd78e97e9269a210bb27e49b5dc2a7b53f82d165
+    keywords:
+    - spring boot
+    - java
+    - kotlin
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: grafana
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/grafana-1.0.1/grafana-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
     appVersion: v1.0
     created: "2023-01-15T17:47:37.735691402Z"
     description: Spring Boot application
@@ -73,6 +106,22 @@ entries:
   influxdb:
   - apiVersion: v2
     appVersion: 1.8.4
+    created: "2023-01-15T18:41:00.064837083Z"
+    description: InfluxDB
+    digest: 75c8964a2264991d1954c8b60fae2d1b3542c3d3e43983c7914979ef8dff2972
+    keywords:
+    - influxdb
+    - database
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: influxdb
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/influxdb-1.0.1/influxdb-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 1.8.4
     created: "2023-01-15T17:47:37.856710851Z"
     description: InfluxDB
     digest: a981fbabf09f6a8b2dd877e442b622c8333c8b35c9ea5bc798c10d2f4488820a
@@ -88,6 +137,23 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/influxdb-1.0.0/influxdb-1.0.0.tgz
     version: 1.0.0
   java-service:
+  - apiVersion: v2
+    appVersion: v1.0
+    created: "2023-01-15T18:41:00.25643193Z"
+    description: Spring Boot application
+    digest: 7f91ba49bcdc6f0f11e342017e73a877c64c88e833c733e8f47604093f167bbf
+    keywords:
+    - spring boot
+    - java
+    - kotlin
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: java-service
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/java-service-1.0.3/java-service-1.0.3.tgz
+    version: 1.0.3
   - apiVersion: v2
     appVersion: v1.0
     created: "2022-12-27T08:19:35.375098601Z"
@@ -141,6 +207,23 @@ entries:
     version: 1.0.0
   node-exporter:
   - apiVersion: v2
+    appVersion: 1.5.0
+    created: "2023-01-15T18:41:00.521763571Z"
+    description: Node Exporter
+    digest: e7a480d9509769f72f8bb0096fc140138dcf85850e92945031b2e20962e2fe7d
+    keywords:
+    - node-exporter
+    - prometheus
+    - monitoring
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: node-exporter
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/node-exporter-1.0.1/node-exporter-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
     appVersion: v1.5.0
     created: "2023-01-15T17:47:38.151369888Z"
     description: Node Exporter
@@ -158,6 +241,22 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/node-exporter-1.0.0/node-exporter-1.0.0.tgz
     version: 1.0.0
   postgres:
+  - apiVersion: v2
+    appVersion: "15"
+    created: "2023-01-15T18:41:00.729064138Z"
+    description: Postgres Database
+    digest: 63229357c314174c78f09c0ce9f47f8c845f3b4a1238e447f1573769806672b5
+    keywords:
+    - postgres
+    - database
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: postgres
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/postgres-1.0.2/postgres-1.0.2.tgz
+    version: 1.0.2
   - apiVersion: v2
     appVersion: "15"
     created: "2023-01-15T17:47:38.285002994Z"
@@ -192,6 +291,22 @@ entries:
     version: 1.0.0
   prometheus:
   - apiVersion: v2
+    appVersion: 2.40.0
+    created: "2023-01-15T18:41:00.937994107Z"
+    description: Prometheus mertics collector
+    digest: 5df641c81e5e283db0f17d4e729c4640f2704e64683c3c8de86a6c93cf1008cf
+    keywords:
+    - prometheus
+    - monitoring
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: prometheus
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.1/prometheus-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
     appVersion: v2.40.0
     created: "2023-01-15T17:47:38.395987097Z"
     description: Prometheus mertics collector
@@ -207,4 +322,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.0/prometheus-1.0.0.tgz
     version: 1.0.0
-generated: "2023-01-15T17:47:38.396067298Z"
+generated: "2023-01-15T18:41:00.938036107Z"
