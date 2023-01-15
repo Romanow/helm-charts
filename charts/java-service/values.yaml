@@ -4,7 +4,7 @@ image:
   tag:
 
 ingress:
-  enabled: true
+  enabled: false
   name:
   domain: romanow-alex.ru
 
