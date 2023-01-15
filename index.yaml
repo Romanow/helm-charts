@@ -155,6 +155,23 @@ entries:
   java-service:
   - apiVersion: v2
     appVersion: v1.0
+    created: "2023-01-15T20:00:47.247988987Z"
+    description: Spring Boot application
+    digest: 82a4c3ca3b180738927fcd98b32a98a59c12d60dcf21d9d0d8a22185002f2b40
+    keywords:
+    - spring boot
+    - java
+    - kotlin
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: java-service
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/java-service-1.0.4/java-service-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
+    appVersion: v1.0
     created: "2023-01-15T18:41:00.25643193Z"
     description: Spring Boot application
     digest: 7f91ba49bcdc6f0f11e342017e73a877c64c88e833c733e8f47604093f167bbf
@@ -370,4 +387,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.0/prometheus-1.0.0.tgz
     version: 1.0.0
-generated: "2023-01-15T19:09:50.654747913Z"
+generated: "2023-01-15T20:00:47.248033987Z"
