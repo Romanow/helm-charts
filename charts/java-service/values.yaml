@@ -38,6 +38,8 @@ readiness:
   path: "/manage/health/readiness"
   port: 8080
 
+environments: [ ]
+
 secrets: [ ]
 
 circuitBreaker:

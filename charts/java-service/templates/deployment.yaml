@@ -65,6 +65,10 @@ spec:
             - name: JAEGER_PORT
               value: "{{ .Values.tracing.port }}"
             {{- end }}
+            {{- range $env := .Values.environments }}
+            - name: $env.name
+              value: "{{ $env.value }}"
+            {{- end }}
             {{- range $secret := .Values.secrets }}
             - name: {{ $secret.name }}
               valueFrom:
