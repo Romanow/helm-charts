@@ -2,7 +2,7 @@ apiVersion: v2
 name: prometheus
 type: application
 description: Prometheus mertics collector
-version: 1.0.2
+version: 1.0.3
 appVersion: "2.40.0"
 keywords:
   - prometheus
