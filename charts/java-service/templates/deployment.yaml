@@ -66,7 +66,7 @@ spec:
               value: "{{ .Values.tracing.port }}"
             {{- end }}
             {{- range $env := .Values.environments }}
-            - name: $env.name
+            - name: {{ $env.name }}
               value: "{{ $env.value }}"
             {{- end }}
             {{- range $secret := .Values.secrets }}
@@ -75,7 +75,7 @@ spec:
                 secretKeyRef:
                   name: {{ $secret.secretName }}
                   key: {{ $secret.secretKey }}
-            {{- end }}
+          {{- end }}
           livenessProbe:
             initialDelaySeconds: {{ .Values.liveness.delay }}
             periodSeconds: {{ .Values.liveness.timeout }}
