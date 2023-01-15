@@ -54,9 +54,9 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
-            - name: {{ .Chart.Name }}-http
+            - name: http
               containerPort: {{ .Values.ports.http }}
-            - name: {{ .Chart.Name }}-communication
+            - name: communication
               containerPort: {{ .Values.ports.communication }}
           resources:
             requests:

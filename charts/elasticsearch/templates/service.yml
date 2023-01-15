@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: {{ .Values.serviceName | default .Release.Name }}
+  name: {{ .Release.Name }}
   labels:
     app.kubernetes.io/name: {{ .Chart.Name }}
     app.kubernetes.io/instance: {{ .Release.Name }}
@@ -16,8 +16,34 @@ spec:
     - name: http
       protocol: TCP
       port: {{ .Values.ports.http }}
-      targetPort: {{ .Chart.Name }}-http
+      targetPort: http
     - name: communication
       protocol: TCP
       port: {{ .Values.ports.communication }}
-      targetPort: {{ .Chart.Name }}-communication
+      targetPort: communication
+
+{{- if .Values.ports.external }}
+{{ range $i, $e := until ($.Values.replicas | int) }}
+{{- $port := add ($.Values.ports.external | int) $i }}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ $.Release.Name }}-external-{{ $i }}
+  labels:
+    app.kubernetes.io/name: {{ $.Chart.Name }}
+    app.kubernetes.io/instance: {{ $.Release.Name }}-external-{{ $i }}
+    app.kubernetes.io/version: {{ $.Chart.AppVersion | quote }}
+    app.kubernetes.io/component: database
+    app.kubernetes.io/managed-by: helm
+spec:
+  selector:
+    app: {{ $.Release.Name }}-cluster-{{ $i }}
+  type: NodePort
+  publishNotReadyAddresses: true
+  ports:
+    - protocol: TCP
+      port: {{ $.Values.ports.http }}
+      nodePort: {{ $port }}
+{{ end }}
+{{- end }}

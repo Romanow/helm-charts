@@ -2,7 +2,7 @@ apiVersion: v2
 name: influxdb
 type: application
 description: InfluxDB
-version: 1.0.0
+version: 1.0.1
 appVersion: "1.8.4"
 keywords:
   - influxdb

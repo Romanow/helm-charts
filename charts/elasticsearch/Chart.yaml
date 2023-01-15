@@ -2,7 +2,7 @@ apiVersion: v2
 name: elasticsearch
 type: application
 description: Elasticsearch database
-version: 1.0.0
+version: 1.0.1
 appVersion: "7.15.0"
 keywords:
   - elasticsearch

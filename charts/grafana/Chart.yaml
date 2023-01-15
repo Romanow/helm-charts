@@ -2,7 +2,7 @@ apiVersion: v2
 name: grafana
 type: application
 description: Grafana
-version: 1.0.0
+version: 1.0.1
 appVersion: "8.3.4"
 keywords:
   - spring boot

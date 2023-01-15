@@ -2,7 +2,7 @@ apiVersion: v2
 name: node-exporter
 type: application
 description: Node Exporter
-version: 1.0.0
+version: 1.0.1
 appVersion: "1.5.0"
 keywords:
   - node-exporter

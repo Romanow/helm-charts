@@ -3,7 +3,6 @@ image:
   repository: docker.elastic.co/elasticsearch/elasticsearch
   tag: 7.15.0
 
-serviceName:
 replicas: 3
 clusterName: logs
 
@@ -15,6 +14,7 @@ security:
 ports:
   http: 9200
   communication: 9300
+  external: 32200
 
 resources:
   requests:
