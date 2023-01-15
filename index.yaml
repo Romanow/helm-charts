@@ -292,6 +292,22 @@ entries:
   prometheus:
   - apiVersion: v2
     appVersion: 2.40.0
+    created: "2023-01-15T18:57:56.173215783Z"
+    description: Prometheus mertics collector
+    digest: 47d5661472683f0b782c7a085c91631fc3d6e623f260938c99b95dddb3adae96
+    keywords:
+    - prometheus
+    - monitoring
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: prometheus
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.2/prometheus-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 2.40.0
     created: "2023-01-15T18:41:00.937994107Z"
     description: Prometheus mertics collector
     digest: 5df641c81e5e283db0f17d4e729c4640f2704e64683c3c8de86a6c93cf1008cf
@@ -322,4 +338,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.0/prometheus-1.0.0.tgz
     version: 1.0.0
-generated: "2023-01-15T18:41:00.938036107Z"
+generated: "2023-01-15T18:57:56.173245883Z"
