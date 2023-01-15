@@ -29,7 +29,7 @@ spec:
       terminationGracePeriodSeconds: 10
       initContainers:
         - name: fix-permissions
-          image: busybox
+          image: busybox:1.36.0
           command: [ "sh", "-c", "chown -R 1000:1000 /usr/share/elasticsearch/data" ]
           securityContext:
             privileged: true
@@ -38,13 +38,13 @@ spec:
               mountPath: /usr/share/elasticsearch/data
 
         - name: increase-vm-max-map
-          image: busybox
+          image: busybox:1.36.0
           command: [ "sysctl", "-w", "vm.max_map_count=262144" ]
           securityContext:
             privileged: true
 
         - name: increase-fd-ulimit
-          image: busybox
+          image: busybox:1.36.0
           command: [ "sh", "-c", "ulimit -n 65536" ]
           securityContext:
             privileged: true

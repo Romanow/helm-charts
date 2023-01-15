@@ -1,6 +1,6 @@
 image:
   pullPolicy: IfNotPresent
-  repository: postgres
+  repository: prom/prometheus
   tag: v2.40.0
 
 ports:
