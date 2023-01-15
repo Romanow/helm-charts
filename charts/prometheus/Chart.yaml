@@ -3,7 +3,7 @@ name: prometheus
 type: application
 description: Prometheus mertics collector
 version: 1.0.0
-appVersion: "v2.40.0"
+appVersion: "2.40.0"
 keywords:
   - prometheus
   - monitoring

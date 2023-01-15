@@ -6,7 +6,7 @@ image:
 serviceName:
 ports:
   internal: 8086
-  external: 32086
+  external:
 
 database: k6
 

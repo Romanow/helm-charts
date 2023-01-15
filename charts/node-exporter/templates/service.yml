@@ -12,7 +12,6 @@ spec:
   selector:
     app: {{ .Release.Name }}
   ports:
-    - name: {{ .Chart.Name }}
-      protocol: TCP
-      port: {{ .Values.ports.internal }}
+    - protocol: TCP
+      port: {{ .Values.port }}
       targetPort: {{ .Chart.Name }}

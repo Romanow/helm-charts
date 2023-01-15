@@ -3,7 +3,7 @@ name: node-exporter
 type: application
 description: Node Exporter
 version: 1.0.0
-appVersion: "v1.5.0"
+appVersion: "1.5.0"
 keywords:
   - node-exporter
   - prometheus
