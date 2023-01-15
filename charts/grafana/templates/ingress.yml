@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Chart.Name }}-ingress-service
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}-ingress-service
+    app.kubernetes.io/version: "{{ .Values.version }}"
+    app.kubernetes.io/component: monitoring
+    app.kubernetes.io/part-of: todo-list
+    app.kubernetes.io/managed-by: helm
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  defaultBackend:
+    service:
+      name: {{ .Chart.Name }}-service
+      port:
+        number: {{ .Values.port }}
+  rules:
+    - host: {{ .Values.domain }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Chart.Name }}-service
+                port:
+                  number: {{ .Values.port }}

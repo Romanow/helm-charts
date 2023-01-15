@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/version: "{{ .Values.version }}"
+    app.kubernetes.io/component: monitoring
+    app.kubernetes.io/part-of: todo-list
+    app.kubernetes.io/managed-by: helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  template:
+    metadata:
+      name: {{ .Chart.Name }}
+      labels:
+        app: {{ .Chart.Name }}
+        app.kubernetes.io/name: {{ .Chart.Name }}
+        app.kubernetes.io/version: "{{ .Values.version }}"
+        app.kubernetes.io/component: monitoring
+        app.kubernetes.io/part-of: todo-list
+        app.kubernetes.io/managed-by: helm
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "grafana/grafana:{{ .Values.version }}"
+          resources:
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu }}
+            requests:
+              memory: {{ .Values.resources.requests.memory }}
+              cpu: {{ .Values.resources.requests.cpu }}
+          ports:
+            - name: {{ .Chart.Name }}
+              containerPort: {{ .Values.port }}
+          volumeMounts:
+            - mountPath: /var/lib/grafana
+              name: {{ .Chart.Name }}-storage-volume
+            - mountPath: /etc/grafana/provisioning/datasources/datasources.yml
+              name: {{ .Chart.Name }}-config-volume
+              subPath: datasources.yml
+            - mountPath: /etc/grafana/provisioning/dashboards/dashboards.yml
+              name: {{ .Chart.Name }}-config-volume
+              subPath: dashboards.yml
+            {{- range $dashboard := .Values.dashboards }}
+            - mountPath: /etc/grafana/provisioning/dashboards/dashboards/{{ $dashboard }}.json
+              name: {{ $.Chart.Name }}-config-volume
+              subPath: {{ $dashboard }}.json
+            {{- end }}
+      volumes:
+        - name: {{ .Chart.Name }}-storage-volume
+        - name: {{ .Chart.Name }}-config-volume
+          configMap:
+            defaultMode: 420
+            name: {{ .Chart.Name }}-configmap

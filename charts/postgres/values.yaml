@@ -3,7 +3,10 @@ image:
   repository: postgres
   tag: 15
 
-port: 5432
+ports:
+  internal: 5432
+  external:
+
 serviceName:
 
 defaultDatabase:

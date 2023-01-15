@@ -1,0 +1,21 @@
+version: 8.3.4
+port: 3000
+domain: grafana.romanow-alex.ru
+
+prometheusService: prometheus-service
+influxService: influxdb-service
+
+dashboards:
+  - k6-results
+  - spring-boot
+  - k8s-global
+  - k8s-namespaces
+  - k8s-pods
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 1024Mi
+  limits:
+    cpu: 500m
+    memory: 1024Mi

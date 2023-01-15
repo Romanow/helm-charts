@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Chart.Name }}-service
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}-service
+    app.kubernetes.io/version: "{{ .Values.version }}"
+    app.kubernetes.io/component: monitoring
+    app.kubernetes.io/part-of: micro-services
+    app.kubernetes.io/managed-by: helm
+spec:
+  selector:
+    app: {{ .Chart.Name }}
+  ports:
+    - name: {{ .Chart.Name }}
+      protocol: TCP
+      port: {{ .Values.port }}
+      targetPort: {{ .Values.port }}

@@ -1,0 +1,12 @@
+apiVersion: v2
+name: node-exporter
+type: application
+description: Node Exporter
+version: 1.0.0
+appVersion: "v1.5.0"
+keywords:
+  - prometheus
+  - monitoring
+maintainers:
+  - name: Romanov Alexey
+    email: romanowalex@mail.ru

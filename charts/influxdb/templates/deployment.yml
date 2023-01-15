@@ -49,11 +49,11 @@ spec:
             timeoutSeconds: 1
             httpGet:
               path: /ping
-              port: {{ .Values.ports.api }}
+              port: {{ .Values.ports.internal }}
               scheme: HTTP
           ports:
             - name: {{ .Chart.Name }}
-              containerPort: {{ .Values.ports.api }}
+              containerPort: {{ .Values.ports.internal }}
           volumeMounts:
             - name: {{ .Chart.Name }}-storage-volume
               mountPath: /var/lib/influxdb

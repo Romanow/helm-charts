@@ -1,0 +1,10 @@
+version: v2.40.0
+port: 9090
+
+resources:
+  requests:
+    cpu: 300m
+    memory: 1024Mi
+  limits:
+    cpu: 300m
+    memory: 1024Mi

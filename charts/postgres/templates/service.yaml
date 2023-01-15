@@ -11,8 +11,9 @@ metadata:
 spec:
   selector:
     app: {{ .Release.Name }}
-  type: ClusterIP
+  type: NodePort
   ports:
     - protocol: TCP
-      port: {{ .Values.port }}
+      port: {{ .Values.ports.internal }}
       targetPort: {{ .Chart.Name }}
+      nodePort: {{ .Values.ports.external }}
