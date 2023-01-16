@@ -152,6 +152,42 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/influxdb-1.0.0/influxdb-1.0.0.tgz
     version: 1.0.0
+  jaeger-collector:
+  - apiVersion: v2
+    appVersion: 1.41.0
+    created: "2023-01-16T15:55:27.427454938Z"
+    description: Jaeger tracing collector
+    digest: 8b6b55da6135309518ddbbf007a2de4bb379c63ed509b5b6932169750edfe00f
+    keywords:
+    - jaeger
+    - jaeger-collector
+    - tracing
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: jaeger-collector
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/jaeger-collector-1.0.0/jaeger-collector-1.0.0.tgz
+    version: 1.0.0
+  jaeger-query:
+  - apiVersion: v2
+    appVersion: 1.41.0
+    created: "2023-01-16T15:55:27.562694571Z"
+    description: Jaeger UI
+    digest: 6448eb587971cc07fa06d94b1432aeb24e9ba7ad1b65db27645705686a370365
+    keywords:
+    - jaeger
+    - jaeger-query
+    - tracing
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: jaeger-query
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/jaeger-query-1.0.0/jaeger-query-1.0.0.tgz
+    version: 1.0.0
   java-service:
   - apiVersion: v2
     appVersion: v1.0
@@ -288,6 +324,40 @@ entries:
     type: application
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/java-service-1.0.0/java-service-1.0.0.tgz
+    version: 1.0.0
+  kibana:
+  - apiVersion: v2
+    appVersion: 7.15.0
+    created: "2023-01-16T15:55:27.886208004Z"
+    description: Kibana
+    digest: 1021e78b256406978aece2557cec8030a630e3eee24a14963f993f75df9689ed
+    keywords:
+    - kibana
+    - logging
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: kibana
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/kibana-1.0.0/kibana-1.0.0.tgz
+    version: 1.0.0
+  logstash:
+  - apiVersion: v2
+    appVersion: 7.15.0
+    created: "2023-01-16T15:55:28.0160902Z"
+    description: Logstash logger aggregaror
+    digest: 6ea67160211047457759ac5fb6c123c8f1bc7cd682d859456a0c588c6652c7fc
+    keywords:
+    - logstash
+    - logging
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: logstash
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/logstash-1.0.0/logstash-1.0.0.tgz
     version: 1.0.0
   node-exporter:
   - apiVersion: v2
@@ -438,4 +508,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.0/prometheus-1.0.0.tgz
     version: 1.0.0
-generated: "2023-01-15T20:21:07.748229952Z"
+generated: "2023-01-16T15:55:28.148146911Z"
