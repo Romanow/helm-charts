@@ -28,4 +28,4 @@ spec:
                 name: {{ .Values.serviceName | default .Release.Name }}
                 port:
                   number: {{ .Values.ports.internal }}
-  {{ end }}
+  {{- end }}

@@ -1,0 +1,27 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: jaegertracing/jaeger-query
+  tag: 1.41.0
+
+ports:
+  query: 16686
+  admin: 16687
+  agent: 6831
+
+ingress:
+  enabled: true
+  name: jaeger
+  domain: romanow-alex.ru
+
+elasticsearch:
+  url: http://elasticsearch:9200
+  username: logging
+  password: qwerty
+
+resources:
+  requests:
+    cpu: 300m
+    memory: 1024Mi
+  limits:
+    cpu: 300m
+    memory: 1024Mi

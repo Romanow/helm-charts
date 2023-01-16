@@ -1,0 +1,24 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: docker.elastic.co/kibana/kibana
+  tag: 7.15.0
+
+port: 5601
+
+ingress:
+  enabled: true
+  name: kibana
+  domain: romanow-alex.ru
+
+elasticsearch:
+  url: http://elasticsearch:9200
+  username: logging
+  password: qwerty
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 1024Mi
+  limits:
+    cpu: 500m
+    memory: 1024Mi

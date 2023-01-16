@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: {{ .Chart.Name }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-    app.kubernetes.io/component: frontend
+    app.kubernetes.io/component: tracing
     app.kubernetes.io/managed-by: helm
   annotations:
     kubernetes.io/ingress.class: nginx
@@ -16,7 +16,7 @@ spec:
     service:
       name: {{ .Release.Name }}
       port:
-        number: {{ .Values.port }}
+        number: {{ .Values.ports.query }}
   rules:
     - host: {{ .Values.ingress.name | default .Release.Name }}.{{ .Values.ingress.domain }}
       http:
@@ -27,5 +27,5 @@ spec:
               service:
                 name: {{ .Release.Name }}
                 port:
-                  number: {{ .Values.port }}
+                  number: {{ .Values.ports.query }}
   {{- end }}

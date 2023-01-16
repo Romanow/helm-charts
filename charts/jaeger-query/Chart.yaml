@@ -1,0 +1,13 @@
+apiVersion: v2
+name: jaeger-query
+type: application
+description: Jaeger UI
+version: 1.0.0
+appVersion: "1.41.0"
+keywords:
+  - jaeger
+  - jaeger-query
+  - tracing
+maintainers:
+  - name: Romanov Alexey
+    email: romanowalex@mail.ru

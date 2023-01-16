@@ -1,0 +1,20 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: docker.elastic.co/logstash/logstash
+  tag: 7.15.0
+
+port: 5044
+serviceName:
+
+elasticsearch:
+  url: http://elasticsearch:9200
+  username: logging
+  password: qwerty
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 1024Mi
+  limits:
+    cpu: 500m
+    memory: 1024Mi

@@ -1,0 +1,23 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: jaegertracing/jaeger-collector
+  tag: 1.41.0
+
+serviceName:
+ports:
+  grpc: 14250
+  http: 14268
+  admin: 14269
+
+elasticsearch:
+  url: http://elasticsearch:9200
+  username: logging
+  password: qwerty
+
+resources:
+  requests:
+    cpu: 300m
+    memory: 1024Mi
+  limits:
+    cpu: 300m
+    memory: 1024Mi

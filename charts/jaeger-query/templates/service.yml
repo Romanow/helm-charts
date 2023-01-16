@@ -1,17 +1,20 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .Release.Name }}-query
   labels:
     app.kubernetes.io/name: {{ .Chart.Name }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-    app.kubernetes.io/component: monitoring
+    app.kubernetes.io/component: tracing
     app.kubernetes.io/managed-by: helm
 spec:
   selector:
-    app: {{ .Release.Name }}
+    app: {{ .Release.Name }}-query
   ports:
     - protocol: TCP
-      port: {{ .Values.port }}
-      targetPort: {{ .Chart.Name }}
+      port: {{ .Values.ports.query }}
+      targetPort: query
+    - protocol: SCTP
+      port: {{ .Values.ports.admin }}
+      targetPort: admin

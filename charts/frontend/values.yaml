@@ -4,7 +4,6 @@ image:
   tag:
 
 port: 3000
-serviceName:
 
 ingress:
   enabled: true

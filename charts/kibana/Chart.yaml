@@ -1,12 +1,12 @@
 apiVersion: v2
-name: postgres
+name: kibana
 type: application
-description: Postgres
-version: 1.0.2
-appVersion: "15"
+description: Kibana
+version: 1.0.0
+appVersion: "7.15.0"
 keywords:
-  - postgres
-  - database
+  - kibana
+  - logging
 maintainers:
   - name: Romanov Alexey
     email: romanowalex@mail.ru

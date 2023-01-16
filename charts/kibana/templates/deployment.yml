@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/component: logging
+    app.kubernetes.io/managed-by: helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+        app.kubernetes.io/name: {{ .Chart.Name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+        app.kubernetes.io/component: logging
+        app.kubernetes.io/managed-by: helm
+    spec:
+      containers:
+        - name: {{ .Release.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            requests:
+              memory: {{ .Values.resources.requests.memory }}
+              cpu: {{ .Values.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu }}
+          env:
+            - name: ELASTICSEARCH_HOSTS
+              value: {{ .Values.elasticsearch.url }}
+            {{- if .Values.elasticsearch.username }}
+            - name: ELASTICSEARCH_USERNAME
+              value: "{{ .Values.elasticsearch.username }}"
+            {{- end }}
+            {{- if .Values.elasticsearch.password }}
+            - name: ELASTICSEARCH_PASSWORD
+              value: "{{ .Values.elasticsearch.password }}"
+            {{- end }}
+          ports:
+            - name: {{ .Chart.Name }}
+              containerPort: {{ .Values.port }}

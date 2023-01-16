@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-collector
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/component: tracing
+    app.kubernetes.io/managed-by: helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-collector
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-collector
+        app.kubernetes.io/name: {{ .Chart.Name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+        app.kubernetes.io/component: tracing
+        app.kubernetes.io/managed-by: helm
+    spec:
+      containers:
+        - name: {{ .Release.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: SPAN_STORAGE_TYPE
+              value: elasticsearch
+            - name: ES_SERVER_URLS
+              value: {{ .Values.elasticsearch.url }}
+            {{- if .Values.elasticsearch.username }}
+            - name: ES_USERNAME
+              value: {{ .Values.elasticsearch.username }}
+            {{- end }}
+            {{- if .Values.elasticsearch.password }}
+            - name: ES_PASSWORD
+              value: {{ .Values.elasticsearch.password }}
+            {{- end }}
+          resources:
+            requests:
+              memory: {{ .Values.resources.requests.memory }}
+              cpu: {{ .Values.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu }}
+          ports:
+            - name: grpc
+              containerPort: {{ .Values.ports.grpc }}
+            - name: http
+              containerPort: {{ .Values.ports.http }}
+            - name: admin
+              containerPort: {{ .Values.ports.admin }}

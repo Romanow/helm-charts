@@ -48,24 +48,38 @@ secrets: [ ]
 circuitBreaker:
   enabled: false
 
-tracing:
+jaeger:
   enabled: false
-  host:
-  port:
-
-resources:
-  requests:
-    cpu: 500m
-    memory: 1024Mi
-  limits:
-    cpu: 500m
-    memory: 1024Mi
+  image:
+    pullPolicy: IfNotPresent
+    repository: jaegertracing/jaeger-agent
+    tag: 1.41.0
+  application:
+    host: localhost
+    port: 6831
+  collector:
+    host: jaeger-collector
+    port: 14250
+  ports:
+    compactThrift: 6831
+    binaryThrift: 6832
+    admin: 14271
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1024Mi
+    limits:
+      cpu: 500m
+      memory: 1024Mi
 
 filebeat:
   enabled: false
-  version: 7.15.0
+  image:
+    pullPolicy: IfNotPresent
+    repository: docker.elastic.co/beats/filebeat
+    tag: 7.15.0
   logstash:
-    host: logstash.logging.svc.cluster.local
+    host: logstash
     port: 5044
   resources:
     requests:
@@ -74,3 +88,11 @@ filebeat:
     limits:
       cpu: 50m
       memory: 128Mi
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 1024Mi
+  limits:
+    cpu: 500m
+    memory: 1024Mi

@@ -1,0 +1,12 @@
+apiVersion: v2
+name: logstash
+type: application
+description: Logstash logger aggregaror
+version: 1.0.0
+appVersion: "7.15.0"
+keywords:
+  - logstash
+  - logging
+maintainers:
+  - name: Romanov Alexey
+    email: romanowalex@mail.ru
