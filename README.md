@@ -22,3 +22,13 @@
 * [Node Exporter](charts/node-exporter)
 * [Prometheus](charts/prometheus)
 * [Grafana](charts/grafana)
+
+### Tracing
+
+* [Jaeger Collector](charts/jaeger-collector)
+* [Jaeger Query](charts/jaeger-query)
+
+### Logging
+
+* [Logstash](charts/logstash)
+* [Kibana](charts/kibana)
