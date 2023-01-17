@@ -22,6 +22,8 @@ databases:
   - name: services
     user: program
 
+configs: [ ]
+
 resources:
   requests:
     cpu: 100m

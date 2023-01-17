@@ -46,11 +46,24 @@ spec:
               containerPort: {{ .Values.ports.internal }}
           volumeMounts:
             - name: db-data
-              mountPath: /var/lib/postgresql/data
-            - name: postgres-configmap-volume
+              mountPath: /var/lib/postgresql/data/
+            - name: postgres-init-scripts-volume
               mountPath: /docker-entrypoint-initdb.d/
+            {{- range $config := .Values.configs }}
+            - name: {{ $.Chart.Name }}-{{ $config.name }}-volume
+              mountPath: {{ $config.path }}
+            {{- end }}
       volumes:
         - name: db-data
-        - name: postgres-configmap-volume
+        - name: postgres-init-scripts-volume
           configMap:
-            name: {{ .Release.Name }}
+            name: {{ .Release.Name }}-init-scripts
+        {{- range $config := .Values.configs }}
+        - name: {{ $.Chart.Name }}-{{ $config.name }}-volume
+          configMap:
+          {{- if $config.file }}
+            name: {{ $.Release.Name }}-{{ $config.name }}
+          {{- else if $config.configMap }}
+            name: {{ $config.configMap }}
+          {{- end }}
+        {{- end }}
