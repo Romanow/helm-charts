@@ -24,7 +24,11 @@ data:
     psql -U {{ $.Values.defaultDatabase.user }} -d {{ $database.name }} -c "GRANT ALL PRIVILEGES ON SCHEMA public TO {{ $database.user }};"
     {{ end }}
 ---
-{{ $config := .Files.Get "config/postgres.conf" | replace "=" ":" | fromYaml }}
+{{ $defaultConfig := .Files.Get "config/postgres.conf" | replace "=" ":" | fromYaml }}
+{{ $additionalConfig := dict }}
+{{- if .Values.config.file }}
+{{ $additionalConfig := .Files.Get $.Values.config.file | replace "=" ":" | fromYaml  }}
+{{- end }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -37,6 +41,6 @@ metadata:
     app.kubernetes.io/managed-by: helm
 data:
   postgres.conf: |
-    {{- range $name, $value := (merge $.Values.config $config) }}
+    {{- range $name, $value := (merge $.Values.config.values $additionalConfig $defaultConfig) }}
     {{ $name }} = {{ $value }}
     {{- end }}

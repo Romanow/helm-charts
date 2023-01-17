@@ -22,7 +22,8 @@ databases:
   - name: services
     user: program
 
-config: {}
+config:
+  values: {}
 
 resources:
   requests:
