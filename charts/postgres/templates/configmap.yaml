@@ -30,10 +30,10 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ $.Release.Name }}-{{ $config.name }}
+  name: {{ $.Release.Name }}-{{ $config.name | replace "." "-" }}
   labels:
     app.kubernetes.io/name: {{ $.Chart.Name }}
-    app.kubernetes.io/instance: {{ $.Release.Name }}-{{ $config.name }}
+    app.kubernetes.io/instance: {{ $.Release.Name }}-{{ $config.name | replace "." "-" }}
     app.kubernetes.io/version: {{ $.Chart.AppVersion | quote }}
     app.kubernetes.io/component: database
     app.kubernetes.io/managed-by: helm

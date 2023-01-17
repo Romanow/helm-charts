@@ -22,7 +22,11 @@ databases:
   - name: services
     user: program
 
-configs: [ ]
+#configs: [ ]
+configs:
+  - name: postgres.conf
+    file: config/postgres.conf
+    path: /var/lib/postgresql/data/postgres.conf
 
 resources:
   requests:

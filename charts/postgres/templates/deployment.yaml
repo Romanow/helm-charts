@@ -50,7 +50,7 @@ spec:
             - name: postgres-init-scripts-volume
               mountPath: /docker-entrypoint-initdb.d/
             {{- range $config := .Values.configs }}
-            - name: {{ $.Chart.Name }}-{{ $config.name }}-volume
+            - name: {{ $.Chart.Name }}-{{ $config.name | replace "." "-" }}-volume
               mountPath: {{ $config.path }}
             {{- end }}
       volumes:
@@ -59,10 +59,10 @@ spec:
           configMap:
             name: {{ .Release.Name }}-init-scripts
         {{- range $config := .Values.configs }}
-        - name: {{ $.Chart.Name }}-{{ $config.name }}-volume
+        - name: {{ $.Chart.Name }}-{{ $config.name | replace "." "-" }}-volume
           configMap:
           {{- if $config.file }}
-            name: {{ $.Release.Name }}-{{ $config.name }}
+            name: {{ $.Release.Name }}-{{ $config.name | replace "." "-" }}
           {{- else if $config.configMap }}
             name: {{ $config.configMap }}
           {{- end }}
