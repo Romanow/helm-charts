@@ -27,6 +27,9 @@ spec:
         - name: {{ .Release.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - "-c"
+            - "config_file=/etc/postgresql/postgres.conf"
           env:
             - name: POSTGRES_USER
               value: {{ .Values.defaultDatabase.user }}
@@ -44,26 +47,30 @@ spec:
           ports:
             - name: {{ .Chart.Name }}
               containerPort: {{ .Values.ports.internal }}
+          readinessProbe:
+            initialDelaySeconds: 15
+            failureThreshold: 5
+            timeoutSeconds: 2
+            exec:
+              command: ["psql", "-w", "-U", "{{ .Values.defaultDatabase.user }}", "-d", "{{ .Values.defaultDatabase.name }}", "-c", "SELECT 1"]
+          livenessProbe:
+            initialDelaySeconds: 15
+            failureThreshold: 5
+            timeoutSeconds: 2
+            exec:
+              command: ["psql", "-w", "-U", "{{ .Values.defaultDatabase.user }}", "-d", "{{ .Values.defaultDatabase.name }}", "-c", "SELECT 1"]
           volumeMounts:
             - name: db-data
               mountPath: /var/lib/postgresql/data/
             - name: postgres-init-scripts-volume
               mountPath: /docker-entrypoint-initdb.d/
-            {{- range $config := .Values.configs }}
-            - name: {{ $.Chart.Name }}-{{ $config.name | replace "." "-" }}-volume
-              mountPath: {{ $config.path }}
-            {{- end }}
+            - name: {{ $.Chart.Name }}-config-volume
+              mountPath: /etc/postgresql/
       volumes:
         - name: db-data
         - name: postgres-init-scripts-volume
           configMap:
             name: {{ .Release.Name }}-init-scripts
-        {{- range $config := .Values.configs }}
-        - name: {{ $.Chart.Name }}-{{ $config.name | replace "." "-" }}-volume
+        - name: {{ $.Chart.Name }}-config-volume
           configMap:
-          {{- if $config.file }}
-            name: {{ $.Release.Name }}-{{ $config.name | replace "." "-" }}
-          {{- else if $config.configMap }}
-            name: {{ $config.configMap }}
-          {{- end }}
-        {{- end }}
+            name: {{ $.Release.Name }}-config

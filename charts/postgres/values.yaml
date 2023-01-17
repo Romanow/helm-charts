@@ -22,16 +22,12 @@ databases:
   - name: services
     user: program
 
-#configs: [ ]
-configs:
-  - name: postgres.conf
-    file: config/postgres.conf
-    path: /var/lib/postgresql/data/postgres.conf
+config: {}
 
 resources:
   requests:
     cpu: 100m
-    memory: 128Mi
+    memory: 512Mi
   limits:
-    cpu: 200m
+    cpu: 100m
     memory: 512Mi
