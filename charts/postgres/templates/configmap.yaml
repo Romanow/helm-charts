@@ -41,6 +41,6 @@ metadata:
     app.kubernetes.io/managed-by: helm
 data:
   postgres.conf: |
-    {{- range $name, $value := (merge $.Values.config.values $additionalConfig $defaultConfig) }}
+    {{- range $name, $value := (merge $.Values.config.params $additionalConfig $defaultConfig) }}
     {{ $name }} = {{ $value }}
     {{- end }}

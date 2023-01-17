@@ -23,7 +23,7 @@ databases:
     user: program
 
 config:
-  values: {}
+  params: {}
 
 resources:
   requests:
