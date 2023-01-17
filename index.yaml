@@ -397,6 +397,22 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: "15"
+    created: "2023-01-17T14:36:51.172476271Z"
+    description: Postgres
+    digest: eb573cf894f1a87aaf859c8aac124327f0ea50d3c1fc41c4d50b2458890e7adc
+    keywords:
+    - postgres
+    - database
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: postgres
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/postgres-1.0.5/postgres-1.0.5.tgz
+    version: 1.0.5
+  - apiVersion: v2
+    appVersion: "15"
     created: "2023-01-17T10:07:24.039515788Z"
     description: Postgres
     digest: c597fcf5772a633ca603d999b1be15068dfa260a34fe8398ed03a071138b929c
@@ -540,4 +556,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.0/prometheus-1.0.0.tgz
     version: 1.0.0
-generated: "2023-01-17T10:07:24.039563068Z"
+generated: "2023-01-17T14:36:51.172834073Z"
