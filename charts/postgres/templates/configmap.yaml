@@ -25,7 +25,7 @@ data:
     {{ end }}
 ---
 {{ $defaultConfig := .Files.Get "config/postgres.conf" | replace "=" ":" | fromYaml }}
-{{ $additionalConfig := .Files.Get (.Values.config.file | default "") | replace "=" ":" | fromYaml }}
+{{ $additionalConfig := .Values.config | default "" | replace "=" ":" | fromYaml }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -38,6 +38,6 @@ metadata:
     app.kubernetes.io/managed-by: helm
 data:
   postgres.conf: |
-    {{- range $name, $value := (mergeOverwrite $defaultConfig $additionalConfig $.Values.config.values) }}
+    {{- range $name, $value := (mergeOverwrite $defaultConfig $additionalConfig) }}
     {{ $name }} = {{ $value }}
     {{- end }}
