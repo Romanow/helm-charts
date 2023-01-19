@@ -36,6 +36,23 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: v1.0
+    created: "2023-01-19T17:56:30.717005635Z"
+    description: Frontend
+    digest: f88aa8533e84258ad34169d8dae56114d2a55324bf6b8faeb8ca750f2ea9fac7
+    keywords:
+    - frontend
+    - react
+    - nginx
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: frontend
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/frontend-1.0.2/frontend-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: v1.0
     created: "2022-12-27T12:16:40.558054248Z"
     description: Frontend
     digest: ac638502a9e6bf8b369309dce09ae12766090c557cb9f230adc2c7072d6d4831
@@ -189,6 +206,23 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/jaeger-query-1.0.0/jaeger-query-1.0.0.tgz
     version: 1.0.0
   java-service:
+  - apiVersion: v2
+    appVersion: v1.0
+    created: "2023-01-19T17:56:30.880669866Z"
+    description: Spring Boot application
+    digest: cddd52c371bc2c218e8cbbe2dc16acc992a8578635b76505bb99e61021b204de
+    keywords:
+    - spring boot
+    - java
+    - kotlin
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+    name: java-service
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/java-service-1.0.8/java-service-1.0.8.tgz
+    version: 1.0.8
   - apiVersion: v2
     appVersion: v1.0
     created: "2023-01-15T20:21:07.74807815Z"
@@ -620,4 +654,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.0/prometheus-1.0.0.tgz
     version: 1.0.0
-generated: "2023-01-17T15:55:37.898112579Z"
+generated: "2023-01-19T17:56:30.880828366Z"
