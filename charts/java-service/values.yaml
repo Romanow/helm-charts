@@ -8,6 +8,10 @@ ingress:
   name:
   domain: romanow-alex.ru
 
+environments: [ ]
+
+secrets: [ ]
+
 replicas: 1
 ports:
   internal: 8080
@@ -25,9 +29,8 @@ database:
   password: test
 
 metrics:
+  enabled: true
   path: "/manage/prometheus"
-  username: management
-  password: passwd
 
 liveness:
   delay: 60
@@ -40,10 +43,6 @@ readiness:
   timeout: 10
   path: "/manage/health/readiness"
   port: 8080
-
-environments: [ ]
-
-secrets: [ ]
 
 circuitBreaker:
   enabled: false

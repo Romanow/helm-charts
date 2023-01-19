@@ -1,3 +1,4 @@
+{{- if .Values.filebeat.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -9,7 +10,6 @@ metadata:
     app.kubernetes.io/component: application
     app.kubernetes.io/managed-by: helm
 data:
-  {{ if .Values.filebeat.enabled }}
   filebeat.yml: |-
     monitoring.enabled: false
     filebeat.inputs:
@@ -19,7 +19,7 @@ data:
           keys_under_root: true
           overwrite_keys: true
         paths:
-          - '/var/log/{{ .Release.Name }}/*.log'
+          - '/var/log/{{ .Values.logFolder | default .Release.Name }}/*.log'
     output.logstash:
       hosts: [ '{{ .Values.filebeat.logstash.host }}:{{ .Values.filebeat.logstash.port }}' ]
-  {{ end }}
+{{- end }}

@@ -34,6 +34,20 @@ spec:
             limits:
               memory: "{{ .Values.resources.limits.memory }}"
               cpu: "{{ .Values.resources.limits.cpu }}"
+          {{- if or .Values.environments .Values.secrets }}
+          env:
+            {{- range $env := .Values.environments }}
+            - name: {{ $env.name }}
+              value: "{{ $env.value }}"
+            {{- end }}
+            {{- range $secret := .Values.secrets }}
+            - name: {{ $secret.name }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $secret.secretName }}
+                  key: {{ $secret.secretKey }}
+            {{- end }}
+          {{- end }}
           livenessProbe:
             initialDelaySeconds: 30
             failureThreshold: 10

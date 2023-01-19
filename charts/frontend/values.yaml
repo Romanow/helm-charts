@@ -10,6 +10,10 @@ ingress:
   name:
   domain: romanow-alex.ru
 
+environments: [ ]
+
+secrets: [ ]
+
 resources:
   requests:
     cpu: 100m

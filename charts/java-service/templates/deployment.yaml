@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        prometheus.io/scrape: "true"
+        prometheus.io/scrape: "{{ .Values.metrics.enabled }}"
         prometheus.io/path: "{{ .Values.metrics.path }}"
         prometheus.io/port: "{{ .Values.ports.internal }}"
       labels:
@@ -41,10 +41,10 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: "{{ .Values.profile }}"
-            {{ if .Values.database.name }}
+            {{- if .Values.database.name }}
             - name: DATABASE_NAME
               value: "{{ .Values.database.name }}"
-            {{ end }}
+            {{- end }}
             - name: DATABASE_HOST
               value: "{{ .Values.database.host }}"
             - name: DATABASE_PORT
@@ -77,7 +77,7 @@ spec:
                 secretKeyRef:
                   name: {{ $secret.secretName }}
                   key: {{ $secret.secretKey }}
-          {{- end }}
+            {{- end }}
           livenessProbe:
             initialDelaySeconds: {{ .Values.liveness.delay }}
             periodSeconds: {{ .Values.liveness.timeout }}
@@ -95,12 +95,12 @@ spec:
           ports:
             - name: {{ .Chart.Name }}
               containerPort: {{ .Values.ports.internal }}
+          {{- if .Values.filebeat.enabled }}
           volumeMounts:
-            {{ if .Values.filebeat.enabled }}
             - name: {{ .Chart.Name }}-logs-volume
               mountPath: "/var/log/{{ .Values.logFolder | default .Release.Name }}/"
-        {{ end}}
-        {{ if .Values.filebeat.enabled }}
+          {{- end }}
+        {{- if .Values.filebeat.enabled }}
         - name: {{ .Release.Name }}-filebeat
           image: "{{ .Values.filebeat.image.repository }}:{{ .Values.filebeat.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
@@ -117,8 +117,8 @@ spec:
             - name: {{ .Chart.Name }}-config-volume
               mountPath: /usr/share/filebeat/filebeat.yml
               subPath: filebeat.yml
-        {{ end }}
-        {{ if .Values.jaeger.enabled }}
+        {{- end }}
+        {{- if .Values.jaeger.enabled }}
         - name: {{ .Release.Name }}-jaeger-agent
           image: "{{ .Values.jaeger.image.repository }}:{{ .Values.jaeger.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
@@ -142,7 +142,7 @@ spec:
             limits:
               memory: "{{ .Values.filebeat.resources.limits.memory }}"
               cpu: "{{ .Values.filebeat.resources.limits.cpu }}"
-      {{ end }}
+      {{- end }}
       volumes:
         - name: {{ .Chart.Name }}-logs-volume
         - name: {{ .Chart.Name }}-config-volume
