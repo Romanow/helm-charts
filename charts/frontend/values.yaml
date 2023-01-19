@@ -4,6 +4,7 @@ image:
   tag:
 
 port: 3000
+backendServiceName:
 
 ingress:
   enabled: true

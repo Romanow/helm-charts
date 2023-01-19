@@ -34,8 +34,9 @@ spec:
             limits:
               memory: "{{ .Values.resources.limits.memory }}"
               cpu: "{{ .Values.resources.limits.cpu }}"
-          {{- if or .Values.environments .Values.secrets }}
           env:
+            - name: BACKEND_HOST
+              value: {{ required "Backend service must be set" .Values.backendServiceName }}
             {{- range $env := .Values.environments }}
             - name: {{ $env.name }}
               value: "{{ $env.value }}"
@@ -47,7 +48,6 @@ spec:
                   name: {{ $secret.secretName }}
                   key: {{ $secret.secretKey }}
             {{- end }}
-          {{- end }}
           livenessProbe:
             initialDelaySeconds: 30
             failureThreshold: 10

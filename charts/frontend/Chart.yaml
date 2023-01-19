@@ -2,7 +2,7 @@ apiVersion: v2
 name: frontend
 type: application
 description: Frontend
-version: 1.0.1
+version: 1.0.2
 appVersion: "v1.0"
 keywords:
   - frontend
