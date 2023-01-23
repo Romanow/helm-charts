@@ -12,9 +12,11 @@ spec:
   selector:
     app: {{ .Release.Name }}-query
   ports:
-    - protocol: TCP
+    - name: query
+      protocol: TCP
       port: {{ .Values.ports.query }}
       targetPort: query
-    - protocol: SCTP
+    - name: admin
+      protocol: SCTP
       port: {{ .Values.ports.admin }}
       targetPort: admin

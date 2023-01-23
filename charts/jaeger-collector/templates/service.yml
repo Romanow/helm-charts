@@ -12,12 +12,15 @@ spec:
   selector:
     app: {{ .Release.Name }}-collector
   ports:
-    - protocol: TCP
+    - name: grpc
+      protocol: TCP
       port: {{ .Values.ports.grpc }}
       targetPort: grpc
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: {{ .Values.ports.http }}
       targetPort: http
-    - protocol: TCP
+    - name: admin
+      protocol: TCP
       port: {{ .Values.ports.admin }}
       targetPort: admin

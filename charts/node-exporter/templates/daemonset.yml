@@ -11,7 +11,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
