@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/component: database
     app.kubernetes.io/managed-by: helm
 spec:
-  serviceName: {{ .Release.Name }}-cluster
+  serviceName: {{ .Release.Name }}
   replicas: {{ .Values.replicas | int }}
   podManagementPolicy: Parallel
   selector:
