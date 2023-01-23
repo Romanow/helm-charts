@@ -1,18 +1,27 @@
+# -- Image name and version
 image:
   pullPolicy: IfNotPresent
   repository: grafana/grafana
   tag: 8.3.4
 
+# -- Grafana port
 port: 3000
 
 ingress:
+  # -- Enable ingress
   enabled: true
+  # -- Ingress name
   name: grafana
+  # -- Domain
   domain: romanow-alex.ru
 
+# -- Prometheus service
 prometheusService: prometheus
-influxService: influxdb
 
+# -- InfluxDB service
+influxdbService:
+
+# -- Preloaded dashboards
 dashboards:
   - k6-results
   - spring-boot
@@ -21,9 +30,11 @@ dashboards:
   - k8s-pods
 
 resources:
+  # -- Requested resources
   requests:
     cpu: 500m
     memory: 1024Mi
+  # -- Limited resources
   limits:
     cpu: 500m
     memory: 1024Mi

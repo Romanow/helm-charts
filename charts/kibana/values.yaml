@@ -1,24 +1,34 @@
+# -- Image name and version
 image:
   pullPolicy: IfNotPresent
   repository: docker.elastic.co/kibana/kibana
   tag: 7.15.0
 
+# -- Kibana port
 port: 5601
 
 ingress:
+  # -- Enable ingress
   enabled: true
+  # -- Ingress name
   name: kibana
+  # -- Domain
   domain: romanow-alex.ru
 
 elasticsearch:
+  # -- Elastic address
   url: http://elasticsearch:9200
+  # -- Elastic username (optional)
   username: logging
+  # -- Elastic password (optional)
   password: qwerty
 
 resources:
+  # -- Requested resources
   requests:
     cpu: 500m
     memory: 1024Mi
+  # -- Limited resources
   limits:
     cpu: 500m
     memory: 1024Mi

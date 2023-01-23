@@ -1,12 +1,16 @@
 apiVersion: v2
 name: postgres
 type: application
-description: Postgres
-version: 1.0.9
+description: PostgreSQL is a powerful, open source object-relational database system.
+version: 1.1.0
 appVersion: "15"
+sources:
+  - https://github.com/Romanow/helm-charts/tree/master/charts/postgres
+  - https://www.postgresql.org/
 keywords:
   - postgres
   - database
 maintainers:
   - name: Romanov Alexey
     email: romanowalex@mail.ru
+    url: https://romanow.github.io

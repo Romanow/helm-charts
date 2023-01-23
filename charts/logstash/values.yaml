@@ -1,20 +1,30 @@
+# -- Image name and version
 image:
   pullPolicy: IfNotPresent
   repository: docker.elastic.co/logstash/logstash
   tag: 7.15.0
 
+# -- Logstash port
 port: 5044
+
+# -- Custom service name
+# @default -- .Release.Name
 serviceName:
 
 elasticsearch:
+  # -- Elastic address
   url: http://elasticsearch:9200
+  # -- Elastic username (optional)
   username: logging
+  # -- Elastic password (optional)
   password: qwerty
 
 resources:
+  # -- Requested resources
   requests:
     cpu: 500m
     memory: 1024Mi
+  # -- Limited resources
   limits:
     cpu: 500m
     memory: 1024Mi

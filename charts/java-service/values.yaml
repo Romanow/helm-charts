@@ -1,97 +1,143 @@
+# -- Image name and version
 image:
   pullPolicy: IfNotPresent
   repository:
   tag:
 
 ingress:
+  # -- Enable ingress
   enabled: false
+  # -- Ingress name
+  # @default -- .Release.Name
   name:
+  # -- Domain
   domain: romanow-alex.ru
 
+# -- Additional env variables
 environments: [ ]
 
+# -- Additional secrets
 secrets: [ ]
 
+# -- Count of replicas
 replicas: 1
 ports:
+  # -- Application port
   internal: 8080
+  # -- If define, create NodePort for external usage
   external:
 
+# -- Custom service name
+# @default -- .Release.Name
 serviceName:
+
+# -- Spring Boot profile
 profile: k8s
+
+# -- Log folder (if filebeat is enabled)
+# @default -- .Release.Name
 logFolder:
 
 database:
+  # -- Database name (if defined, set `DATABASE_NAME` env)
   name:
+  # -- Database host (set `DATABASE_HOST` env)
   host: postgres
+  # -- Database port (set `DATABASE_PORT` env)
   port: 5432
+  # -- Database user (set `DATABASE_USER` env)
   username: program
+  # -- Database password (set `DATABASE_PASSWORD` env)
   password: test
 
 metrics:
+  # -- Is Prometheus metrics enabled (add annotation: `prometheus.io/scrape: true`)
   enabled: true
+  # -- Metrics path
   path: "/manage/prometheus"
 
 liveness:
+  # -- Liveness initial delay
   delay: 60
+  # -- Liveness timeout between requests
   timeout: 10
+  # -- Liveness path
   path: "/manage/health/readiness"
   port: 8080
 
 readiness:
+  # -- Readiness initial delay
   delay: 60
+  # -- Readiness timeout between requests
   timeout: 10
+  # -- Readiness path
   path: "/manage/health/readiness"
   port: 8080
 
 circuitBreaker:
+  # -- Enable circuit breaker (set `CIRCUIT_BREAKER_ENABLED` env)
   enabled: false
 
 jaeger:
+  # -- Enable jaeger distributed tracing
   enabled: false
+  # -- Jaeger agent image
   image:
     pullPolicy: IfNotPresent
     repository: jaegertracing/jaeger-agent
     tag: 1.41.0
   application:
+    # -- Jaeger agent host for application (set `JAEGER_HOST` env)
     host: localhost
+    # -- Jaeger agent port for application (set `JAEGER_PORT` env)
     port: 6831
+  # -- Jaeger collector address
   collector:
     host: jaeger-collector
     port: 14250
+  # -- Jaeger agent ports
   ports:
     compactThrift: 6831
     binaryThrift: 6832
     admin: 14271
   resources:
+    # -- Requested resources
     requests:
       cpu: 500m
       memory: 1024Mi
+    # -- Limited resources  
     limits:
       cpu: 500m
       memory: 1024Mi
 
 filebeat:
+  # -- Enable send logs to ELK
   enabled: false
+  # -- Filebeat agent image
   image:
     pullPolicy: IfNotPresent
     repository: docker.elastic.co/beats/filebeat
     tag: 7.15.0
+  # -- Logstash address
   logstash:
     host: logstash
     port: 5044
   resources:
+    # -- Requested resources
     requests:
       cpu: 50m
       memory: 128Mi
+    # -- Limited resources
     limits:
       cpu: 50m
       memory: 128Mi
 
 resources:
+  # -- Requested resources
   requests:
     cpu: 500m
     memory: 1024Mi
+  # -- Limited resources
   limits:
     cpu: 500m
     memory: 1024Mi

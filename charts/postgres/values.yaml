@@ -1,31 +1,44 @@
+# -- Image name and version
 image:
   pullPolicy: IfNotPresent
   repository: postgres
   tag: 15
 
 ports:
+  # -- Postgres port
   internal: 5432
+  # -- If define, create NodePort for external usage
   external:
 
+# -- Custom service name
+# @default -- .Release.Name
 serviceName:
 
+# -- Additional config, merged with default into postgres.conf
+config:
+
+# -- Default user and database
 defaultDatabase:
   name: postgres
   user: postgres
   password: postgres
 
+# -- Created users on startup
 users:
   - name: program
     password: test
 
+# -- Created databases on startup
 databases:
   - name: services
     user: program
 
 resources:
+  # -- Requested resources
   requests:
     cpu: 100m
     memory: 512Mi
+  # -- Limited resources
   limits:
     cpu: 100m
     memory: 512Mi

@@ -1,27 +1,37 @@
+# -- Image name and version
 image:
   pullPolicy: IfNotPresent
   repository: jaegertracing/jaeger-query
   tag: 1.41.0
 
+# -- Jaeger query ports
 ports:
   query: 16686
   admin: 16687
   agent: 6831
 
 ingress:
+  # -- Enable ingress
   enabled: true
+  # -- Ingress name
   name: jaeger
+  # -- Domain
   domain: romanow-alex.ru
 
 elasticsearch:
+  # -- Elastic address
   url: http://elasticsearch:9200
+  # -- Elastic username (optional)
   username: logging
+  # -- Elastic password (optional)
   password: qwerty
 
 resources:
+  # -- Requested resources
   requests:
     cpu: 300m
     memory: 1024Mi
+  # -- Limited resources
   limits:
     cpu: 300m
     memory: 1024Mi

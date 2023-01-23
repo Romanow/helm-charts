@@ -51,7 +51,7 @@ spec:
               value: "{{ .Values.database.port }}"
             - name: DATABASE_USER
               value: "{{ .Values.database.username }}"
-            - name: DATABAES_PASSWORD
+            - name: DATABASE_PASSWORD
               value: "{{ .Values.database.password }}"
             - name: CIRCUIT_BREAKER_ENABLED
               value: "{{ .Values.circuitBreaker.enabled }}"

@@ -1,18 +1,25 @@
+# -- Image name and version
 image:
   pullPolicy: IfNotPresent
   repository: prom/prometheus
   tag: v2.40.0
 
 ports:
+  # -- Prometheus port
   internal: 9090
+  # -- If define, create NodePort for external usage
   external:
 
+# -- Custom service name
+# @default -- .Release.Name
 serviceName:
 
 resources:
+  # -- Requested resources
   requests:
     cpu: 300m
     memory: 1024Mi
+  # -- Limited resources
   limits:
     cpu: 300m
     memory: 1024Mi

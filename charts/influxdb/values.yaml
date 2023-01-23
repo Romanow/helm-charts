@@ -1,19 +1,28 @@
+# -- Image name and version
 image:
   pullPolicy: IfNotPresent
   repository: influxdb
   tag: 1.8.4
 
+# -- Custom service name
+# @default -- .Release.Name
 serviceName:
+
 ports:
+  # -- InfluxDB port
   internal: 8086
+  # -- If define, create NodePort for external usage
   external:
 
+# -- Database name
 database: k6
 
 resources:
+  # -- Requested resources
   requests:
     cpu: 200m
     memory: 512Mi
+  # -- Limited resources
   limits:
     cpu: 200m
     memory: 512Mi

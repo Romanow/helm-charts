@@ -1,24 +1,36 @@
+# -- Image name and version
 image:
   pullPolicy: IfNotPresent
   repository:
   tag:
 
+# -- nginx port
 port: 3000
+
+# -- Upstream host
 backendServiceName:
 
 ingress:
+  # -- Enable ingress
   enabled: true
+  # -- Ingress name
+  # @default -- .Release.Name
   name:
+  # -- Domain
   domain: romanow-alex.ru
 
+# -- Additional env variables
 environments: [ ]
 
+# -- Additional secrets
 secrets: [ ]
 
 resources:
+  # -- Requested resources
   requests:
     cpu: 100m
     memory: 128Mi
+  # -- Limited resources
   limits:
     cpu: 200m
     memory: 128Mi

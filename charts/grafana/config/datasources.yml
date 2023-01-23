@@ -1,18 +1,21 @@
 apiVersion: 1
 datasources:
+  {{- if .Values.prometheusService }}
   - name: Prometheus
     type: prometheus
     url: http://{{ .Values.prometheusService }}:9090
     access: proxy
     version: 1
     editable: true
-
+  {{- end }}
+  {{- if .Values.influxService }}
   - name: InfluxDB
     type: influxdb
-    url: http://{{ .Values.influxService }}:8086
+    url: http://{{ .Values.influxdbService }}:8086
     database: k6
     access: proxy
     editable: true
     jsonData:
       httpMode: GET
     version: 1
+  {{- end }}

@@ -1,9 +1,12 @@
 apiVersion: v2
 name: frontend
 type: application
-description: Frontend
-version: 1.0.2
+description: Frontend application running in nginx, based on create-react-app.
+version: 1.1.0
 appVersion: "v1.0"
+sources:
+  - https://github.com/Romanow/helm-charts/tree/master/charts/frontend
+  - https://create-react-app.dev/
 keywords:
   - frontend
   - react
@@ -11,3 +14,4 @@ keywords:
 maintainers:
   - name: Romanov Alexey
     email: romanowalex@mail.ru
+    url: https://romanow.github.io

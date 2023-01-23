@@ -1,15 +1,22 @@
+# -- Image name and version
 image:
   pullPolicy: IfNotPresent
   repository: prom/node-exporter
   tag: v1.5.0
 
+# -- Node Exporter port
 port: 9100
+
+# -- Custom service name
+# @default -- .Release.Name
 serviceName:
 
 resources:
+  # -- Requested resources
   requests:
     cpu: 200m
     memory: 512Mi
+  # -- Limited resources
   limits:
     cpu: 200m
     memory: 512Mi

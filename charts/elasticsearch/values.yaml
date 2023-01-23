@@ -1,25 +1,37 @@
+# -- Image name and version
 image:
   pullPolicy: IfNotPresent
   repository: docker.elastic.co/elasticsearch/elasticsearch
   tag: 7.15.0
 
+# -- Count of replicas
 replicas: 3
+
+# -- Cluster name
 clusterName: logs
 
 security:
+  # -- Enable security
   enabled: true
+  # -- Default username
   name: logging
+  # -- Default password
   password: qwerty
 
 ports:
+  # -- ElasticSearch REST port
   http: 9200
+  # -- ElasticSearch internal node communication port
   communication: 9300
+  # -- If define, create NodePort for external usage
   external: 32200
 
 resources:
+  # -- Requested resources
   requests:
     cpu: 500m
     memory: 1024Mi
+  # -- Limited resources
   limits:
     cpu: 500m
     memory: 2048Mi
