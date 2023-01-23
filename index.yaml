@@ -3,6 +3,27 @@ entries:
   elasticsearch:
   - apiVersion: v2
     appVersion: 7.15.0
+    created: "2023-01-23T14:42:51.202979085Z"
+    description: Elasticsearch is a distributed, RESTful search and analytics engine
+      capable of addressing a growing number of use cases.
+    digest: 8fe346389e71232e4a32a92a8d4747cb894a6678c22515a16daabab30d79f928
+    keywords:
+    - elasticsearch
+    - database
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: elasticsearch
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/elasticsearch
+    - https://www.elastic.co/elasticsearch/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/elasticsearch-1.1.0/elasticsearch-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: 7.15.0
     created: "2023-01-15T18:40:59.652548252Z"
     description: Elasticsearch database
     digest: 00036b680121688c66abc677baa286df68152b9d69e3505e0a0c04c54710b166
@@ -34,6 +55,27 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/elasticsearch-1.0.0/elasticsearch-1.0.0.tgz
     version: 1.0.0
   frontend:
+  - apiVersion: v2
+    appVersion: v1.0
+    created: "2023-01-23T14:42:51.426894121Z"
+    description: Frontend application running in nginx, based on create-react-app.
+    digest: 18bf6629f9e391b5e308b5612deee801734173a77e9c51a947558d07a82e563f
+    keywords:
+    - frontend
+    - react
+    - nginx
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: frontend
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/frontend
+    - https://create-react-app.dev/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/frontend-1.1.0/frontend-1.1.0.tgz
+    version: 1.1.0
   - apiVersion: v2
     appVersion: v1.0
     created: "2023-01-19T17:56:30.717005635Z"
@@ -86,6 +128,28 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/frontend-1.0.0/frontend-1.0.0.tgz
     version: 1.0.0
   grafana:
+  - apiVersion: v2
+    appVersion: 8.3.4
+    created: "2023-01-23T14:42:51.625511801Z"
+    description: Grafana allows you to query, visualize, alert on and understand your
+      metrics no matter where they are stored.
+    digest: 8e293ea207084b9552c38ba8b2965a97a964326ba5cf20ab2c90c7d51b799d00
+    keywords:
+    - spring boot
+    - java
+    - kotlin
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: grafana
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/grafana
+    - https://grafana.com/grafana/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/grafana-1.1.0/grafana-1.1.0.tgz
+    version: 1.1.0
   - apiVersion: v2
     appVersion: 8.3.4
     created: "2023-01-15T18:40:59.851940109Z"
@@ -172,6 +236,29 @@ entries:
   jaeger-collector:
   - apiVersion: v2
     appVersion: 1.41.0
+    created: "2023-01-23T14:42:52.040888825Z"
+    description: Jaeger is a distributed tracing system released as open source project.
+      It is used for monitoring and troubleshooting microservices-based distributed
+      systems.
+    digest: 002425c2c3df2a29a71329dea3b104c08bfbf50311056c94415024b53f8877ae
+    keywords:
+    - jaeger
+    - jaeger-collector
+    - tracing
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: jaeger-collector
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/jaeger-collector
+    - https://www.jaegertracing.io/docs/latest/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/jaeger-collector-1.1.0/jaeger-collector-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: 1.41.0
     created: "2023-01-16T15:55:27.427454938Z"
     description: Jaeger tracing collector
     digest: 8b6b55da6135309518ddbbf007a2de4bb379c63ed509b5b6932169750edfe00f
@@ -190,6 +277,29 @@ entries:
   jaeger-query:
   - apiVersion: v2
     appVersion: 1.41.0
+    created: "2023-01-23T14:42:52.252089626Z"
+    description: Jaeger is a distributed tracing system released as open source project.
+      It is used for monitoring and troubleshooting microservices-based distributed
+      systems.
+    digest: 6c0eb82a638d8178bde779eac9236d82542014ca54bd3924b9eb6c51475331c7
+    keywords:
+    - jaeger
+    - jaeger-query
+    - tracing
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: jaeger-query
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/jaeger-query
+    - https://www.jaegertracing.io/docs/latest/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/jaeger-query-1.1.0/jaeger-query-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: 1.41.0
     created: "2023-01-16T15:55:27.562694571Z"
     description: Jaeger UI
     digest: 6448eb587971cc07fa06d94b1432aeb24e9ba7ad1b65db27645705686a370365
@@ -206,6 +316,27 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/jaeger-query-1.0.0/jaeger-query-1.0.0.tgz
     version: 1.0.0
   java-service:
+  - apiVersion: v2
+    appVersion: v1.0
+    created: "2023-01-23T14:42:52.496385674Z"
+    description: Helm chart for Spring Boot application with logging and tracing
+    digest: 485ce8a74862357ddae15b5a7c210af6786532845980eafb8aab878abf47799f
+    keywords:
+    - spring boot
+    - java
+    - kotlin
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: java-service
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/java-service
+    - https://spring.io/projects/spring-boot
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/java-service-1.1.0/java-service-1.1.0.tgz
+    version: 1.1.0
   - apiVersion: v2
     appVersion: v1.0
     created: "2023-01-19T17:56:30.880669866Z"
@@ -362,6 +493,27 @@ entries:
   kibana:
   - apiVersion: v2
     appVersion: 7.15.0
+    created: "2023-01-23T14:42:52.719622984Z"
+    description: Kibana is a free and open user interface that lets you visualize
+      your Elasticsearch data and navigate the Elastic Stack.
+    digest: 4b3e063928b582c060ecc76b2eabe95cef882b13f3d833011616d93edd4f36fd
+    keywords:
+    - kibana
+    - logging
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: kibana
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/kibana
+    - https://www.elastic.co/kibana/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/kibana-1.1.0/kibana-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: 7.15.0
     created: "2023-01-16T15:55:27.886208004Z"
     description: Kibana
     digest: 1021e78b256406978aece2557cec8030a630e3eee24a14963f993f75df9689ed
@@ -379,6 +531,28 @@ entries:
   logstash:
   - apiVersion: v2
     appVersion: 7.15.0
+    created: "2023-01-23T14:42:52.925784557Z"
+    description: Logstash is a free and open server-side data processing pipeline
+      that ingests data from a multitude of sources, transforms it, and then sends
+      it to your favorite "stash"
+    digest: 59e0288f5d8ff8a4f9250e689dcbb085fec1f7cdd5484163fba950d5de2acee4
+    keywords:
+    - logstash
+    - logging
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: logstash
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/logstash
+    - https://www.elastic.co/logstash/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/logstash-1.1.0/logstash-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: 7.15.0
     created: "2023-01-16T15:55:28.0160902Z"
     description: Logstash logger aggregaror
     digest: 6ea67160211047457759ac5fb6c123c8f1bc7cd682d859456a0c588c6652c7fc
@@ -394,6 +568,28 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/logstash-1.0.0/logstash-1.0.0.tgz
     version: 1.0.0
   node-exporter:
+  - apiVersion: v2
+    appVersion: 1.5.0
+    created: "2023-01-23T14:42:53.147436626Z"
+    description: Prometheus exporter for hardware and OS metrics exposed by *NIX kernels,
+      written in Go with pluggable metric collectors.
+    digest: daef457538cf7988d9e3af96e5226a633f640f1fa9ff68d8a06e86ea5b3ad9ee
+    keywords:
+    - node-exporter
+    - prometheus
+    - monitoring
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: node-exporter
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/node-exporter
+    - https://github.com/prometheus/node_exporter
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/node-exporter-1.1.0/node-exporter-1.1.0.tgz
+    version: 1.1.0
   - apiVersion: v2
     appVersion: 1.5.0
     created: "2023-01-15T18:41:00.521763571Z"
@@ -429,6 +625,27 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/node-exporter-1.0.0/node-exporter-1.0.0.tgz
     version: 1.0.0
   postgres:
+  - apiVersion: v2
+    appVersion: "15"
+    created: "2023-01-23T14:42:53.356201365Z"
+    description: PostgreSQL is a powerful, open source object-relational database
+      system.
+    digest: b5d82debff209223de5735d3260e89d3b7bab6723601aaf38929e7885a7a5fc0
+    keywords:
+    - postgres
+    - database
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: postgres
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/postgres
+    - https://www.postgresql.org/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/postgres-1.1.0/postgres-1.1.0.tgz
+    version: 1.1.0
   - apiVersion: v2
     appVersion: "15"
     created: "2023-01-17T15:55:37.89800777Z"
@@ -592,6 +809,28 @@ entries:
   prometheus:
   - apiVersion: v2
     appVersion: 2.40.0
+    created: "2023-01-23T14:42:53.602589766Z"
+    description: Prometheus collects and stores its metrics as time series data, i.e.
+      metrics information is stored with the timestamp at which it was recorded, alongside
+      optional key-value pairs called labels.
+    digest: 1abfbb76f9e519d9d037b7bffd36bc8a08a2371ff1a667ccb3cfbda31b01af15
+    keywords:
+    - prometheus
+    - monitoring
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: prometheus
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/prometheus
+    - https://prometheus.io/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.1.0/prometheus-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: 2.40.0
     created: "2023-01-15T19:09:50.654692712Z"
     description: Prometheus mertics collector
     digest: 507904416e88590f672772489cec9d7f98fc50730f3b885dd5f4dc8b12232766
@@ -654,4 +893,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.0/prometheus-1.0.0.tgz
     version: 1.0.0
-generated: "2023-01-19T17:56:30.880828366Z"
+generated: "2023-01-23T14:42:53.602752671Z"
