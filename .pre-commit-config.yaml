@@ -1,6 +1,5 @@
 ---
 repos:
-  # See https://pre-commit.com for more information
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
@@ -16,6 +15,9 @@ repos:
     hooks:
       - id: remove-crlf
       - id: remove-tabs
+        exclude_types:
+          - markdown
+          - gotmpl
 
   - repo: https://github.com/norwoodj/helm-docs
     rev: v1.2.0
