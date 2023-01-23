@@ -2,8 +2,9 @@ apiVersion: v2
 name: grafana
 type: application
 description: Grafana allows you to query, visualize, alert on and understand your metrics no matter where they are stored.
-version: 1.1.0
+version: 1.1.1
 appVersion: "8.3.4"
+icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/grafana/grafana-icon.svg
 sources:
   - https://github.com/Romanow/helm-charts/tree/master/charts/grafana
   - https://grafana.com/grafana/

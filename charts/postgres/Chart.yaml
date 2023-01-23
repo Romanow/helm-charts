@@ -2,7 +2,8 @@ apiVersion: v2
 name: postgres
 type: application
 description: PostgreSQL is a powerful, open source object-relational database system.
-version: 1.1.0
+version: 1.1.1
+icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/postgresql/postgresql-icon.svg
 appVersion: "15"
 sources:
   - https://github.com/Romanow/helm-charts/tree/master/charts/postgres

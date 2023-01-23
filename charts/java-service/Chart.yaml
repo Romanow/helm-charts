@@ -2,8 +2,9 @@ apiVersion: v2
 name: java-service
 type: application
 description: Helm chart for Spring Boot application with logging and tracing
-version: 1.1.0
+version: 1.1.1
 appVersion: "v1.0"
+icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/springio/springio-icon.svg
 sources:
   - https://github.com/Romanow/helm-charts/tree/master/charts/java-service
   - https://spring.io/projects/spring-boot

@@ -2,8 +2,9 @@ apiVersion: v2
 name: kibana
 type: application
 description: Kibana is a free and open user interface that lets you visualize your Elasticsearch data and navigate the Elastic Stack.
-version: 1.1.0
+version: 1.1.1
 appVersion: "7.15.0"
+icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/elasticco_kibana/elasticco_kibana-icon.svg
 sources:
   - https://github.com/Romanow/helm-charts/tree/master/charts/kibana
   - https://www.elastic.co/kibana/
