@@ -20,6 +20,14 @@ jobs:
       - name: Install Python
         uses: actions/setup-python@v3
 
+      - name: Setup chart linting
+        uses: helm/chart-testing-action@v2.3.1
+
+      - name: Install Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.10.0
+
       - name: Install helm-docs
         run: |
           cd /tmp
@@ -32,17 +40,31 @@ jobs:
       - name: Validate
         uses: pre-commit/action@v3.0.0
 
+      - name: Create kind cluster
+        uses: helm/kind-action@v1.4.0
+        if: steps.list-changed.outputs.changed == 'true'
+
+      - name: List changed charts
+        id: list-changed
+        run: |
+          changed=$(ct list-changed --config .ct.yaml)
+          charts=$(echo "$changed" | tr '\n' ' ' | xargs)
+          if [[ -n "$changed" ]]; then
+            echo "::set-output name=changed::true"
+            echo "::set-output name=changed_charts::$charts"
+          fi
+
+      - name: Run ct install
+#        if: steps.list-changed.outputs.changed == 'true'
+        run: ct lint-and-install --config .ct.yaml --exclude-charts=java-service,frontend
+
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-      - name: Install Helm
-        uses: azure/setup-helm@v3
-        with:
-          version: v3.10.0
-
       - name: Run chart-releaser
+        if: steps.list-changed.outputs.changed == 'true'
         uses: helm/chart-releaser-action@v1.4.1
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

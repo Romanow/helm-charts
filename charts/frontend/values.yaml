@@ -20,10 +20,10 @@ ingress:
   domain: romanow-alex.ru
 
 # -- Additional env variables
-environments: [ ]
+environments: []
 
 # -- Additional secrets
-secrets: [ ]
+secrets: []
 
 resources:
   # -- Requested resources

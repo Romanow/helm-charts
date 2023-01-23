@@ -1,0 +1,3 @@
+validate-maintainers: false
+chart-dirs:
+  - charts
