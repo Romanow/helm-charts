@@ -1,8 +1,8 @@
 # -- Image name and version
 image:
   pullPolicy: IfNotPresent
-  repository: docker.elastic.co/kibana/kibana
-  tag: 7.15.0
+  repository: kibana
+  tag: 7.17.8
 
 # -- Kibana port
 port: 5601

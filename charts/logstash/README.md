@@ -1,6 +1,6 @@
 # Helm Chart for Java Service
 
-![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 7.15.0](https://img.shields.io/badge/AppVersion-7.15.0-informational?style=flat-square)
+![Version: 1.1.2](https://img.shields.io/badge/Version-1.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 7.17.8](https://img.shields.io/badge/AppVersion-7.17.8-informational?style=flat-square)
 
 Logstash is a free and open server-side data processing pipeline that ingests data from a multitude of sources, transforms it, and then sends it to your favorite "stash"
 
@@ -65,8 +65,8 @@ helm uninstall logstash
 			<td><pre lang="json">
 {
   "pullPolicy": "IfNotPresent",
-  "repository": "docker.elastic.co/logstash/logstash",
-  "tag": "7.15.0"
+  "repository": "logstash",
+  "tag": "7.17.8"
 }
 </pre>
 </td>
@@ -119,7 +119,7 @@ helm uninstall logstash
 
 ### Sources
 
-* <https://github.com/Romanow/helm-charts/tree/master/charts/logstash>
+* <https://hub.docker.com/_/logstash>
 * <https://www.elastic.co/logstash/>
 
 ### Maintainer

@@ -2,12 +2,13 @@ apiVersion: v2
 name: influxdb
 type: application
 description: The Time Series Data Platform where developers build IoT, analytics, and cloud applications.
-version: 1.1.1
+version: 1.1.2
 appVersion: "1.8.4"
-icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/influxdata/influxdata-icon.svg
+home: https://github.com/Romanow/helm-charts/tree/master/charts/influxdb
+icon: https://github.com/Romanow/helm-charts/tree/master/images/influxdb.png
 sources:
-  - https://github.com/Romanow/helm-charts/tree/master/charts/influxdb
   - https://www.influxdata.com/
+  - https://hub.docker.com/_/influxdb
 keywords:
   - influxdb
   - database

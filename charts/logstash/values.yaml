@@ -1,8 +1,8 @@
 # -- Image name and version
 image:
   pullPolicy: IfNotPresent
-  repository: docker.elastic.co/logstash/logstash
-  tag: 7.15.0
+  repository: logstash
+  tag: 7.17.8
 
 # -- Logstash port
 port: 5044

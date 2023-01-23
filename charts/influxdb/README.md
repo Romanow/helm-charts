@@ -1,6 +1,6 @@
 # Helm Chart for Java Service
 
-![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.8.4](https://img.shields.io/badge/AppVersion-1.8.4-informational?style=flat-square)
+![Version: 1.1.2](https://img.shields.io/badge/Version-1.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.8.4](https://img.shields.io/badge/AppVersion-1.8.4-informational?style=flat-square)
 
 The Time Series Data Platform where developers build IoT, analytics, and cloud applications.
 
@@ -110,8 +110,8 @@ null
 
 ### Sources
 
-* <https://github.com/Romanow/helm-charts/tree/master/charts/influxdb>
 * <https://www.influxdata.com/>
+* <https://hub.docker.com/_/influxdb>
 
 ### Maintainer
 

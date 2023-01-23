@@ -116,8 +116,8 @@ filebeat:
   # -- Filebeat agent image
   image:
     pullPolicy: IfNotPresent
-    repository: docker.elastic.co/beats/filebeat
-    tag: 7.15.0
+    repository: elastic/filebeat
+    tag: 7.17.8
   # -- Logstash address
   logstash:
     host: logstash

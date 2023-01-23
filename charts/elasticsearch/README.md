@@ -1,6 +1,6 @@
 # Helm Chart for Java Service
 
-![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 7.15.0](https://img.shields.io/badge/AppVersion-7.15.0-informational?style=flat-square)
+![Version: 1.1.2](https://img.shields.io/badge/Version-1.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 7.17.8](https://img.shields.io/badge/AppVersion-7.17.8-informational?style=flat-square)
 
 Elasticsearch is a distributed, RESTful search and analytics engine capable of addressing a growing number of use cases.
 
@@ -47,8 +47,8 @@ helm uninstall elasticsearch
 			<td><pre lang="json">
 {
   "pullPolicy": "IfNotPresent",
-  "repository": "docker.elastic.co/elasticsearch/elasticsearch",
-  "tag": "7.15.0"
+  "repository": "elasticsearch",
+  "tag": "7.17.8"
 }
 </pre>
 </td>
@@ -146,8 +146,8 @@ true
 
 ### Sources
 
-* <https://github.com/Romanow/helm-charts/tree/master/charts/elasticsearch>
 * <https://www.elastic.co/elasticsearch/>
+* <https://hub.docker.com/_/elasticsearch>
 
 ### Maintainer
 
