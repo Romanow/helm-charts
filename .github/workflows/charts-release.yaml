@@ -56,7 +56,7 @@ jobs:
 
       - name: Run ct install
 #        if: steps.list-changed.outputs.changed == 'true'
-        run: ct lint-and-install --config .ct.yaml --excluded-charts=java-service,frontend
+          run: ct lint-and-install --config=.ct.yaml --excluded-charts=java-service,frontend --all
 
       - name: Configure Git
         run: |
