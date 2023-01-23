@@ -3,6 +3,28 @@ entries:
   elasticsearch:
   - apiVersion: v2
     appVersion: 7.15.0
+    created: "2023-01-23T14:51:43.973649725Z"
+    description: Elasticsearch is a distributed, RESTful search and analytics engine
+      capable of addressing a growing number of use cases.
+    digest: 179333ce85697140f9023391b28b09d2d7b2651b58712072f9bc1020dfad4100
+    icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/elastic/elastic-icon.svg
+    keywords:
+    - elasticsearch
+    - database
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: elasticsearch
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/elasticsearch
+    - https://www.elastic.co/elasticsearch/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/elasticsearch-1.1.1/elasticsearch-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: 7.15.0
     created: "2023-01-23T14:42:51.202979085Z"
     description: Elasticsearch is a distributed, RESTful search and analytics engine
       capable of addressing a growing number of use cases.
@@ -55,6 +77,28 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/elasticsearch-1.0.0/elasticsearch-1.0.0.tgz
     version: 1.0.0
   frontend:
+  - apiVersion: v2
+    appVersion: v1.0
+    created: "2023-01-23T14:51:44.153494773Z"
+    description: Frontend application running in nginx, based on create-react-app.
+    digest: 8da7a5f533efcdebfc1fdd7fc9ee5cf3c6e7aa377054246a9752316908cb10c2
+    icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/reactjs/reactjs-icon.svg
+    keywords:
+    - frontend
+    - react
+    - nginx
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: frontend
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/frontend
+    - https://create-react-app.dev/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/frontend-1.1.1/frontend-1.1.1.tgz
+    version: 1.1.1
   - apiVersion: v2
     appVersion: v1.0
     created: "2023-01-23T14:42:51.426894121Z"
@@ -130,6 +174,29 @@ entries:
   grafana:
   - apiVersion: v2
     appVersion: 8.3.4
+    created: "2023-01-23T14:51:44.297848558Z"
+    description: Grafana allows you to query, visualize, alert on and understand your
+      metrics no matter where they are stored.
+    digest: d1e732b1cca1a6dda63f7e886ce5eff926f840b2be820d82a87f2ed4fd32fb28
+    icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/grafana/grafana-icon.svg
+    keywords:
+    - spring boot
+    - java
+    - kotlin
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: grafana
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/grafana
+    - https://grafana.com/grafana/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/grafana-1.1.1/grafana-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: 8.3.4
     created: "2023-01-23T14:42:51.625511801Z"
     description: Grafana allows you to query, visualize, alert on and understand your
       metrics no matter where they are stored.
@@ -187,6 +254,28 @@ entries:
   influxdb:
   - apiVersion: v2
     appVersion: 1.8.4
+    created: "2023-01-23T14:51:44.445998559Z"
+    description: The Time Series Data Platform where developers build IoT, analytics,
+      and cloud applications.
+    digest: 1201c211294b7c1400d3ad7fb1ed0f9b0bf00e7bf9d45968af9514ff438042d9
+    icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/influxdata/influxdata-icon.svg
+    keywords:
+    - influxdb
+    - database
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: influxdb
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/influxdb
+    - https://www.influxdata.com/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/influxdb-1.1.1/influxdb-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: 1.8.4
     created: "2023-01-15T19:09:50.528720172Z"
     description: InfluxDB
     digest: de07315d926bd67aebcd62712b1ac559921539bbeaef63069c9fc8b5fb258741
@@ -236,6 +325,30 @@ entries:
   jaeger-collector:
   - apiVersion: v2
     appVersion: 1.41.0
+    created: "2023-01-23T14:51:44.590768992Z"
+    description: Jaeger is a distributed tracing system released as open source project.
+      It is used for monitoring and troubleshooting microservices-based distributed
+      systems.
+    digest: 0954318ea7ee152dde068a012a980c01bd6ae41cdbb277bcd653ff38c04e7bcd
+    icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/jaegertracingio/jaegertracingio-icon.svg
+    keywords:
+    - jaeger
+    - jaeger-collector
+    - tracing
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: jaeger-collector
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/jaeger-collector
+    - https://www.jaegertracing.io/docs/latest/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/jaeger-collector-1.1.1/jaeger-collector-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: 1.41.0
     created: "2023-01-23T14:42:52.040888825Z"
     description: Jaeger is a distributed tracing system released as open source project.
       It is used for monitoring and troubleshooting microservices-based distributed
@@ -277,6 +390,30 @@ entries:
   jaeger-query:
   - apiVersion: v2
     appVersion: 1.41.0
+    created: "2023-01-23T14:51:44.835011035Z"
+    description: Jaeger is a distributed tracing system released as open source project.
+      It is used for monitoring and troubleshooting microservices-based distributed
+      systems.
+    digest: 9a73a3177db79e711463ef9ef78740b17bc1dfcf48b882e5f73b00c3a3154774
+    icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/jaegertracingio/jaegertracingio-icon.svg
+    keywords:
+    - jaeger
+    - jaeger-query
+    - tracing
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: jaeger-query
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/jaeger-query
+    - https://www.jaegertracing.io/docs/latest/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/jaeger-query-1.1.1/jaeger-query-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: 1.41.0
     created: "2023-01-23T14:42:52.252089626Z"
     description: Jaeger is a distributed tracing system released as open source project.
       It is used for monitoring and troubleshooting microservices-based distributed
@@ -316,6 +453,28 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/jaeger-query-1.0.0/jaeger-query-1.0.0.tgz
     version: 1.0.0
   java-service:
+  - apiVersion: v2
+    appVersion: v1.0
+    created: "2023-01-23T14:51:45.029736794Z"
+    description: Helm chart for Spring Boot application with logging and tracing
+    digest: 4b3817c75864c60943ae2b3333b5a4eba994a3ef4c448ea0232aee0152802199
+    icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/springio/springio-icon.svg
+    keywords:
+    - spring boot
+    - java
+    - kotlin
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: java-service
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/java-service
+    - https://spring.io/projects/spring-boot
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/java-service-1.1.1/java-service-1.1.1.tgz
+    version: 1.1.1
   - apiVersion: v2
     appVersion: v1.0
     created: "2023-01-23T14:42:52.496385674Z"
@@ -493,6 +652,28 @@ entries:
   kibana:
   - apiVersion: v2
     appVersion: 7.15.0
+    created: "2023-01-23T14:51:45.240175549Z"
+    description: Kibana is a free and open user interface that lets you visualize
+      your Elasticsearch data and navigate the Elastic Stack.
+    digest: b644224f9ee2662e0d2cbe354b1b5a71546bbab2c3f559f397f6e2f220a09c3a
+    icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/elasticco_kibana/elasticco_kibana-icon.svg
+    keywords:
+    - kibana
+    - logging
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: kibana
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/kibana
+    - https://www.elastic.co/kibana/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/kibana-1.1.1/kibana-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: 7.15.0
     created: "2023-01-23T14:42:52.719622984Z"
     description: Kibana is a free and open user interface that lets you visualize
       your Elasticsearch data and navigate the Elastic Stack.
@@ -529,6 +710,29 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/kibana-1.0.0/kibana-1.0.0.tgz
     version: 1.0.0
   logstash:
+  - apiVersion: v2
+    appVersion: 7.15.0
+    created: "2023-01-23T14:51:45.377987769Z"
+    description: Logstash is a free and open server-side data processing pipeline
+      that ingests data from a multitude of sources, transforms it, and then sends
+      it to your favorite "stash"
+    digest: d0c1d8553f6304a9a7e9243bc6799904db3bc617c14ebfa916d2854798ba8e5a
+    icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/elasticco_logstash/elasticco_logstash-icon.svg
+    keywords:
+    - logstash
+    - logging
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: logstash
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/logstash
+    - https://www.elastic.co/logstash/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/logstash-1.1.1/logstash-1.1.1.tgz
+    version: 1.1.1
   - apiVersion: v2
     appVersion: 7.15.0
     created: "2023-01-23T14:42:52.925784557Z"
@@ -568,6 +772,29 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/logstash-1.0.0/logstash-1.0.0.tgz
     version: 1.0.0
   node-exporter:
+  - apiVersion: v2
+    appVersion: 1.5.0
+    created: "2023-01-23T14:51:45.508672098Z"
+    description: Prometheus exporter for hardware and OS metrics exposed by *NIX kernels,
+      written in Go with pluggable metric collectors.
+    digest: 69816a7b7fcee16c8c41ef4271887e4376c62d757a654d70dab9e1ee2041f485
+    icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/prometheusio/prometheusio-icon.svg
+    keywords:
+    - node-exporter
+    - prometheus
+    - monitoring
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: node-exporter
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/node-exporter
+    - https://github.com/prometheus/node_exporter
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/node-exporter-1.1.1/node-exporter-1.1.1.tgz
+    version: 1.1.1
   - apiVersion: v2
     appVersion: 1.5.0
     created: "2023-01-23T14:42:53.147436626Z"
@@ -625,6 +852,28 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/node-exporter-1.0.0/node-exporter-1.0.0.tgz
     version: 1.0.0
   postgres:
+  - apiVersion: v2
+    appVersion: "15"
+    created: "2023-01-23T14:51:45.715780834Z"
+    description: PostgreSQL is a powerful, open source object-relational database
+      system.
+    digest: 41d4f5e4ad2ea9719da4c0f336691ee8595b6b9a00f717a63ce9d6e7997e1b6e
+    icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/postgresql/postgresql-icon.svg
+    keywords:
+    - postgres
+    - database
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: postgres
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/postgres
+    - https://www.postgresql.org/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/postgres-1.1.1/postgres-1.1.1.tgz
+    version: 1.1.1
   - apiVersion: v2
     appVersion: "15"
     created: "2023-01-23T14:42:53.356201365Z"
@@ -809,6 +1058,29 @@ entries:
   prometheus:
   - apiVersion: v2
     appVersion: 2.40.0
+    created: "2023-01-23T14:51:45.880805816Z"
+    description: Prometheus collects and stores its metrics as time series data, i.e.
+      metrics information is stored with the timestamp at which it was recorded, alongside
+      optional key-value pairs called labels.
+    digest: 01042c3b25d3d20638ba17666ded2a2e0216e6b84541529d59688a9b20feafc9
+    icon: https://www.vectorlogo.zone/util/preview.html?image=/logos/prometheusio/prometheusio-icon.svg
+    keywords:
+    - prometheus
+    - monitoring
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: prometheus
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/prometheus
+    - https://prometheus.io/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.1.1/prometheus-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: 2.40.0
     created: "2023-01-23T14:42:53.602589766Z"
     description: Prometheus collects and stores its metrics as time series data, i.e.
       metrics information is stored with the timestamp at which it was recorded, alongside
@@ -893,4 +1165,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.0/prometheus-1.0.0.tgz
     version: 1.0.0
-generated: "2023-01-23T14:42:53.602752671Z"
+generated: "2023-01-23T14:51:45.881513705Z"
