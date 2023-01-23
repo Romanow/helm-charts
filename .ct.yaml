@@ -1,5 +1,7 @@
+---
+remote: origin
+target-branch: master
+helm-extra-args: --timeout 600s
 validate-maintainers: false
 chart-dirs:
   - charts
-
-debug: true
