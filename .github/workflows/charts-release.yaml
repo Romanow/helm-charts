@@ -57,9 +57,7 @@ jobs:
           echo "EXCLUDED = ${EXCLUDED}"
           CHARTS="${{ steps.detect-changes.outputs.all_changed_files }}"
           echo "CHARTS = ${CHARTS}"
-          CHARTS_JSON=$(echo "${CHARTS}" | jq -R -s -c 'split("\n")[:-1]')
-          echo "CHARTS_JSON = ${CHARTS_JSON}"
-          OUTPUT_JSON=$(echo "{\"excluded\": ${EXCLUDED}, \"all\": ${CHARTS_JSON}}" | jq -c '.all-.excluded')
+          OUTPUT_JSON=$(echo "{\"excluded\": ${EXCLUDED}, \"all\": ${CHARTS}}" | jq -c '.all-.excluded')
           echo "OUTPUT_JSON = ${OUTPUT_JSON}"
           echo "charts=${OUTPUT_JSON}" >> "$GITHUB_OUTPUT"
 
