@@ -76,7 +76,7 @@ jobs:
         uses: helm/kind-action@v1.4.0
 
       - name: Run ct install
-        run: ct lint-and-install --config=.ct.yaml --charts charts/${{ matrix.folder }}
+        run: ct lint-and-install --config=.ct.yaml --charts ${{ matrix.folder }}
 
   release:
     name: Publish charts
