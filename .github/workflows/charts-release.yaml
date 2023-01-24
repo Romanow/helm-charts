@@ -47,7 +47,7 @@ jobs:
 
       - name: Log
         run: |
-          echo ${steps.filter.outputs.changes}
+          echo ${{ steps.changes.outputs.changes }}
 
   test:
     name: Test charts
