@@ -13,7 +13,7 @@ jobs:
     name: Validate charts
     runs-on: ubuntu-latest
     outputs:
-      packages: ${{ steps.detect-changes.outputs.changes }}
+      packages: ${{ steps.detect-changes.outputs.all_changed_files }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -37,17 +37,16 @@ jobs:
       - name: Validate
         uses: pre-commit/action@v3.0.0
 
-      - name: Detect charts changes
-        uses: dorny/paths-filter@v2
+      - name: Get changed files
         id: detect-changes
+        uses: tj-actions/changed-files@v35
         with:
-          filters: |
-            charts:
-              - 'charts/**'
+          dir_names: true
+          dir_names_max_depth: 2
 
       - name: Log
         run: |
-          echo ${{ steps.detect-changes.outputs.chart_files }}
+          echo ${{ steps.detect-changes.outputs.all_changed_files }}
 
   test:
     name: Test charts
