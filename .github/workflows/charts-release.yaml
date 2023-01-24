@@ -3,25 +3,23 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'charts/**'
-      - '!charts/**/README.md'
-      - '!charts/**/README.md.gotmpl'
+#    paths:
+#      - 'charts/**'
+#      - '!charts/**/README.md'
+#      - '!charts/**/README.md.gotmpl'
 
 jobs:
-  release:
+  validate:
+    name: Validate charts
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: Install Python
         uses: actions/setup-python@v3
-
-      - name: Setup chart linting
-        uses: helm/chart-testing-action@v2.3.1
 
       - name: Install Helm
         uses: azure/setup-helm@v3
@@ -40,24 +38,61 @@ jobs:
       - name: Validate
         uses: pre-commit/action@v3.0.0
 
-      - name: Create kind cluster
-        uses: helm/kind-action@v1.4.0
-        if: steps.list-changed.outputs.changed == 'true'
+  test:
+    name: Test charts
+    runs-on: ubuntu-latest
+    needs: validate
+    outputs:
+      output1: ${{ steps.changes.outputs.changed }}
+      output2: ${{ steps.changes.outputs.changed_charts }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.10.0
+
+      - name: Install chart linting
+        uses: helm/chart-testing-action@v2.3.1
 
       - name: List changed charts
-        id: list-changed
+        id: changes
         run: |
           changed=$(ct list-changed --config .ct.yaml)
           charts=$(echo "$changed" | tr '\n' ' ' | xargs)
           echo "charts"
           if [[ -n "$changed" ]]; then
-            echo "::set-output name=changed::true"
-            echo "::set-output name=changed_charts::$charts"
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "changed_charts=$charts" >> $GITHUB_OUTPUT
           fi
 
+      - name: Create kind cluster
+        uses: helm/kind-action@v1.4.0
+        if: steps.changes.outputs.changed == 'true'
+
       - name: Run ct install
-        if: steps.list-changed.outputs.changed == 'true'
+        if: steps.changes.outputs.changed == 'true'
         run: ct lint-and-install --config=.ct.yaml --excluded-charts=java-service,frontend
+
+  release:
+    name: Publish charts
+    runs-on: ubuntu-latest
+    needs: test
+    if: needs.test.outputs.changed == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.10.0
 
       - name: Configure Git
         run: |
@@ -65,7 +100,6 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Run chart-releaser
-        if: steps.list-changed.outputs.changed == 'true'
         uses: helm/chart-releaser-action@v1.4.1
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
