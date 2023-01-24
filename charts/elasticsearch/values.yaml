@@ -29,9 +29,9 @@ ports:
 resources:
   # -- Requested resources
   requests:
-    cpu: 500m
+    cpu: 200m
     memory: 1024Mi
   # -- Limited resources
   limits:
-    cpu: 500m
-    memory: 2048Mi
+    cpu: 200m
+    memory: 1024Mi

@@ -31,13 +31,13 @@ spec:
             - name: SPAN_STORAGE_TYPE
               value: elasticsearch
             - name: JAEGER_AGENT_PORT
-              value: {{ .Values.ports.agent }}
+              value: "{{ .Values.ports.agent }}"
             - name: ES_SERVER_URLS
               value: {{ .Values.elasticsearch.url }}
             {{- if .Values.elasticsearch.username }}
             - name: ES_USERNAME
               value: {{ .Values.elasticsearch.username }}
-            {{- end}}
+            {{- end }}
             {{- if .Values.elasticsearch.password }}
             - name: ES_PASSWORD
               value: {{ .Values.elasticsearch.password }}
