@@ -49,6 +49,7 @@ jobs:
         run: |
           changed=$(ct list-changed --config .ct.yaml)
           charts=$(echo "$changed" | tr '\n' ' ' | xargs)
+          echo "charts"
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
             echo "::set-output name=changed_charts::$charts"

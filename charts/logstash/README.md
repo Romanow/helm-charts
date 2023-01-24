@@ -108,7 +108,7 @@ false
 			<td><pre lang="json">
 {
   "cpu": "500m",
-  "memory": "1024Mi"
+  "memory": "1536Mi"
 }
 </pre>
 </td>
@@ -120,7 +120,7 @@ false
 			<td><pre lang="json">
 {
   "cpu": "500m",
-  "memory": "1024Mi"
+  "memory": "1536Mi"
 }
 </pre>
 </td>

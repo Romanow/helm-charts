@@ -31,8 +31,8 @@ resources:
   # -- Requested resources
   requests:
     cpu: 500m
-    memory: 1024Mi
+    memory: 1536Mi
   # -- Limited resources
   limits:
     cpu: 500m
-    memory: 1024Mi
+    memory: 1536Mi
