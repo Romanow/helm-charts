@@ -2,7 +2,7 @@ apiVersion: v2
 name: jaeger-query
 type: application
 description: Jaeger is a distributed tracing system released as open source project. It is used for monitoring and troubleshooting microservices-based distributed systems.
-version: 1.2.1
+version: 1.2.2
 appVersion: "1.41.0"
 home: https://github.com/Romanow/helm-charts/tree/master/charts/jaeger-query
 icon: https://github.com/Romanow/helm-charts/tree/master/images/jaeger.jpeg
