@@ -2,7 +2,7 @@ apiVersion: v2
 name: grafana
 type: application
 description: Grafana allows you to query, visualize, alert on and understand your metrics no matter where they are stored.
-version: 1.1.3
+version: 1.2.0
 appVersion: "8.3.4"
 home: https://github.com/Romanow/helm-charts/tree/master/charts/grafana
 icon: https://github.com/Romanow/helm-charts/tree/master/images/grafana.png

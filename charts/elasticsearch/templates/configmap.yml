@@ -13,6 +13,5 @@ data:
     kibana_admin:{{ .Values.security.name }}
     logstash_admin:{{ .Values.security.name }}
     superuser:{{ .Values.security.name }}
-
   users: |-
     {{ .Values.security.name }}:$2a$10$rJB8uIS8lQL0z1QCDNUDyeqCCl3Ir2zmhvoeFeJvOXeIR0SEgi7Gy
