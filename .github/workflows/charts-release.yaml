@@ -15,7 +15,7 @@ jobs:
     outputs:
       matrix: |
         {
-          "chart": "${{ steps.set-matrix.outputs.matrix }}"
+          "chart": "${{ steps.set-matrix.outputs.charts }}"
         }
     steps:
       - name: Checkout
@@ -53,9 +53,13 @@ jobs:
         id: set-matrix
         run: |
           EXCLUDED=$(cat .ct.yaml | yq '.excluded-charts[] |= "charts/" + .' | yq -o json '.excluded-charts // []')
+          echo "EXCLUDED = ${EXCLUDED}"
           CHARTS="${{ steps.detect-changes.outputs.all_changed_files }}"
+          echo "CHARTS = ${CHARTS}"
           CHARTS_JSON=$(echo "${CHARTS}" | jq -R -s -c 'split("\n")[:-1]')
+          echo "CHARTS_JSON = ${CHARTS_JSON}"
           OUTPUT_JSON=$(echo "{\"excluded\": ${EXCLUDED}, \"all\": ${CHARTS_JSON}}" | jq -c '.all-.excluded')
+          echo "OUTPUT_JSON = ${OUTPUT_JSON}"
           echo "charts=${OUTPUT_JSON}" >> "$GITHUB_OUTPUT"
 
   test:

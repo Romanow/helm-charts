@@ -2,7 +2,7 @@ apiVersion: v2
 name: node-exporter
 type: application
 description: Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written in Go with pluggable metric collectors.
-version: 1.2.2
+version: 1.2.1
 appVersion: "1.5.0"
 home: https://github.com/Romanow/helm-charts/tree/master/charts/node-exporter
 icon: https://github.com/Romanow/helm-charts/tree/master/images/prometheus.jpeg
