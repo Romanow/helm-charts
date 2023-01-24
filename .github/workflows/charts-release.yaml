@@ -57,7 +57,7 @@ jobs:
     needs: validate
     strategy:
       matrix:
-        folder: ${{ needs.validate.outputs.folders }}
+        folder:  ${{ fromJSON(needs.validate.outputs.folders) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
