@@ -64,18 +64,18 @@ jobs:
         run: |
           changed=$(ct list-changed --config .ct.yaml)
           charts=$(echo "$changed" | tr '\n' ' ' | xargs)
-          echo "charts"
+          echo "$changed >> $charts"
           if [[ -n "$changed" ]]; then
             echo "changed=true" >> $GITHUB_OUTPUT
             echo "changed_charts=$charts" >> $GITHUB_OUTPUT
           fi
 
       - name: Create kind cluster
+        if: ${{ success() && steps.changes.outputs.changed == 'true' }}
         uses: helm/kind-action@v1.4.0
-        if: steps.changes.outputs.changed == 'true'
 
       - name: Run ct install
-        if: steps.changes.outputs.changed == 'true'
+        if: ${{ success() && steps.changes.outputs.changed == 'true' }}
         run: ct lint-and-install --config=.ct.yaml --excluded-charts=java-service,frontend
 
   release:
