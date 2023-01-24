@@ -31,7 +31,7 @@ jobs:
       - name: Install helm-docs
         run: |
           wget https://github.com/norwoodj/helm-docs/releases/download/v1.11.0/helm-docs_1.11.0_Linux_x86_64.tar.gz -O /tmp/helm-docs.tar.gz
-          tar -xvf /tmp/helm-docs.tar.gz
+          tar -xvf /tmp/helm-docs.tar.gz -C /tmp
           sudo mv /tmp/helm-docs /usr/local/sbin
 
       - name: Validate
