@@ -41,14 +41,13 @@ jobs:
         uses: dorny/paths-filter@v2
         id: detect-changes
         with:
-          working-directory: charts
           filters: |
             charts:
-              - '**'
+              - 'charts/**'
 
       - name: Log
         run: |
-          echo ${{ steps.detect-changes.outputs.changes }}
+          echo ${{ steps.detect-changes.outputs.chart_files }}
 
   test:
     name: Test charts
