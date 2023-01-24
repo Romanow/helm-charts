@@ -95,8 +95,8 @@ helm uninstall elasticsearch
 			<td>object</td>
 			<td><pre lang="json">
 {
-  "cpu": "500m",
-  "memory": "2048Mi"
+  "cpu": "200m",
+  "memory": "1024Mi"
 }
 </pre>
 </td>
@@ -107,7 +107,7 @@ helm uninstall elasticsearch
 			<td>object</td>
 			<td><pre lang="json">
 {
-  "cpu": "500m",
+  "cpu": "200m",
   "memory": "1024Mi"
 }
 </pre>

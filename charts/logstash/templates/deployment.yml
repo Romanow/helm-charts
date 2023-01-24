@@ -27,6 +27,23 @@ spec:
         - name: {{ .Release.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          readinessProbe:
+            initialDelaySeconds: 120
+            timeoutSeconds: 30
+            httpGet:
+              path: /
+              port: http
+          livenessProbe:
+            initialDelaySeconds: 120
+            timeoutSeconds: 30
+            httpGet:
+              path: /
+              port: http
+          ports:
+            - name: beats
+              containerPort: {{ .Values.ports.beats }}
+            - name: http
+              containerPort: {{ .Values.ports.http }}
           resources:
             requests:
               memory: {{ .Values.resources.requests.memory }}
@@ -35,17 +52,13 @@ spec:
               memory: {{ .Values.resources.limits.memory }}
               cpu: {{ .Values.resources.limits.cpu }}
           volumeMounts:
-            - name: {{ .Chart.Name }}-config-volume
-              mountPath: /usr/share/logstash/config
-            - name: {{ .Chart.Name }}-pipeline-volume
-              mountPath: /usr/share/logstash/pipeline
-          ports:
             - name: {{ .Chart.Name }}
-              containerPort: {{ .Values.port }}
+              mountPath: /usr/share/logstash/config/logstash.yml
+              subPath: logstash.yml
+            - name: {{ .Chart.Name }}
+              mountPath: /usr/share/logstash/pipeline/logstash.conf
+              subPath: logstash.conf
       volumes:
-        - name: {{ .Chart.Name }}-config-volume
+        - name: {{ .Chart.Name }}
           configMap:
-            name: {{ .Chart.Name }}-config
-        - name: {{ .Chart.Name }}-pipeline-volume
-          configMap:
-            name: {{ .Chart.Name }}-pipeline
+            name: {{ .Chart.Name }}

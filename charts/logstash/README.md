@@ -33,33 +33,6 @@ helm uninstall logstash
 	</thead>
 	<tbody>
 		<tr>
-			<td>elasticsearch.password</td>
-			<td>string</td>
-			<td><pre lang="json">
-"qwerty"
-</pre>
-</td>
-			<td>Elastic password (optional)</td>
-		</tr>
-		<tr>
-			<td>elasticsearch.url</td>
-			<td>string</td>
-			<td><pre lang="json">
-"http://elasticsearch:9200"
-</pre>
-</td>
-			<td>Elastic address</td>
-		</tr>
-		<tr>
-			<td>elasticsearch.username</td>
-			<td>string</td>
-			<td><pre lang="json">
-"logging"
-</pre>
-</td>
-			<td>Elastic username (optional)</td>
-		</tr>
-		<tr>
 			<td>image</td>
 			<td>object</td>
 			<td><pre lang="json">
@@ -73,13 +46,61 @@ helm uninstall logstash
 			<td>Image name and version</td>
 		</tr>
 		<tr>
-			<td>port</td>
-			<td>int</td>
+			<td>outputs.console.enabled</td>
+			<td>bool</td>
 			<td><pre lang="json">
-5044
+false
 </pre>
 </td>
-			<td>Logstash port</td>
+			<td>Enable console output</td>
+		</tr>
+		<tr>
+			<td>outputs.elasticsearch.enabled</td>
+			<td>bool</td>
+			<td><pre lang="json">
+false
+</pre>
+</td>
+			<td>Enable ElasticSearch output</td>
+		</tr>
+		<tr>
+			<td>outputs.elasticsearch.password</td>
+			<td>string</td>
+			<td><pre lang="json">
+"qwerty"
+</pre>
+</td>
+			<td>Elastic password (optional)</td>
+		</tr>
+		<tr>
+			<td>outputs.elasticsearch.url</td>
+			<td>string</td>
+			<td><pre lang="json">
+"http://elasticsearch:9200"
+</pre>
+</td>
+			<td>Elastic address</td>
+		</tr>
+		<tr>
+			<td>outputs.elasticsearch.username</td>
+			<td>string</td>
+			<td><pre lang="json">
+"logging"
+</pre>
+</td>
+			<td>Elastic username (optional)</td>
+		</tr>
+		<tr>
+			<td>ports</td>
+			<td>object</td>
+			<td><pre lang="json">
+{
+  "beats": 5044,
+  "http": 9600
+}
+</pre>
+</td>
+			<td>Logstash ports</td>
 		</tr>
 		<tr>
 			<td>resources.limits</td>
