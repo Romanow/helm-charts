@@ -47,8 +47,8 @@ jobs:
           files: |
             charts/**
 
-    - id: set-matrix
-      run: echo "matrix={\"folder\":${{ steps.changed-files.outputs.all_changed_files }}}" >> "$GITHUB_OUTPUT"
+      - id: set-matrix
+        run: echo "matrix={\"folder\":${{ steps.changed-files.outputs.all_changed_files }}}" >> "$GITHUB_OUTPUT"
 
   test:
     name: Test charts
