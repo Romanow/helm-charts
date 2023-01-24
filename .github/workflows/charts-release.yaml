@@ -41,6 +41,7 @@ jobs:
         id: detect-changes
         uses: tj-actions/changed-files@v35
         with:
+          json: true
           dir_names: true
           dir_names_max_depth: 2
           files: |
@@ -56,7 +57,7 @@ jobs:
     needs: validate
     strategy:
       matrix:
-        folder: ${{ fromJSON(needs.validate.outputs.folders) }}
+        folder: ${{ needs.validate.outputs.folders }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
