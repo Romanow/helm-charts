@@ -13,7 +13,7 @@ jobs:
     name: Validate charts
     runs-on: ubuntu-latest
     outputs:
-      packages: ${{ steps.changes.outputs.changes }}
+      packages: ${{ steps.detect-changes.outputs.changes }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -39,7 +39,7 @@ jobs:
 
       - name: Detect charts changes
         uses: dorny/paths-filter@v2
-        id: changes
+        id: detect-changes
         with:
           working-directory: charts
           filters: |
@@ -48,7 +48,7 @@ jobs:
 
       - name: Log
         run: |
-          echo ${{ steps.changes.outputs.packages }}
+          echo ${{ steps.detect-changes.outputs.changes }}
 
   test:
     name: Test charts
@@ -56,7 +56,7 @@ jobs:
     needs: validate
     strategy:
       matrix:
-        package: ${{ fromJSON(needs.changes.outputs.packages) }}
+        package: ${{ fromJSON(needs.validate.outputs.packages) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
