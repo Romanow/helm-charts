@@ -58,8 +58,6 @@ jobs:
           OUTPUT_JSON=$(echo "{\"excluded\": ${EXCLUDED}, \"all\": ${CHARTS}}" | jq -c '.all-.excluded')
           echo "charts=${OUTPUT_JSON}" >> "$GITHUB_OUTPUT"
 
-          echo "matrix={\"folder\":${{ steps.detect-changes.outputs.all_changed_files }}}" >> "$GITHUB_OUTPUT"
-
   test:
     name: Test charts
     runs-on: ubuntu-latest
