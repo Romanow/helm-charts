@@ -61,4 +61,4 @@ spec:
       volumes:
         - name: {{ .Chart.Name }}
           configMap:
-            name: {{ .Chart.Name }}
+            name: {{ .Release.Name }}
