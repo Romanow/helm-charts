@@ -1,0 +1,83 @@
+# Очумелые ручки: делаем свой Helm Chart Repository из подручных средств
+
+### Что такое Helm Charts, какие задачи он решает
+
+### Best Practice и правила оформления `Chart.yaml`
+
+### Создаем Helm Chart repository
+
+Helm Chart repository – это сервер, который хранит `index.yaml`, содержащий информацию из `Chart.yaml` и ссылку на архив
+с манифестами.
+
+##### GitHub Pages as Helm Chart Repository
+
+GitHub Pages — это общедоступные веб-страницы, размещенные и опубликованные через GitHub. Для создания сайта нужно
+создать _пустую_ ветку `gh-pages` и добавить в нее необходимые файлы:
+
+* `.gitignore` – убираем лишние файлы из индекса (аналогично master);
+* `index.md` – контент страницы;
+* `_config.yaml` – тема (используем cayman).
+
+```shell
+# создает ветку без истории
+$ git checkout --orphan gh-pages
+# удаляем все файлы
+$ git reset --hard
+# add, commit and push
+$ git add *
+$ git commit -m "init commit"
+$ git push origin gh-pages
+```
+
+Сайт по адресу [https://romanow.github.io/helm-charts-lecture/](https://romanow.github.io/helm-charts-lecture/).
+
+![GitHub Pages](images/GitHub%20Pages.png)
+
+##### Публикация изменений с помощью GitHub Actions
+
+В [main.yaml](.github/workflows/main.yml) прописываем запуск публикации только при изменении `charts/**`.
+
+Для публикации используем [chart-releaser-action](https://github.com/marketplace/actions/helm-chart-releaser). Он
+собирает charts в архив и публикует их как package. После этого публикует файл `index.yaml` с информацией о charts в
+ветку `gh-pages` и запускает ее пересборку.
+
+![Helm index](images/Helm%20index.png)
+
+После успешного завершения сборки проверяем репозиторий:
+
+```shell
+$ helm repo add lecture-repo https://romanow.github.io/helm-charts-lecture/
+"lecture-repo" has been added to your repositories
+
+$ helm search repo lecture-repo
+NAME                            CHART VERSION   APP VERSION     DESCRIPTION
+lecture-repo/java-service       1.0.2           v1.0            Helm chart for Spring Boot wev application
+lecture-repo/postgres           1.0.2           15              PostgreSQL is a powerful, open source object-re...
+
+```
+
+##### Создаем репозиторий в ArtifactHUB
+
+[ArtifactHUB](https://artifacthub.io/) – публичный репозиторий для Helm Charts. Он не хранит пакеты (только связывает их
+с репозиторием).
+
+Авторизуемся через GitHub и создаем Helm Chart репозиторий. Для этого указываем адрес репозитория на
+GitHub: `https://romanow.github.io/helm-charts-lecture`.
+
+После создания репозитория, подтвердим, что являемся его автором: для этого создаем
+файл [`artifacthub-repo.yml`](https://github.com/Romanow/helm-charts-lecture/blob/gh-pages/artifacthub-repo.yml) и в нем
+указываем `repositoryID` и `owners`.
+
+Ждем некоторое время (~20 минут) пока ArtifactHUB проиндексирует наш репозиторий и после заходим и проверяем как он
+выглядит.
+
+### Создание документации с помощью helm-docs
+
+[Helm Docs](https://github.com/norwoodj/helm-docs) – инструмент для автоматической генерации README.md на базе helm
+charts. Результирующий файл содержит информацию о Chart и его параметрах (`values.yaml`). В основе лежат шаблоны go&
+Helm Docs анализирует метаданные из Chart и создает ряд вспомогательных шаблонов, на которые можно ссылаться в основном
+файле шаблона (по умолчанию [`README.md.gotmpl`](charts/postgres/README.md)).
+
+### Создание правил валидации
+
+### Тестирование Helm Charts
