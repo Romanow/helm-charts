@@ -1,8 +1,8 @@
 # -- Image name and version
 image:
   pullPolicy: IfNotPresent
-  repository:
-  tag:
+  repository: romanowalex/simple-frontend
+  tag: v1.0
 
 # -- nginx port
 port: 3000

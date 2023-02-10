@@ -48,7 +48,7 @@ helm uninstall {{ template "chart.name" . }}
 ### Sources
 {{- end -}}
 
-# Helm Chart for Java Service
+# Helm Chart {{ template "chart.name" . }}
 
 {{ template "chart.versionBadge" . }}{{ template "chart.typeBadge" . }}{{ template "chart.appVersionBadge" . }}
 
