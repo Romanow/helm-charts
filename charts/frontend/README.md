@@ -56,8 +56,8 @@ null
 			<td><pre lang="json">
 {
   "pullPolicy": "IfNotPresent",
-  "repository": "romanowalex/simple-frontend",
-  "tag": "v1.0"
+  "repository": null,
+  "tag": null
 }
 </pre>
 </td>
