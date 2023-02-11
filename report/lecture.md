@@ -1,8 +1,198 @@
 # Очумелые ручки: делаем свой Helm Chart Repository из подручных средств
 
+### Kubernetes
+
+Kubernetes (от др. -греч. κυβερνήτης — штурвал) — это платформа с открытым исходным кодом для управления
+контейнеризованными рабочими нагрузками и сервисами.
+
+На вход Kubernetes получает манифест с описанием желаемого состояния кластера. Получив эту информацию он пытается
+привести текущее состояние к желаемому: для этого выполняется множество задач, таких как запуск или перезапуск
+контейнеров, масштабирование количества реплик данного приложения, сетевая связность, политики безопасности и многое
+другое.
+
+Типовой манифест для Kubernetes выглядит так:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-backend
+  template:
+    metadata:
+      labels:
+        app: simple-backend
+    spec:
+      containers:
+        - name: simple-backend
+          image: "romanowalex/simple-backend:v1.0"
+          ports:
+            - name: simple-backend
+              containerPort: 8080
+```
+
+Но что делать, если нам надо задеплоить такое же приложение, но с другим image и tag? Если для каждого приложения писать
+свой манифест, то в случае, если потребуется что-то в них доработать, нужно будет вносить изменения в N одинаковых
+файлов.
+
 ### Что такое Helm Charts, какие задачи он решает
 
+Helm – менеджер пакетов для Kubernetes. Helm развертывает пакетные приложения в Kubernetes и структурирует их в charts.
+Charts содержат все предустановленные ресурсы приложения вместе со всеми версиями, которые помещены в один легко
+управляемый пакет.
+
+```
+helm-package/
+  |- .helmignore   # ingnore
+  |- Chart.yaml    # meta информация о пакете
+  |- values.yaml   # default значения дла шаблонов
+  |- charts/       # subcharts и dependencies
+  |- templates/    # шаблоны
+```
+
+Задача Helm – предоставить инструмент для шаблонизации манифестов, чтобы их можно было переиспользовать для различных
+задач.
+
 ### Best Practice и правила оформления `Chart.yaml`
+
+#### Соглашение об именовании
+
+* Переменные в camelCase (`serviceName`, `serverPort`).
+* Имена chart в dash-case (`java-service`).
+* Отступы в два пробела, tabs использовать нельзя.
+* Версионирование charts через [semver2](https://semver.org/).
+
+Ссылки:
+
+* [The Chart Best Practices Guide](https://helm.sh/docs/chart_best_practices/)
+
+#### Общие правила
+
+##### Использовать рекомендованные метки Kubernetes
+
+| Название label                 | Описание |
+|--------------------------------|----------|
+| `app.kubernetes.io/name`       | Имя приложения (может быть `{{ .Chart.Name }}`) |
+| `helm.sh/chart`                | Имя и версия chart `{{ .Chart.Name }}-{{ .Chart.Version }}` |
+| `app.kubernetes.io/managed-by` | `{{ .Release.Service }}` (используется чтобы найти все ресурсы, установленные через Helm) |
+| `app.kubernetes.io/instance`   | `{{ .Release.Name }}` |
+| `app.kubernetes.io/version`    | Версия приложения `{{ .Chart.AppVersion }}` |
+| `app.kubernetes.io/component`  | Название компонента (database, backend, etc) |
+| `app.kubernetes.io/part-of`    | Имя всего приложения |
+
+Ссылки:
+
+* [Labels and Annotations](https://helm.sh/docs/chart_best_practices/labels/)
+* [Recommended Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/)
+
+##### Нужно задавать лимиты ресурсов
+
+Ссылки:
+
+* [Setting and Rightsizing Kubernetes Resource Limits | Best Practices](https://www.containiq.com/post/setting-and-rightsizing-kubernetes-resource-limits)
+* [Kubernetes best practice: How to (correctly) set resource requests and limits](https://www.cncf.io/blog/2022/10/20/kubernetes-best-practice-how-to-correctly-set-resource-requests-and-limits/)
+
+##### Не использовать SubCharts без необходимости
+
+При работе с Helm нужно придерживаться правила: один chart содержит в себе одно приложение. Если приложению для запуска
+требуются другие ресурсы (БД, очередь и т.п.), то их нужно разворачивать отдельно.
+
+В противном случае получится _umbrella_ chart, который будет содержать в себе больше одного ресурса, а следовательно
+будет чрезмерно усложнен.
+
+Если требуется задеплоить N одинаковых приложений, но с немного разными параметрами, то лучше это делать по-отдельности.
+Использовать SubChart с шаблоном, а на верхнем уровне в dependencies прописывать зависимости, плохо, т.к. chart
+становится ответственным за группу ресурсов, принадлежащих ему лишь косвенно (они однотипные, но не одинаковые).
+
+Ссылки:
+
+* [HELM Best practices](https://codefresh.io/docs/docs/new-helm/helm-best-practices/#charts-and-sub-charts)
+
+##### Использовать liveness и readiness probes
+
+Использование liveness (контейнер живой) и readiness (готов принимать трафик) probes позволяет Kubernetes понять
+состояние приложения.
+
+Без liveness probe может получиться что приложение потеряло connect к БД, но не завершилось аварийно (например, Spring
+Boot). Приложение не может обрабатывать трафик и требует перезапуска, но сам контейнер еще живой, следовательно,
+Kubernetes не будет предпринимать никаких мер.
+
+Без readiness probe может получиться ситуация, что контейнер запущен, но еще не готов принимать трафик, т.к. прогревает
+кэши или ждет настройки от внешней системы. Kubernetes будет знать ничего об этом и сразу выставит его в балансировку,
+что приведет к ошибкам.
+
+Ссылки:
+
+* [Kubernetes Readiness & Liveliness Probes — Best Practices](https://medium.com/metrosystemsro/kubernetes-readiness-liveliness-probes-best-practices-86c3cd9f0b4a)
+
+##### Использовать контейнеры маленького размера
+
+В зависимости от политики `imagePullPolicy` Kubernetes при обновлении deployment скачивает новый образ. Чем быстрее
+будет загружен новый образ, тем быстрее начнется перезапуск. Размер образа напрямую влияет на скорость скачивания.
+
+Т.к. образ — это коллекция других образов, размер образа равен сумме размеров образов, его составляющих. Каждая
+дополнительная инструкция в `Dockerfile` увеличивает общий размер образа. Соответственно, чтобы уменьшить результирующий
+размер образа:
+
+* нужно объединять однотипные команды;
+* использовать максимально компактный базовый образ, например на базе Alpine Linux;
+* использовать multistage build, чтобы не тащить в результирующий образ лишнее.
+
+##### Структуры предпочтительнее массивов
+
+При использовании массивов сложнее прописывать желаемые значения при установке релиза.
+
+```yaml
+servers:
+  - name: foo
+    port: 8080
+  - name: bar
+    port: 8081
+```
+
+```shell
+$ helm install my-release \
+    --set servers[1].port=8180 \
+    java-service
+```
+
+```yaml
+servers:
+  foo:
+    port: 8080
+  bar:
+    port: 8081
+```
+
+```shell
+$ helm install my-release \
+    --set servers.bar.port=8080 \
+    java-service
+```
+
+##### Документировать Charts
+
+* `README.md` для описания chart и его переменных.
+* `NOTES.txt` – информация о релизе, какие ресурсы были установлены.
+
+##### Обновлять Deployment когда меняется ConfigMap
+
+По-умолчанию в Kubernetes при изменении ConfigMap перезапуск Deployment не происходит. Чтобы добавиться этого поведения
+можно в `annotations` прописать checksum от ConfigMap: при изменении ConfigMap изменится аннотация и deployment будет
+переустановлен.
+
+```yaml
+kind: Deployment
+spec:
+  template:
+    metadata:
+      annotations:
+        checksum/config: { { include (print $.Template.BasePath "/configmap.yaml") . | sha256sum } }
+```
 
 ### Создаем Helm Chart repository
 
@@ -109,5 +299,9 @@ $ pre-commit run --all-files
 
 Поэтому с pre-commit работаем как с инструментом валидации: добавляем его в GitHub Actions и при прогоне CI/CD если
 какая-то проверка завершилась неудачно, то сборка падает.
+
+Helm Docs добавляем как задачу в pre-commit и в GitHub Actions проверяем актуальность документации. Если есть отличия,
+то сборка падает. Это добавляет ряд неудобств: на шаге прогона тестов и публикации происходит проверка измененных файлов
+в commit и если сборка упала на этапе валидации, то после исправления index не будет содержать измененных файлов.
 
 ### Тестирование Helm Charts

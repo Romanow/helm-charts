@@ -4,12 +4,12 @@ repos:
     rev: v4.0.1
     hooks:
       - id: trailing-whitespace
-        exclude: ^report/presentations/
+        exclude: \.key$
       - id: end-of-file-fixer
-        exclude: ^report/presentations/
+        exclude: \.key$
       - id: fix-byte-order-marker
       - id: mixed-line-ending
-        exclude: ^report/presentations/
+        exclude: \.key$
       - id: check-merge-conflict
       - id: check-case-conflict
 
