@@ -35,8 +35,10 @@ spec:
               memory: "{{ .Values.resources.limits.memory }}"
               cpu: "{{ .Values.resources.limits.cpu }}"
           env:
+            {{- if .Values.backendServiceName }}
             - name: BACKEND_HOST
-              value: {{ required "Backend service must be set" .Values.backendServiceName }}
+              value: {{ .Values.backendServiceName }}
+            {{- end }}
             {{- range $env := .Values.environments }}
             - name: {{ $env.name }}
               value: "{{ $env.value }}"

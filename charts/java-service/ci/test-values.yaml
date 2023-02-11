@@ -1,0 +1,7 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: romanowalex/simple-backend
+  tag: v1.0
+
+metrics:
+  enabled: false

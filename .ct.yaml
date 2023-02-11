@@ -5,7 +5,3 @@ helm-extra-args: --timeout 600s
 validate-maintainers: false
 chart-dirs:
   - charts
-
-excluded-charts:
-  - frontend
-  - java-service

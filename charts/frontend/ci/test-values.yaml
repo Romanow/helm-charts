@@ -1,0 +1,7 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: romanowalex/simple-frontend
+  tag: v1.0
+
+ingress:
+  enabled: false
