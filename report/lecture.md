@@ -307,5 +307,62 @@ Helm Docs добавляем как задачу в pre-commit и в GitHub Acti
 ### Тестирование Helm Charts
 
 Мы создали репозиторий для Helm Charts, запустили linter и сделали документацию, но остается самый главный вопрос: а
-работают ли charts после внесенных изменений. Для ответа на этот вопрос воспользуемся
-инструментов [chart-testing](https://github.com/helm/chart-testing) от helm.
+работают ли charts после внесенных изменений.
+
+Для тестирования будем использовать [chart-testing](https://github.com/helm/chart-testing) от helm
+и [kind](https://kind.sigs.k8s.io/) – легковесный k8s кластер, запускаемый в docker.
+
+Мы запускаем кластер k8s с помощью kind, kubectl смотрит на этот кластер, а `ct` (chart-testing) просто
+выполняет `helm install <release-name> charts/<chart> --namespace <custom-namespace>`, проверяет статус, что все ресурсы
+создались, потом выполняет `helm uninstall <release-name> --namespace <custom-namespace>`.
+
+`ct` предназначен для работы с Pull Request и он запускает тесты не на все charts, а только на те, которые изменились.
+Т.к. в текущем примере мы делаем commit прямо в `master`, нам надо получить список измененных charts вручную. Для этого
+используем action [tj-actions/changed-files](https://github.com/marketplace/actions/changed-files), который нам вернет
+список измененных папок в charts/**.
+
+```yaml
+- name: Get changed files
+  uses: tj-actions/changed-files@v35
+  with:
+    json: true
+    dir_names: true
+    dir_names_max_depth: 2
+    files: |
+      charts/**
+```
+
+Для ускорения тестов будем их запускать параллельно
+через [matrix build](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs). Для этого список
+измененных charts с шага `validate` передадим на вход `test`.
+
+```yaml
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: |
+        {
+          "chart": ${{ steps.set-matrix.outputs.charts }}
+        }
+    steps:
+      .....
+
+  test:
+    runs-on: ubuntu-latest
+    needs: validate
+    strategy:
+      matrix: ${{ fromJson(needs.validate.outputs.matrix) }}
+    steps:
+      .....
+
+      # запускаем кластер k8s
+      - name: Create kind cluster
+        uses: helm/kind-action@v1.4.0
+
+      # вызываем helm install на конкретный chart
+      - name: Run ct install
+        run: ct lint-and-install --config=.ct.yaml --charts ${{ matrix.chart }}
+```
+
+![Github Action test all](images/Github%20Action%20test%20all.png)

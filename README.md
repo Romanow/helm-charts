@@ -33,3 +33,7 @@
 
 * [Logstash](charts/logstash)
 * [Kibana](charts/kibana)
+
+### Public Report
+
+[Очумелые ручки: делаем свой Helm Chart Repository из подручных средств](report)
