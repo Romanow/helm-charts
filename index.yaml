@@ -1046,6 +1046,29 @@ entries:
   java-service:
   - apiVersion: v2
     appVersion: v1.0
+    created: "2023-03-07T14:39:05.115705775Z"
+    description: Helm chart for Spring Boot application with logging and tracing
+    digest: d30c182c5644140d1d457c46e48b1b6197ddd315db75508fae543df5ba2a1057
+    home: https://github.com/Romanow/helm-charts/tree/master/charts/java-service
+    icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/spring-boot.png
+    keywords:
+    - spring boot
+    - java
+    - kotlin
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: java-service
+    sources:
+    - https://spring.io/projects/spring-boot
+    - https://hub.docker.com/_/amazoncorretto
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/java-service-1.3.6/java-service-1.3.6.tgz
+    version: 1.3.6
+  - apiVersion: v2
+    appVersion: v1.0
     created: "2023-02-11T22:22:57.07500413Z"
     description: Helm chart for Spring Boot application with logging and tracing
     digest: 1bd51362018cb72833b5c554fa7f1883e644a58e36bbad6cb0cace4b6a95b93e
@@ -1844,6 +1867,29 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: "15"
+    created: "2023-03-07T14:39:05.429219406Z"
+    description: PostgreSQL is a powerful, open source object-relational database
+      system.
+    digest: 8af4b8a6c9f3abca382b31362f54d9073890f7a8d4d6dc181dfdb3c016274bab
+    home: https://github.com/Romanow/helm-charts/tree/master/charts/postgres
+    icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/postgres.png
+    keywords:
+    - postgres
+    - database
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: postgres
+    sources:
+    - https://www.postgresql.org/
+    - https://hub.docker.com/_/postgres
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/postgres-1.3.6/postgres-1.3.6.tgz
+    version: 1.3.6
+  - apiVersion: v2
+    appVersion: "15"
     created: "2023-02-11T22:22:58.081632812Z"
     description: PostgreSQL is a powerful, open source object-relational database
       system.
@@ -2366,4 +2412,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.0/prometheus-1.0.0.tgz
     version: 1.0.0
-generated: "2023-02-11T22:22:58.269034586Z"
+generated: "2023-03-07T14:39:05.429564013Z"
