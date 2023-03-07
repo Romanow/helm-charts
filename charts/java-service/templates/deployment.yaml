@@ -31,7 +31,8 @@ spec:
       initContainers:
       {{- range $container := .Values.initContainers }}
         - name: {{ $container.name }}
-          {{ tpl $container.declaration $ | toYaml | indent 8 }}
+          {{- $containerDeclaration := (tpl $container.declaration $) -}}
+          {{ toYaml $containerDeclaration | indent 8 }}
       {{- end }}
       {{- end }}
       containers:
@@ -84,7 +85,7 @@ spec:
                 secretKeyRef:
                   name: {{ $secret.secretName }}
                   key: {{ $secret.secretKey }}
-            {{- end }}
+          {{- end }}
           livenessProbe:
             initialDelaySeconds: {{ .Values.liveness.delay }}
             periodSeconds: {{ .Values.liveness.timeout }}
@@ -106,7 +107,7 @@ spec:
           volumeMounts:
             - name: {{ .Chart.Name }}-logs-volume
               mountPath: "/var/log/{{ .Values.logFolder | default .Release.Name }}/"
-          {{- end }}
+        {{- end }}
         {{- if .Values.filebeat.enabled }}
         - name: {{ .Release.Name }}-filebeat
           image: "{{ .Values.filebeat.image.repository }}:{{ .Values.filebeat.image.tag }}"
