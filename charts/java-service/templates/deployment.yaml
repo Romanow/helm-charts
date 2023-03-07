@@ -29,10 +29,7 @@ spec:
     spec:
       {{- if .Values.initContainers }}
       initContainers:
-      {{- range $container := .Values.initContainers }}
-        - name: {{ $container.name }}
-          {{- tpl $container.declaration $ | nindent 10 }}
-      {{- end }}
+      {{- tpl (toYaml .Values.initContainers) . | nindent 8 }}
       {{- end }}
       containers:
         - name: {{ .Release.Name }}

@@ -14,10 +14,10 @@ ingress:
   domain: romanow-alex.ru
 
 # -- Additional env variables
-environments: []
+environments: [ ]
 
 # -- Additional secrets
-secrets: []
+secrets: [ ]
 
 # -- Count of replicas
 replicas: 1
@@ -144,3 +144,6 @@ resources:
 
 # -- Init containers full declaration
 initContainers: []
+
+# -- Containers to start after deploy main resources
+postDeployContainers: []

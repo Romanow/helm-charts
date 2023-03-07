@@ -1,6 +1,6 @@
 # Helm Chart for java-service
 
-![Version: 1.3.10](https://img.shields.io/badge/Version-1.3.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.0](https://img.shields.io/badge/AppVersion-v1.0-informational?style=flat-square)
+![Version: 1.3.11](https://img.shields.io/badge/Version-1.3.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.0](https://img.shields.io/badge/AppVersion-v1.0-informational?style=flat-square)
 
 Helm chart for Spring Boot application with logging and tracing
 
@@ -371,6 +371,15 @@ null
 </pre>
 </td>
 			<td>Application port</td>
+		</tr>
+		<tr>
+			<td>postDeployContainers</td>
+			<td>list</td>
+			<td><pre lang="json">
+[]
+</pre>
+</td>
+			<td>Containers to start after deploy main resources</td>
 		</tr>
 		<tr>
 			<td>profile</td>
