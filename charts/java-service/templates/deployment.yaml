@@ -31,8 +31,7 @@ spec:
       initContainers:
       {{- range $container := .Values.initContainers }}
         - name: {{ $container.name }}
-          {{- $containerDeclaration := (tpl $container.declaration $) -}}
-          {{ toYaml $containerDeclaration | indent 8 }}
+          {{- tpl $container.declaration $ | nindent 10 }}
       {{- end }}
       {{- end }}
       containers:
