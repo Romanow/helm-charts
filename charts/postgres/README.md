@@ -48,6 +48,9 @@ null
 [
   {
     "name": "services",
+    "schemas": [
+      "public"
+    ],
     "user": "program"
   }
 ]

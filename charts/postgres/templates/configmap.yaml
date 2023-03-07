@@ -21,7 +21,14 @@ data:
   20-grant-privileges-to-public.sh: |
     export PGPASSWORD={{ .Values.defaultDatabase.password }}
     {{- range $database := .Values.databases }}
-    psql -U {{ $.Values.defaultDatabase.user }} -d {{ $database.name }} -c "GRANT ALL PRIVILEGES ON SCHEMA public TO {{ $database.user }};"
+    psql -U {{ $.Values.defaultDatabase.user }} -d {{ $database.name }} << EOF
+    GRANT ALL PRIVILEGES ON SCHEMA public TO {{ $database.user }};
+    {{- range $schema := $database.schemas }}
+    {{- if ne $schema "public" }}
+    CREATE SCHEMA {{ $schema }} AUTHORIZATION {{ $database.user }};
+    {{- end }}
+    {{- end }}
+    EOF
     {{ end }}
 ---
 {{ $defaultConfig := .Files.Get "config/postgres.conf" | replace "=" ":" | fromYaml }}

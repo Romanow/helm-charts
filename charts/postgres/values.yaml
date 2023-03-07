@@ -32,6 +32,8 @@ users:
 databases:
   - name: services
     user: program
+    schemas:
+      - public
 
 resources:
   # -- Requested resources

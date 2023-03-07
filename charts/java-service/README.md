@@ -194,6 +194,15 @@ false
 			<td>Ingress name</td>
 		</tr>
 		<tr>
+			<td>initContainers</td>
+			<td>list</td>
+			<td><pre lang="json">
+[]
+</pre>
+</td>
+			<td>Init containers full declaration</td>
+		</tr>
+		<tr>
 			<td>jaeger.application.host</td>
 			<td>string</td>
 			<td><pre lang="json">

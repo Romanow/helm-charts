@@ -141,3 +141,6 @@ resources:
   limits:
     cpu: 500m
     memory: 1024Mi
+
+# -- Init containers full declaration
+initContainers: []
