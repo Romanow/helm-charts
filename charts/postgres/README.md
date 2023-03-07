@@ -1,6 +1,6 @@
 # Helm Chart for postgres
 
-![Version: 1.3.5](https://img.shields.io/badge/Version-1.3.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 15](https://img.shields.io/badge/AppVersion-15-informational?style=flat-square)
+![Version: 1.3.6](https://img.shields.io/badge/Version-1.3.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 15](https://img.shields.io/badge/AppVersion-15-informational?style=flat-square)
 
 PostgreSQL is a powerful, open source object-relational database system.
 
