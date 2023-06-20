@@ -45,8 +45,8 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: "{{ .Values.profile }}"
-            - name: JAVA_TOOL_OPTIONS
-              value: "{{ printf "-XX:MaxRAMPercentage=%.1f %s" .Values.memoryUsage (.Values.javaOptions | default "") }}"
+{{/*            - name: JAVA_TOOL_OPTIONS*/}}
+{{/*              value: "{{ printf "-XX:MaxRAMPercentage=%.1f %s" .Values.memoryUsage (.Values.javaOptions | default "") }}"*/}}
             {{- if .Values.database.name }}
             - name: DATABASE_NAME
               value: "{{ .Values.database.name }}"
