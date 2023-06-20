@@ -5,3 +5,11 @@ image:
 
 metrics:
   enabled: false
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 2048Mi
+  limits:
+    cpu: 500m
+    memory: 2048Mi
