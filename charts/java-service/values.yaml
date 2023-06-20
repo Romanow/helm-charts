@@ -4,6 +4,12 @@ image:
   repository:
   tag:
 
+# Memory allocation inside container
+memoryUsage: 75.0
+
+# Additional Java arguments
+javaOptions:
+
 ingress:
   # -- Enable ingress
   enabled: false

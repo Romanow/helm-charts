@@ -1,6 +1,6 @@
 # Helm Chart for java-service
 
-![Version: 1.4.0](https://img.shields.io/badge/Version-1.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.0](https://img.shields.io/badge/AppVersion-v1.0-informational?style=flat-square)
+![Version: 1.4.1](https://img.shields.io/badge/Version-1.4.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.0](https://img.shields.io/badge/AppVersion-v1.0-informational?style=flat-square)
 
 Helm chart for Spring Boot application with logging and tracing
 
@@ -292,6 +292,15 @@ false
 			<td>Requested resources</td>
 		</tr>
 		<tr>
+			<td>javaOptions</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>liveness.delay</td>
 			<td>int</td>
 			<td><pre lang="json">
@@ -335,6 +344,15 @@ false
 </pre>
 </td>
 			<td>Log folder (if filebeat is enabled)</td>
+		</tr>
+		<tr>
+			<td>memoryUsage</td>
+			<td>float</td>
+			<td><pre lang="json">
+75
+</pre>
+</td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>metrics.enabled</td>
