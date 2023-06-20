@@ -1046,6 +1046,29 @@ entries:
   java-service:
   - apiVersion: v2
     appVersion: v1.0
+    created: "2023-06-20T16:42:52.955326727Z"
+    description: Helm chart for Spring Boot application with logging and tracing
+    digest: d2c324c13e96815571ab99e875d978694fca925138bc738cfabb185666d14ab6
+    home: https://github.com/Romanow/helm-charts/tree/master/charts/java-service
+    icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/spring-boot.png
+    keywords:
+    - spring boot
+    - java
+    - kotlin
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: java-service
+    sources:
+    - https://spring.io/projects/spring-boot
+    - https://hub.docker.com/_/amazoncorretto
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/java-service-1.4.2/java-service-1.4.2.tgz
+    version: 1.4.2
+  - apiVersion: v2
+    appVersion: v1.0
     created: "2023-06-20T16:34:26.294949853Z"
     description: Helm chart for Spring Boot application with logging and tracing
     digest: 7578fa141935065079a44c17db14a1b73f1cad55919258191ed1be3b7a3908ff
@@ -2495,4 +2518,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.2/prometheus-1.0.2.tgz
     version: 1.0.2
-generated: "2023-06-20T16:34:26.295713708Z"
+generated: "2023-06-20T16:42:52.955572827Z"
