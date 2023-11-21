@@ -15,7 +15,8 @@ spec:
   type: NodePort
   {{- end }}
   ports:
-    - protocol: TCP
+    - name: {{ .Chart.Name }}
+      protocol: TCP
       port: {{ .Values.ports.internal }}
       targetPort: {{ .Chart.Name }}
       {{- if .Values.ports.external }}
