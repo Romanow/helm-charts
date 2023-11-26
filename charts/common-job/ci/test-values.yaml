@@ -1,0 +1,9 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: busybox
+  tag: 1.35
+
+args:
+  - /bin/sh
+  - -c
+  - echo Hello, world

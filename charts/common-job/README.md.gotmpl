@@ -1,0 +1,71 @@
+{{- define "repository.organization" -}}
+romanow
+{{- end -}}
+
+{{- define "repository.url" -}}
+https://github.com/romanow/helm-charts
+{{- end -}}
+
+{{- define "helm.url" -}}
+https://romanow.github.io/helm-charts/
+{{- end -}}
+
+{{- define "helm.path" -}}
+{{ template "repository.organization" . }}/{{ template "chart.name" . }}
+{{- end -}}
+
+{{- define "install" -}}
+### Installing the Chart
+
+To install the chart with the release name `{{ template "chart.name" . }}`:
+
+```shell
+$ helm repo add {{ template "repository.organization" . }} {{ template "helm.url" . }}
+$ helm repo update
+$ helm install {{ template "chart.name" . }} {{ template "helm.path" . }}
+```
+{{- end -}}
+
+{{- define "uninstall" -}}
+### Uninstalling the Chart
+
+To uninstall the `{{ template "chart.name" . }}` installation:
+
+```shell
+helm uninstall {{ template "chart.name" . }}
+```
+{{- end -}}
+
+{{- define "configuration.header" -}}
+### Configuration
+{{- end -}}
+
+{{- define "maintainers.header" -}}
+### Maintainer
+{{- end -}}
+
+{{- define "sources.header" -}}
+### Sources
+{{- end -}}
+
+# Helm Chart for {{ template "chart.name" . }}
+
+{{ template "chart.versionBadge" . }}{{ template "chart.typeBadge" . }}{{ template "chart.appVersionBadge" . }}
+
+{{ template "chart.description" . }}
+
+{{ template "install" . }}
+
+{{ template "uninstall" . }}
+
+{{ template "configuration.header" . }}
+
+{{ template "chart.valuesTableHtml" . }}
+
+{{ template "sources.header" . }}
+
+{{ template "chart.sourcesList" . }}
+
+{{ template "maintainers.header" . }}
+
+{{ template "chart.maintainersTable" . }}

@@ -1,0 +1,20 @@
+# -- Image name and version
+image:
+  pullPolicy: IfNotPresent
+  repository:
+  tag:
+
+# -- Additional env variables
+environments: []
+
+# -- Additional secrets
+secrets: []
+
+# -- Job startup arguments
+args: []
+
+# -- Restart policy
+restartPolicy: Never
+
+# -- Backoff limit
+backoffLimit: 5

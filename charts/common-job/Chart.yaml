@@ -1,0 +1,16 @@
+apiVersion: v2
+name: common-job
+type: application
+description: Helm chart for job
+version: 1.5.0
+appVersion: "v1.0"
+home: https://github.com/Romanow/helm-charts/tree/master/charts/common-job
+icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/job.png
+sources:
+  - https://kubernetes.io/docs/concepts/workloads/controllers/job/
+keywords:
+  - job
+maintainers:
+  - name: Romanov Alexey
+    email: romanowalex@mail.ru
+    url: https://romanow.github.io
