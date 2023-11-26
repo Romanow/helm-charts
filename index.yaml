@@ -3,6 +3,26 @@ entries:
   common-job:
   - apiVersion: v2
     appVersion: v1.0
+    created: "2023-11-26T11:33:15.078520645Z"
+    description: Helm chart for job
+    digest: 23bff7db11006b2ff6d49c1eacee059bc05056fc9366c243b8e84de097dd587d
+    home: https://github.com/Romanow/helm-charts/tree/master/charts/common-job
+    icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/job.png
+    keywords:
+    - job
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: common-job
+    sources:
+    - https://kubernetes.io/docs/concepts/workloads/controllers/job/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/common-job-1.5.1/common-job-1.5.1.tgz
+    version: 1.5.1
+  - apiVersion: v2
+    appVersion: v1.0
     created: "2023-11-26T11:32:42.988401602Z"
     description: Helm chart for job
     digest: a138fa3d8711486aa7ec0e75685d1844d2317d14e6703c40f2281e6a6f8a527f
@@ -2845,4 +2865,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.2/prometheus-1.0.2.tgz
     version: 1.0.2
-generated: "2023-11-26T11:32:42.988639006Z"
+generated: "2023-11-26T11:33:15.078787281Z"
