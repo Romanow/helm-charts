@@ -61,16 +61,12 @@ spec:
               value: "{{ .Values.database.password }}"
             - name: CIRCUIT_BREAKER_ENABLED
               value: "{{ .Values.circuitBreaker.enabled }}"
-            - name: JAEGER_ENABLED
-              value: "{{ .Values.jaeger.enabled }}"
-            {{- if .Values.jaeger.enabled }}
-            {{- if .Values.jaeger.application.host }}
-            - name: JAEGER_HOST
-              value: "{{ .Values.jaeger.application.host }}"
-            {{- end }}
-            {{- if .Values.jaeger.application.port }}
-            - name: JAEGER_PORT
-              value: "{{ .Values.jaeger.application.port }}"
+            {{- if .Values.tracing.enabled }}
+            - name: TRACING_ENABLED
+              value: "{{ .Values.tracing.enabled }}"
+            {{- if .Values.tracing.endpoint }}
+            - name: TRACING_COLLECTOR_ENDPOINT
+              value: "{{ .Values.tracing.endpoint }}"
             {{- end }}
             {{- end }}
             {{- range $env := .Values.environments }}
@@ -124,31 +120,6 @@ spec:
               mountPath: /usr/share/filebeat/filebeat.yml
               subPath: filebeat.yml
         {{- end }}
-        {{- if .Values.jaeger.enabled }}
-        - name: {{ .Release.Name }}-jaeger-agent
-          image: "{{ .Values.jaeger.image.repository }}:{{ .Values.jaeger.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: REPORTER_GRPC_HOST_PORT
-              value: "{{ .Values.jaeger.collector.host }}:{{ .Values.jaeger.collector.port }}"
-          ports:
-            - name: thrift-compact
-              containerPort: {{ .Values.jaeger.ports.compactThrift }}
-              protocol: UDP
-            - name: trift-binary
-              containerPort: {{ .Values.jaeger.ports.binaryThrift }}
-              protocol: UDP
-            - name: admin
-              containerPort: {{ .Values.jaeger.ports.admin }}
-              protocol: TCP
-          resources:
-            requests:
-              memory: "{{ .Values.filebeat.resources.requests.memory }}"
-              cpu: "{{ .Values.filebeat.resources.requests.cpu }}"
-            limits:
-              memory: "{{ .Values.filebeat.resources.limits.memory }}"
-              cpu: "{{ .Values.filebeat.resources.limits.cpu }}"
-      {{- end }}
       volumes:
         - name: {{ .Chart.Name }}-logs-volume
         - name: {{ .Chart.Name }}-config-volume

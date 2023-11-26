@@ -1,6 +1,6 @@
 # Helm Chart for java-service
 
-![Version: 1.5.0](https://img.shields.io/badge/Version-1.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.0](https://img.shields.io/badge/AppVersion-v1.0-informational?style=flat-square)
+![Version: 1.5.1](https://img.shields.io/badge/Version-1.5.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.0](https://img.shields.io/badge/AppVersion-v1.0-informational?style=flat-square)
 
 Helm chart for Spring Boot application with logging and tracing
 
@@ -201,95 +201,6 @@ false
 </pre>
 </td>
 			<td>Init containers full declaration</td>
-		</tr>
-		<tr>
-			<td>jaeger.application.host</td>
-			<td>string</td>
-			<td><pre lang="json">
-"localhost"
-</pre>
-</td>
-			<td>Jaeger agent host for application (set `JAEGER_HOST` env)</td>
-		</tr>
-		<tr>
-			<td>jaeger.application.port</td>
-			<td>int</td>
-			<td><pre lang="json">
-6831
-</pre>
-</td>
-			<td>Jaeger agent port for application (set `JAEGER_PORT` env)</td>
-		</tr>
-		<tr>
-			<td>jaeger.collector</td>
-			<td>object</td>
-			<td><pre lang="json">
-{
-  "host": "jaeger-collector",
-  "port": 14250
-}
-</pre>
-</td>
-			<td>Jaeger collector address</td>
-		</tr>
-		<tr>
-			<td>jaeger.enabled</td>
-			<td>bool</td>
-			<td><pre lang="json">
-false
-</pre>
-</td>
-			<td>Enable jaeger distributed tracing</td>
-		</tr>
-		<tr>
-			<td>jaeger.image</td>
-			<td>object</td>
-			<td><pre lang="json">
-{
-  "pullPolicy": "IfNotPresent",
-  "repository": "jaegertracing/jaeger-agent",
-  "tag": "1.41.0"
-}
-</pre>
-</td>
-			<td>Jaeger agent image</td>
-		</tr>
-		<tr>
-			<td>jaeger.ports</td>
-			<td>object</td>
-			<td><pre lang="json">
-{
-  "admin": 14271,
-  "binaryThrift": 6832,
-  "compactThrift": 6831
-}
-</pre>
-</td>
-			<td>Jaeger agent ports</td>
-		</tr>
-		<tr>
-			<td>jaeger.resources.limits</td>
-			<td>object</td>
-			<td><pre lang="json">
-{
-  "cpu": "500m",
-  "memory": "1024Mi"
-}
-</pre>
-</td>
-			<td>Limited resources</td>
-		</tr>
-		<tr>
-			<td>jaeger.resources.requests</td>
-			<td>object</td>
-			<td><pre lang="json">
-{
-  "cpu": "500m",
-  "memory": "1024Mi"
-}
-</pre>
-</td>
-			<td>Requested resources</td>
 		</tr>
 		<tr>
 			<td>javaOptions</td>
@@ -494,6 +405,24 @@ null
 </pre>
 </td>
 			<td>Custom service name</td>
+		</tr>
+		<tr>
+			<td>tracing.enabled</td>
+			<td>bool</td>
+			<td><pre lang="json">
+false
+</pre>
+</td>
+			<td>Enable tracing (set `TRACING_ENABLED` env)</td>
+		</tr>
+		<tr>
+			<td>tracing.endpoint</td>
+			<td>string</td>
+			<td><pre lang="json">
+"jaeger-collector:4318"
+</pre>
+</td>
+			<td>OpenTelemetry collector endpoint</td>
 		</tr>
 	</tbody>
 </table>

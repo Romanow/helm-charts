@@ -84,37 +84,11 @@ circuitBreaker:
   # -- Enable circuit breaker (set `CIRCUIT_BREAKER_ENABLED` env)
   enabled: false
 
-jaeger:
-  # -- Enable jaeger distributed tracing
+tracing:
+  # -- Enable tracing (set `TRACING_ENABLED` env)
   enabled: false
-  # -- Jaeger agent image
-  image:
-    pullPolicy: IfNotPresent
-    repository: jaegertracing/jaeger-agent
-    tag: 1.41.0
-  application:
-    # -- Jaeger agent host for application (set `JAEGER_HOST` env)
-    host: localhost
-    # -- Jaeger agent port for application (set `JAEGER_PORT` env)
-    port: 6831
-  # -- Jaeger collector address
-  collector:
-    host: jaeger-collector
-    port: 14250
-  # -- Jaeger agent ports
-  ports:
-    compactThrift: 6831
-    binaryThrift: 6832
-    admin: 14271
-  resources:
-    # -- Requested resources
-    requests:
-      cpu: 500m
-      memory: 1024Mi
-    # -- Limited resources
-    limits:
-      cpu: 500m
-      memory: 1024Mi
+  # -- OpenTelemetry collector endpoint
+  endpoint: jaeger-collector:4318
 
 filebeat:
   # -- Enable send logs to ELK
