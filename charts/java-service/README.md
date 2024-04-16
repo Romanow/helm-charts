@@ -1,6 +1,6 @@
 # Helm Chart for java-service
 
-![Version: 1.5.1](https://img.shields.io/badge/Version-1.5.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.0](https://img.shields.io/badge/AppVersion-v1.0-informational?style=flat-square)
+![Version: 1.5.2](https://img.shields.io/badge/Version-1.5.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.0](https://img.shields.io/badge/AppVersion-v1.0-informational?style=flat-square)
 
 Helm chart for Spring Boot application with logging and tracing
 
@@ -40,6 +40,15 @@ false
 </pre>
 </td>
 			<td>Enable circuit breaker (set `CIRCUIT_BREAKER_ENABLED` env)</td>
+		</tr>
+		<tr>
+			<td>configVolumes</td>
+			<td>list</td>
+			<td><pre lang="json">
+[]
+</pre>
+</td>
+			<td>External configs</td>
 		</tr>
 		<tr>
 			<td>database.host</td>

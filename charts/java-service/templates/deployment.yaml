@@ -119,6 +119,13 @@ spec:
             - name: {{ .Chart.Name }}-config-volume
               mountPath: /usr/share/filebeat/filebeat.yml
               subPath: filebeat.yml
+            {{- range $config := .Values.configVolumes }}
+            - name: {{ $config.name }}-config-volume
+              mountPath: {{ $config.mount }}
+              {{- if $config.path }}
+              subPath: {{ $config.path }}
+              {{- end }}
+            {{- end }}
         {{- end }}
       volumes:
         - name: {{ .Chart.Name }}-logs-volume
@@ -126,3 +133,9 @@ spec:
           configMap:
             name: {{ .Release.Name }}
             defaultMode: 420
+        {{- range $config := .Values.configVolumes }}
+        - name: {{ $config.name }}
+          configMap:
+            name: {{ $config.name }}-config-volume
+            defaultMode: 420
+        {{- end }}

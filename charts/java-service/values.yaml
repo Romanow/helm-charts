@@ -25,6 +25,9 @@ environments: []
 # -- Additional secrets
 secrets: []
 
+# -- External configs
+configVolumes: []
+
 # -- Count of replicas
 replicas: 1
 ports:
