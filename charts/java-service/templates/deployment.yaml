@@ -120,7 +120,7 @@ spec:
               mountPath: /usr/share/filebeat/filebeat.yml
               subPath: filebeat.yml
             {{- range $config := .Values.configVolumes }}
-            - name: {{ $config.name }}-config-volume
+            - name: {{ $config.name }}
               mountPath: {{ $config.mount }}
               {{- if $config.path }}
               subPath: {{ $config.path }}
@@ -136,6 +136,6 @@ spec:
         {{- range $config := .Values.configVolumes }}
         - name: {{ $config.name }}
           configMap:
-            name: {{ $config.name }}-config-volume
+            name: {{ $config.name }}
             defaultMode: 420
         {{- end }}
