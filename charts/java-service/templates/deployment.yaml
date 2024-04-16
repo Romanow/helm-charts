@@ -138,4 +138,5 @@ spec:
           configMap:
             name: {{ $config.name }}
             defaultMode: 420
+            optional: true
         {{- end }}
