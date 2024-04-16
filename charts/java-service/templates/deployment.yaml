@@ -101,6 +101,13 @@ spec:
           volumeMounts:
             - name: {{ .Chart.Name }}-logs-volume
               mountPath: "/var/log/{{ .Values.logFolder | default .Release.Name }}/"
+            {{- range $config := .Values.configVolumes }}
+            - name: {{ $config.name }}
+              mountPath: {{ $config.mount }}
+              {{- if $config.path }}
+              subPath: {{ $config.path }}
+              {{- end }}
+            {{- end }}
         {{- end }}
         {{- if .Values.filebeat.enabled }}
         - name: {{ .Release.Name }}-filebeat
@@ -119,13 +126,6 @@ spec:
             - name: {{ .Chart.Name }}-config-volume
               mountPath: /usr/share/filebeat/filebeat.yml
               subPath: filebeat.yml
-            {{- range $config := .Values.configVolumes }}
-            - name: {{ $config.name }}
-              mountPath: {{ $config.mount }}
-              {{- if $config.path }}
-              subPath: {{ $config.path }}
-              {{- end }}
-            {{- end }}
         {{- end }}
       volumes:
         - name: {{ .Chart.Name }}-logs-volume
