@@ -97,10 +97,11 @@ spec:
           ports:
             - name: {{ .Chart.Name }}
               containerPort: {{ .Values.ports.internal }}
-          {{- if .Values.filebeat.enabled }}
           volumeMounts:
+            {{- if .Values.filebeat.enabled }}
             - name: {{ .Chart.Name }}-logs-volume
               mountPath: "/var/log/{{ .Values.logFolder | default .Release.Name }}/"
+            {{- end }}
             {{- range $config := .Values.configVolumes }}
             - name: {{ $config.name }}
               mountPath: {{ $config.mount }}
@@ -108,7 +109,6 @@ spec:
               subPath: {{ $config.path }}
               {{- end }}
             {{- end }}
-        {{- end }}
         {{- if .Values.filebeat.enabled }}
         - name: {{ .Release.Name }}-filebeat
           image: "{{ .Values.filebeat.image.repository }}:{{ .Values.filebeat.image.tag }}"

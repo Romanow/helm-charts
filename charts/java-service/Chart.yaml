@@ -2,7 +2,7 @@ apiVersion: v2
 name: java-service
 type: application
 description: Helm chart for Spring Boot application with logging and tracing
-version: 1.5.3
+version: 1.5.4
 appVersion: "v1.0"
 home: https://github.com/Romanow/helm-charts/tree/master/charts/java-service
 icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/spring-boot.png
