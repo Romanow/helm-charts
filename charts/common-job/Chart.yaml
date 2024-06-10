@@ -2,7 +2,7 @@ apiVersion: v2
 name: common-job
 type: application
 description: Helm chart for job
-version: 1.5.1
+version: 1.6.0
 appVersion: "1.0"
 home: https://github.com/Romanow/helm-charts/tree/master/charts/common-job
 icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/job.png
