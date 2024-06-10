@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-query
+  name: {{ .Release.Name }}
   labels:
     app.kubernetes.io/name: {{ .Chart.Name }}
     app.kubernetes.io/instance: {{ .Release.Name }}
@@ -12,11 +12,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-query
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-query
+        app: {{ .Release.Name }}
         app.kubernetes.io/name: {{ .Chart.Name }}
         app.kubernetes.io/instance: {{ .Release.Name }}
         app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
@@ -24,23 +24,25 @@ spec:
         app.kubernetes.io/managed-by: helm
     spec:
       containers:
-        - name: {{ .Release.Name }}-query
+        - name: {{ .Release.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: SPAN_STORAGE_TYPE
-              value: elasticsearch
-            - name: JAEGER_AGENT_PORT
-              value: "{{ .Values.ports.agent }}"
+              value: {{ ternary "elasticsearch" "memory" (eq .Values.storage.type "elasticsearch") }}
+            - name: COLLECTOR_OTLP_ENABLED
+              value: "true"
+            {{- if eq .Values.storage.type "elasticsearch" }}
             - name: ES_SERVER_URLS
-              value: {{ .Values.elasticsearch.url }}
-            {{- if .Values.elasticsearch.username }}
+              value: {{ .Values.storage.elasticsearch.url }}
+            {{- if .Values.storage.elasticsearch.username }}
             - name: ES_USERNAME
-              value: {{ .Values.elasticsearch.username }}
+              value: {{ .Values.storage.elasticsearch.username }}
             {{- end }}
-            {{- if .Values.elasticsearch.password }}
+            {{- if .Values.storage.elasticsearch.password }}
             - name: ES_PASSWORD
-              value: {{ .Values.elasticsearch.password }}
+              value: {{ .Values.storage.elasticsearch.password }}
+            {{- end }}
             {{- end }}
           resources:
             requests:
@@ -50,7 +52,9 @@ spec:
               memory: {{ .Values.resources.limits.memory }}
               cpu: {{ .Values.resources.limits.cpu }}
           ports:
-            - name: query
-              containerPort: {{ .Values.ports.query }}
             - name: admin
               containerPort: {{ .Values.ports.admin }}
+            - name: otlp
+              containerPort: {{ .Values.ports.otlp }}
+            - name: zipkin
+              containerPort: {{ .Values.ports.zipkin }}

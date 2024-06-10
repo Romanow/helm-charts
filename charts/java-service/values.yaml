@@ -91,7 +91,7 @@ tracing:
   # -- Enable tracing (set `TRACING_ENABLED` env)
   enabled: false
   # -- OpenTelemetry collector endpoint
-  endpoint: jaeger-collector:4318
+  endpoint: http://localhost:4318/v1/traces
 
 filebeat:
   # -- Enable send logs to ELK

@@ -65,7 +65,7 @@ spec:
             - name: TRACING_ENABLED
               value: "{{ .Values.tracing.enabled }}"
             {{- if .Values.tracing.endpoint }}
-            - name: TRACING_COLLECTOR_ENDPOINT
+            - name: COLLECTOR_ENDPOINT
               value: "{{ .Values.tracing.endpoint }}"
             {{- end }}
             {{- end }}

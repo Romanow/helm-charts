@@ -1,6 +1,6 @@
 # Helm Chart for node-exporter
 
-![Version: 1.5.0](https://img.shields.io/badge/Version-1.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.5.0](https://img.shields.io/badge/AppVersion-1.5.0-informational?style=flat-square)
+![Version: 1.5.0](https://img.shields.io/badge/Version-1.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.8.1](https://img.shields.io/badge/AppVersion-1.8.1-informational?style=flat-square)
 
 Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written in Go with pluggable metric collectors.
 
@@ -39,7 +39,7 @@ helm uninstall node-exporter
 {
   "pullPolicy": "IfNotPresent",
   "repository": "prom/node-exporter",
-  "tag": "v1.5.0"
+  "tag": "v1.8.1"
 }
 </pre>
 </td>

@@ -1,25 +1,25 @@
-# Helm Chart for jaeger-query
+# Helm Chart for jaeger
 
-![Version: 1.5.0](https://img.shields.io/badge/Version-1.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.41.0](https://img.shields.io/badge/AppVersion-1.41.0-informational?style=flat-square)
+![Version: 1.6.0](https://img.shields.io/badge/Version-1.6.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.57.0](https://img.shields.io/badge/AppVersion-1.57.0-informational?style=flat-square)
 
 Jaeger is a distributed tracing system released as open source project. It is used for monitoring and troubleshooting microservices-based distributed systems.
 
 ### Installing the Chart
 
-To install the chart with the release name `jaeger-query`:
+To install the chart with the release name `jaeger`:
 
 ```shell
 $ helm repo add romanow https://romanow.github.io/helm-charts/
 $ helm repo update
-$ helm install jaeger-query romanow/jaeger-query
+$ helm install jaeger romanow/jaeger
 ```
 
 ### Uninstalling the Chart
 
-To uninstall the `jaeger-query` installation:
+To uninstall the `jaeger` installation:
 
 ```shell
-helm uninstall jaeger-query
+helm uninstall jaeger
 ```
 
 ### Configuration
@@ -33,40 +33,13 @@ helm uninstall jaeger-query
 	</thead>
 	<tbody>
 		<tr>
-			<td>elasticsearch.password</td>
-			<td>string</td>
-			<td><pre lang="json">
-"qwerty"
-</pre>
-</td>
-			<td>Elastic password (optional)</td>
-		</tr>
-		<tr>
-			<td>elasticsearch.url</td>
-			<td>string</td>
-			<td><pre lang="json">
-"http://elasticsearch:9200"
-</pre>
-</td>
-			<td>Elastic address</td>
-		</tr>
-		<tr>
-			<td>elasticsearch.username</td>
-			<td>string</td>
-			<td><pre lang="json">
-"logging"
-</pre>
-</td>
-			<td>Elastic username (optional)</td>
-		</tr>
-		<tr>
 			<td>image</td>
 			<td>object</td>
 			<td><pre lang="json">
 {
   "pullPolicy": "IfNotPresent",
-  "repository": "jaegertracing/jaeger-query",
-  "tag": "1.41.0"
+  "repository": "jaegertracing//all-in-one",
+  "tag": "1.57.0"
 }
 </pre>
 </td>
@@ -104,13 +77,13 @@ true
 			<td>object</td>
 			<td><pre lang="json">
 {
-  "admin": 16687,
-  "agent": 6831,
-  "query": 16686
+  "admin": 16686,
+  "otlp": 4318,
+  "zipkin": 9411
 }
 </pre>
 </td>
-			<td>Jaeger query ports</td>
+			<td>Jaeger ports</td>
 		</tr>
 		<tr>
 			<td>resources.limits</td>
@@ -136,13 +109,49 @@ true
 </td>
 			<td>Requested resources</td>
 		</tr>
+		<tr>
+			<td>storage.elasticsearch.password</td>
+			<td>string</td>
+			<td><pre lang="json">
+"qwerty"
+</pre>
+</td>
+			<td>Elastic password (optional)</td>
+		</tr>
+		<tr>
+			<td>storage.elasticsearch.url</td>
+			<td>string</td>
+			<td><pre lang="json">
+"http://elasticsearch:9200"
+</pre>
+</td>
+			<td>Elastic address</td>
+		</tr>
+		<tr>
+			<td>storage.elasticsearch.username</td>
+			<td>string</td>
+			<td><pre lang="json">
+"logging"
+</pre>
+</td>
+			<td>Elastic username (optional)</td>
+		</tr>
+		<tr>
+			<td>storage.type</td>
+			<td>string</td>
+			<td><pre lang="json">
+"elasticsearch"
+</pre>
+</td>
+			<td></td>
+		</tr>
 	</tbody>
 </table>
 
 ### Sources
 
 * <https://www.jaegertracing.io/docs/latest/>
-* <https://hub.docker.com/r/jaegertracing/jaeger-agent>
+* <https://hub.docker.com/r/jaegertracing/all-in-one>
 
 ### Maintainer
 

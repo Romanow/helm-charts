@@ -1,0 +1,5 @@
+storage:
+  type: memory
+
+ingress:
+  enabled: false

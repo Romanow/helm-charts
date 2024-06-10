@@ -26,8 +26,7 @@
 
 ### Tracing
 
-* [Jaeger Collector](charts/jaeger-collector)
-* [Jaeger Query](charts/jaeger-query)
+* [Jaeger](charts/jaeger)
 
 ### Logging
 
