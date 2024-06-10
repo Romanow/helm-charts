@@ -2,6 +2,26 @@ apiVersion: v1
 entries:
   common-job:
   - apiVersion: v2
+    appVersion: "1.0"
+    created: "2024-06-10T11:47:36.29861198Z"
+    description: Helm chart for job
+    digest: 046e72140c682b33471e64fac2d05f12fab9fbf826a8f9f6be7e37f15ac3354a
+    home: https://github.com/Romanow/helm-charts/tree/master/charts/common-job
+    icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/job.png
+    keywords:
+    - job
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: common-job
+    sources:
+    - https://kubernetes.io/docs/concepts/workloads/controllers/job/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/common-job-1.6.0/common-job-1.6.0.tgz
+    version: 1.6.0
+  - apiVersion: v2
     appVersion: v1.0
     created: "2023-11-26T11:33:15.078520645Z"
     description: Helm chart for job
@@ -233,6 +253,29 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/elasticsearch-1.0.0/elasticsearch-1.0.0.tgz
     version: 1.0.0
   frontend:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2024-06-10T11:47:36.405009517Z"
+    description: Frontend application running in nginx, based on create-react-app.
+    digest: 7f30fa61017bcb0c993594b1c6801dbfa0ccd549a03685a818a8a3463b2cb672
+    home: https://github.com/Romanow/helm-charts/tree/master/charts/frontend
+    icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/react.png
+    keywords:
+    - frontend
+    - react
+    - nginx
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: frontend
+    sources:
+    - https://create-react-app.dev/
+    - https://hub.docker.com/_/nginx
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/frontend-1.6.0/frontend-1.6.0.tgz
+    version: 1.6.0
   - apiVersion: v2
     appVersion: v1.0
     created: "2023-10-26T10:13:52.513220681Z"
@@ -846,6 +889,31 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/influxdb-1.0.0/influxdb-1.0.0.tgz
     version: 1.0.0
+  jaeger:
+  - apiVersion: v2
+    appVersion: 1.57.0
+    created: "2024-06-10T11:47:36.561960798Z"
+    description: Jaeger is a distributed tracing system released as open source project.
+      It is used for monitoring and troubleshooting microservices-based distributed
+      systems.
+    digest: 413044e917948f91163296b1fb0c543729d3d7dcfb6922bb5ea02ec941600b92
+    home: https://github.com/Romanow/helm-charts/tree/master/charts/jaeger
+    icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/jaeger.png
+    keywords:
+    - jaeger
+    - tracing
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: jaeger
+    sources:
+    - https://www.jaegertracing.io/docs/latest/
+    - https://hub.docker.com/r/jaegertracing/all-in-one
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/jaeger-1.6.1/jaeger-1.6.1.tgz
+    version: 1.6.1
   jaeger-collector:
   - apiVersion: v2
     appVersion: 1.41.0
@@ -1227,6 +1295,29 @@ entries:
     - https://github.com/Romanow/helm-charts/releases/download/jaeger-query-1.0.0/jaeger-query-1.0.0.tgz
     version: 1.0.0
   java-service:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2024-06-10T11:47:36.689618289Z"
+    description: Helm chart for Spring Boot application with logging and tracing
+    digest: 49f75dbc51bc55d4d6040d71f2392fb83e9f4ef3051a90a53c4216b3119aafcb
+    home: https://github.com/Romanow/helm-charts/tree/master/charts/java-service
+    icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/spring-boot.png
+    keywords:
+    - spring boot
+    - java
+    - kotlin
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: java-service
+    sources:
+    - https://spring.io/projects/spring-boot
+    - https://hub.docker.com/_/amazoncorretto
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/java-service-1.6.1/java-service-1.6.1.tgz
+    version: 1.6.1
   - apiVersion: v2
     appVersion: v1.0
     created: "2024-04-16T13:06:15.0183093Z"
@@ -2196,6 +2287,30 @@ entries:
     version: 1.0.0
   node-exporter:
   - apiVersion: v2
+    appVersion: 1.8.1
+    created: "2024-06-10T11:47:36.812739821Z"
+    description: Prometheus exporter for hardware and OS metrics exposed by *NIX kernels,
+      written in Go with pluggable metric collectors.
+    digest: f8eefba0c80d234bd91695787461d9b8253c9030d3a794e3b5a7e7c9a3863825
+    home: https://github.com/Romanow/helm-charts/tree/master/charts/node-exporter
+    icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/prometheus.png
+    keywords:
+    - node-exporter
+    - prometheus
+    - monitoring
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: node-exporter
+    sources:
+    - https://github.com/prometheus/node_exporter
+    - https://hub.docker.com/r/prom/node-exporter
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/node-exporter-1.6.0/node-exporter-1.6.0.tgz
+    version: 1.6.0
+  - apiVersion: v2
     appVersion: 1.5.0
     created: "2023-10-26T10:13:53.534696834Z"
     description: Prometheus exporter for hardware and OS metrics exposed by *NIX kernels,
@@ -2761,6 +2876,30 @@ entries:
     version: 1.0.0
   prometheus:
   - apiVersion: v2
+    appVersion: 2.52.0
+    created: "2024-06-10T11:47:36.938323601Z"
+    description: Prometheus collects and stores its metrics as time series data, i.e.
+      metrics information is stored with the timestamp at which it was recorded, alongside
+      optional key-value pairs called labels.
+    digest: 0ee1bd420c5238aa6e952b8f0cad28a7811a7cd31ddd5024be81552236831424
+    home: https://github.com/Romanow/helm-charts/tree/master/charts/prometheus
+    icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/prometheus.png
+    keywords:
+    - prometheus
+    - monitoring
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: prometheus
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/prometheus
+    - https://prometheus.io/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.6.0/prometheus-1.6.0.tgz
+    version: 1.6.0
+  - apiVersion: v2
     appVersion: 2.40.0
     created: "2023-10-26T10:13:53.823595677Z"
     description: Prometheus collects and stores its metrics as time series data, i.e.
@@ -2957,4 +3096,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.2/prometheus-1.0.2.tgz
     version: 1.0.2
-generated: "2024-04-16T13:06:15.018941689Z"
+generated: "2024-06-10T11:47:36.938800321Z"
