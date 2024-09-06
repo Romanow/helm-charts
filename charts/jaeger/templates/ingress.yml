@@ -9,9 +9,8 @@ metadata:
     app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
     app.kubernetes.io/component: tracing
     app.kubernetes.io/managed-by: helm
-  annotations:
-    kubernetes.io/ingress.class: nginx
 spec:
+  ingressClassName: nginx
   defaultBackend:
     service:
       name: {{ .Release.Name }}
