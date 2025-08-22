@@ -49,7 +49,7 @@ scrape_configs:
   ##########################################
   - job_name: "kube-state-metrics"
     static_configs:
-      - targets: [ "kube-state-metrics-service.default.svc.cluster.local:8080" ]
+      - targets: [ "kube-state-metrics:8080" ]
   ##########################################
   ##########################################
   ##########################################
