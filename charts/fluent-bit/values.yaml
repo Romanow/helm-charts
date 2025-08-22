@@ -1,0 +1,33 @@
+# -- Image name and version
+image:
+  pullPolicy: IfNotPresent
+  repository: fluent/fluent-bit
+  tag: 4.0-debug
+
+# -- Fluent-bit port
+port: 5170
+
+# -- Debug output to stdout
+debug: true
+
+elasticsearch:
+  # -- Elastic host
+  host: elasticsearch
+  # -- Elastic port
+  port: 9200
+  # -- Elastic index
+  index: logs
+  # -- Elastic username (optional)
+  username: logging
+  # -- Elastic password (optional)
+  password: qwerty
+
+resources:
+  # -- Requested resources
+  requests:
+    cpu: 200m
+    memory: 512Mi
+  # -- Limited resources
+  limits:
+    cpu: 200m
+    memory: 512Mi

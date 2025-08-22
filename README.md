@@ -30,7 +30,7 @@
 
 ### Logging
 
-* [Logstash](charts/logstash)
+* [Fluent Bit](charts/fluent-bit)
 * [Kibana](charts/kibana)
 
 ### Public Report

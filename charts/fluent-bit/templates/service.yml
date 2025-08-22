@@ -13,5 +13,5 @@ spec:
     app: {{ .Release.Name }}
   ports:
     - protocol: TCP
-      port: {{ .Values.ports.beats }}
-      targetPort: beats
+      port: {{ .Values.port }}
+      targetPort: {{ .Chart.Name }}

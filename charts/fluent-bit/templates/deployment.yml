@@ -28,22 +28,20 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           readinessProbe:
-            initialDelaySeconds: 120
-            timeoutSeconds: 30
+            initialDelaySeconds: 15
+            timeoutSeconds: 10
             httpGet:
-              path: /
-              port: http
+              path: /api/v1/health
+              port: 2020
           livenessProbe:
-            initialDelaySeconds: 120
-            timeoutSeconds: 30
+            initialDelaySeconds: 15
+            timeoutSeconds: 10
             httpGet:
-              path: /
-              port: http
+              path: /api/v1/health
+              port: 2020
           ports:
-            - name: beats
-              containerPort: {{ .Values.ports.beats }}
             - name: http
-              containerPort: {{ .Values.ports.http }}
+              containerPort: {{ .Values.port }}
           resources:
             requests:
               memory: {{ .Values.resources.requests.memory }}
@@ -52,13 +50,9 @@ spec:
               memory: {{ .Values.resources.limits.memory }}
               cpu: {{ .Values.resources.limits.cpu }}
           volumeMounts:
-            - name: {{ .Chart.Name }}
-              mountPath: /usr/share/logstash/config/logstash.yml
-              subPath: logstash.yml
-            - name: {{ .Chart.Name }}
-              mountPath: /usr/share/logstash/pipeline/logstash.conf
-              subPath: logstash.conf
+            - name: {{ $.Chart.Name }}-config-volume
+              mountPath: /fluent-bit/etc/
       volumes:
-        - name: {{ .Chart.Name }}
+        - name: {{ $.Chart.Name }}-config-volume
           configMap:
-            name: {{ .Release.Name }}
+            name: {{ $.Release.Name }}-config
