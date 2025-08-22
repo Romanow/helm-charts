@@ -3356,6 +3356,30 @@ entries:
   prometheus:
   - apiVersion: v2
     appVersion: 2.52.0
+    created: "2025-08-22T20:32:06.855356949Z"
+    description: Prometheus collects and stores its metrics as time series data, i.e.
+      metrics information is stored with the timestamp at which it was recorded, alongside
+      optional key-value pairs called labels.
+    digest: fb95c90bbdcf3945490402717e545cbc64344544668aec002a8d505b5b19d77c
+    home: https://github.com/Romanow/helm-charts/tree/master/charts/prometheus
+    icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/prometheus.png
+    keywords:
+    - prometheus
+    - monitoring
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: prometheus
+    sources:
+    - https://github.com/Romanow/helm-charts/tree/master/charts/prometheus
+    - https://prometheus.io/
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.7.2/prometheus-1.7.2.tgz
+    version: 1.7.2
+  - apiVersion: v2
+    appVersion: 2.52.0
     created: "2025-08-22T20:26:18.120157147Z"
     description: Prometheus collects and stores its metrics as time series data, i.e.
       metrics information is stored with the timestamp at which it was recorded, alongside
@@ -3623,4 +3647,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.2/prometheus-1.0.2.tgz
     version: 1.0.2
-generated: "2025-08-22T20:26:18.120786834Z"
+generated: "2025-08-22T20:32:06.855642203Z"
