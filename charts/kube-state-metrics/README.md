@@ -1,25 +1,25 @@
-# Helm Chart for node-exporter
+# Helm Chart for kube-state-metrics
 
-![Version: 1.7.1](https://img.shields.io/badge/Version-1.7.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.8.1](https://img.shields.io/badge/AppVersion-1.8.1-informational?style=flat-square)
+![Version: 1.7.1](https://img.shields.io/badge/Version-1.7.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2](https://img.shields.io/badge/AppVersion-2-informational?style=flat-square)
 
-Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written in Go with pluggable metric collectors.
+Add-on agent to generate and expose cluster-level metrics.
 
 ### Installing the Chart
 
-To install the chart with the release name `node-exporter`:
+To install the chart with the release name `kube-state-metrics`:
 
 ```shell
 $ helm repo add romanow https://romanow.github.io/helm-charts/
 $ helm repo update
-$ helm install node-exporter romanow/node-exporter
+$ helm install kube-state-metrics romanow/kube-state-metrics
 ```
 
 ### Uninstalling the Chart
 
-To uninstall the `node-exporter` installation:
+To uninstall the `kube-state-metrics` installation:
 
 ```shell
-helm uninstall node-exporter
+helm uninstall kube-state-metrics
 ```
 
 ### Configuration
@@ -38,8 +38,8 @@ helm uninstall node-exporter
 			<td><pre lang="json">
 {
   "pullPolicy": "IfNotPresent",
-  "repository": "prom/node-exporter",
-  "tag": "v1.8.1"
+  "repository": "bitnami/kube-state-metrics",
+  "tag": 2
 }
 </pre>
 </td>
@@ -49,17 +49,17 @@ helm uninstall node-exporter
 			<td>port</td>
 			<td>int</td>
 			<td><pre lang="json">
-9100
+8080
 </pre>
 </td>
-			<td>Node Exporter port</td>
+			<td>Metrics port</td>
 		</tr>
 		<tr>
 			<td>resources.limits</td>
 			<td>object</td>
 			<td><pre lang="json">
 {
-  "cpu": "200m",
+  "cpu": "100m",
   "memory": "512Mi"
 }
 </pre>
@@ -71,7 +71,7 @@ helm uninstall node-exporter
 			<td>object</td>
 			<td><pre lang="json">
 {
-  "cpu": "200m",
+  "cpu": "100m",
   "memory": "512Mi"
 }
 </pre>
@@ -92,8 +92,8 @@ helm uninstall node-exporter
 
 ### Sources
 
-* <https://github.com/prometheus/node_exporter>
-* <https://hub.docker.com/r/prom/node-exporter>
+* <https://github.com/kubernetes/kube-state-metrics>
+* <https://hub.docker.com/r/bitnami/kube-state-metrics>
 
 ### Maintainer
 

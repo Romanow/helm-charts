@@ -4,6 +4,10 @@ image:
   repository: elasticsearch
   tag: 7.17.8
 
+# -- Custom service name
+# @default -- .Release.Name
+serviceName:
+
 # -- Count of replicas
 replicas: 3
 

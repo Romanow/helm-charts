@@ -2,7 +2,7 @@ apiVersion: v2
 name: frontend
 type: application
 description: Frontend application running in nginx, based on create-react-app.
-version: 1.7.0
+version: 1.7.1
 appVersion: "1.0"
 home: https://github.com/Romanow/helm-charts/tree/master/charts/frontend
 icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/react.png

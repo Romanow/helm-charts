@@ -1,6 +1,6 @@
 # Helm Chart for elasticsearch
 
-![Version: 1.7.0](https://img.shields.io/badge/Version-1.7.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 7.17.8](https://img.shields.io/badge/AppVersion-7.17.8-informational?style=flat-square)
+![Version: 1.7.1](https://img.shields.io/badge/Version-1.7.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 7.17.8](https://img.shields.io/badge/AppVersion-7.17.8-informational?style=flat-square)
 
 Elasticsearch is a distributed, RESTful search and analytics engine capable of addressing a growing number of use cases.
 
@@ -140,6 +140,15 @@ true
 </pre>
 </td>
 			<td>Default password</td>
+		</tr>
+		<tr>
+			<td>serviceName</td>
+			<td>string</td>
+			<td><pre lang="">
+.Release.Name
+</pre>
+</td>
+			<td>Custom service name</td>
 		</tr>
 	</tbody>
 </table>

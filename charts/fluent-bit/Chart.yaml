@@ -2,7 +2,7 @@ apiVersion: v2
 name: fluent-bit
 type: application
 description: Fluent Bit, lightweight logs and metrics collector and forwarder.
-version: 1.7.0
+version: 1.7.1
 appVersion: "4.0-debug"
 home: https://github.com/Romanow/helm-charts/tree/master/charts/fluent-bit
 icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/fluent-bit.png

@@ -2,10 +2,10 @@ apiVersion: v2
 name: common-job
 type: application
 description: Helm chart for k8s job.
-version: 1.7.0
+version: 1.7.1
 appVersion: "1.0"
 home: https://github.com/Romanow/helm-charts/tree/master/charts/common-job
-icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/job.png
+icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/k8s.png
 sources:
   - https://kubernetes.io/docs/concepts/workloads/controllers/job/
 keywords:

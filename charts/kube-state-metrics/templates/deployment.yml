@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/component: monitoring
+    app.kubernetes.io/managed-by: helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+        app.kubernetes.io/name: {{ .Chart.Name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+        app.kubernetes.io/component: monitoring
+        app.kubernetes.io/managed-by: helm
+    spec:
+      serviceAccountName: {{ .Release.Name }}
+      containers:
+        - name: {{ .Release.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsUser: 65534
+            capabilities:
+              drop: [ "ALL" ]
+          livenessProbe:
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            httpGet:
+              path: /livez
+              port: http
+          readinessProbe:
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            httpGet:
+              path: /healthz
+              port: http
+          ports:
+            - containerPort: {{ .Values.port }}
+              name: http

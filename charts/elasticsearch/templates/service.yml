@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .Values.serviceName | default .Release.Name }}
   labels:
     app.kubernetes.io/name: {{ .Chart.Name }}
     app.kubernetes.io/instance: {{ .Release.Name }}

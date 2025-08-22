@@ -11,7 +11,8 @@ metadata:
 spec:
   selector:
     app: {{ .Release.Name }}
+  clusterIP: None
   ports:
     - protocol: TCP
       port: {{ .Values.port }}
-      targetPort: {{ .Chart.Name }}
+      targetPort: http

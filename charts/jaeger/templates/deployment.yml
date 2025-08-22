@@ -52,9 +52,7 @@ spec:
               memory: {{ .Values.resources.limits.memory }}
               cpu: {{ .Values.resources.limits.cpu }}
           ports:
-            - name: admin
-              containerPort: {{ .Values.ports.admin }}
+            - name: http
+              containerPort: {{ .Values.ports.http }}
             - name: otlp
               containerPort: {{ .Values.ports.otlp }}
-            - name: zipkin
-              containerPort: {{ .Values.ports.zipkin }}

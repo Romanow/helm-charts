@@ -4,6 +4,10 @@ image:
   repository:
   tag:
 
+# -- Custom service name
+# @default -- .Release.Name
+serviceName:
+
 # -- nginx port
 port: 3000
 

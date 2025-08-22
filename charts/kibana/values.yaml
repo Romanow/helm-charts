@@ -4,6 +4,10 @@ image:
   repository: kibana
   tag: 7.17.8
 
+# -- Custom service name
+# @default -- .Release.Name
+serviceName:
+
 # -- Kibana port
 port: 5601
 

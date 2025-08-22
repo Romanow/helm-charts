@@ -21,6 +21,7 @@
 ### Monitoring
 
 * [Node Exporter](charts/node-exporter)
+* [Kube State Metrics](charts/kube-state-metrics)
 * [Prometheus](charts/prometheus)
 * [Grafana](charts/grafana)
 

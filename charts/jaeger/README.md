@@ -77,9 +77,8 @@ true
 			<td>object</td>
 			<td><pre lang="json">
 {
-  "admin": 16686,
-  "otlp": 4318,
-  "zipkin": 9411
+  "http": 16686,
+  "otlp": 4318
 }
 </pre>
 </td>
@@ -108,6 +107,15 @@ true
 </pre>
 </td>
 			<td>Requested resources</td>
+		</tr>
+		<tr>
+			<td>serviceName</td>
+			<td>string</td>
+			<td><pre lang="">
+.Release.Name
+</pre>
+</td>
+			<td>Custom service name</td>
 		</tr>
 		<tr>
 			<td>storage.elasticsearch.password</td>

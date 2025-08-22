@@ -2,7 +2,7 @@ apiVersion: v2
 name: prometheus
 type: application
 description: Prometheus collects and stores its metrics as time series data, i.e. metrics information is stored with the timestamp at which it was recorded, alongside optional key-value pairs called labels.
-version: 1.7.0
+version: 1.7.1
 appVersion: "2.52.0"
 home: https://github.com/Romanow/helm-charts/tree/master/charts/prometheus
 icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/prometheus.png

@@ -4,6 +4,10 @@ image:
   repository: fluent/fluent-bit
   tag: 4.0-debug
 
+# -- Custom service name
+# @default -- .Release.Name
+serviceName:
+
 # -- Fluent-bit port
 port: 5170
 

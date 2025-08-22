@@ -4,11 +4,14 @@ image:
   repository: jaegertracing/all-in-one
   tag: 1.57.0
 
+# -- Custom service name
+# @default -- .Release.Name
+serviceName:
+
 # -- Jaeger ports
 ports:
-  admin: 16686
+  http: 16686
   otlp: 4318
-  zipkin: 9411
 
 ingress:
   # -- Enable ingress

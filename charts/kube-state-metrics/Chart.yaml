@@ -1,0 +1,18 @@
+apiVersion: v2
+name: kube-state-metrics
+type: application
+description: Add-on agent to generate and expose cluster-level metrics.
+version: 1.7.1
+appVersion: "2"
+home: https://github.com/Romanow/helm-charts/tree/master/charts/kube-state-metrics
+icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/k8s.png
+sources:
+  - https://github.com/kubernetes/kube-state-metrics
+  - https://hub.docker.com/r/bitnami/kube-state-metrics
+keywords:
+  - fluent-bit
+  - logging
+maintainers:
+  - name: Romanov Alexey
+    email: romanowalex@mail.ru
+    url: https://romanow.github.io

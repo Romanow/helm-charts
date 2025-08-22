@@ -1,0 +1,22 @@
+# -- Image name and version
+image:
+  pullPolicy: IfNotPresent
+  repository: bitnami/kube-state-metrics
+  tag: 2
+
+# -- Custom service name
+# @default -- .Release.Name
+serviceName:
+
+# -- Metrics port
+port: 8080
+
+resources:
+  # -- Requested resources
+  requests:
+    cpu: 100m
+    memory: 512Mi
+  # -- Limited resources
+  limits:
+    cpu: 100m
+    memory: 512Mi

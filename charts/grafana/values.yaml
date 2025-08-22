@@ -4,6 +4,10 @@ image:
   repository: grafana/grafana
   tag: 8.3.4
 
+# -- Custom service name
+# @default -- .Release.Name
+serviceName:
+
 # -- Grafana port
 port: 3000
 

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .Values.serviceName | default .Release.Name }}
   labels:
     app.kubernetes.io/name: {{ .Chart.Name }}
     app.kubernetes.io/instance: {{ .Release.Name }}
@@ -12,15 +12,11 @@ spec:
   selector:
     app: {{ .Release.Name }}
   ports:
-    - name: admin
+    - name: http
       protocol: TCP
-      port: {{ .Values.ports.admin }}
-      targetPort: admin
+      port: {{ .Values.ports.http }}
+      targetPort: http
     - name: otlp
       protocol: TCP
       port: {{ .Values.ports.otlp }}
       targetPort: otlp
-    - name: zipkin
-      protocol: TCP
-      port: {{ .Values.ports.zipkin }}
-      targetPort: zipkin
