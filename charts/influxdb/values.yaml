@@ -11,7 +11,7 @@ serviceName:
 ports:
   # -- InfluxDB port
   internal: 8086
-  # -- If define, create NodePort for external usage
+  # -- If defined, create NodePort for external usage
   external:
 
 # -- Database name

@@ -69,6 +69,14 @@ spec:
               value: "{{ .Values.tracing.endpoint }}"
             {{- end }}
             {{- end }}
+            {{- if .Values.logging.enabled }}
+            - name: FLUENT_BIT_ENABLED
+              value: "{{ .Values.logging.enabled }}"
+            {{- if .Values.logging.endpoint }}
+            - name: FLUENT_BIT_ADDRESS
+              value: "{{ .Values.logging.endpoint }}"
+            {{- end }}
+            {{- end }}
             {{- range $env := .Values.environments }}
             - name: {{ $env.name }}
               value: "{{ $env.value }}"
@@ -98,10 +106,6 @@ spec:
             - name: {{ .Chart.Name }}
               containerPort: {{ .Values.ports.internal }}
           volumeMounts:
-            {{- if .Values.filebeat.enabled }}
-            - name: {{ .Chart.Name }}-logs-volume
-              mountPath: "/var/log/{{ .Values.logFolder | default .Release.Name }}/"
-            {{- end }}
             {{- range $config := .Values.configVolumes }}
             - name: {{ $config.name }}
               mountPath: {{ $config.mount }}
@@ -109,26 +113,7 @@ spec:
               subPath: {{ $config.path }}
               {{- end }}
             {{- end }}
-        {{- if .Values.filebeat.enabled }}
-        - name: {{ .Release.Name }}-filebeat
-          image: "{{ .Values.filebeat.image.repository }}:{{ .Values.filebeat.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          resources:
-            requests:
-              memory: "{{ .Values.filebeat.resources.requests.memory }}"
-              cpu: "{{ .Values.filebeat.resources.requests.cpu }}"
-            limits:
-              memory: "{{ .Values.filebeat.resources.limits.memory }}"
-              cpu: "{{ .Values.filebeat.resources.limits.cpu }}"
-          volumeMounts:
-            - name: {{ .Chart.Name }}-logs-volume
-              mountPath: "/var/log/{{ .Values.logFolder | default .Release.Name }}/"
-            - name: {{ .Chart.Name }}-config-volume
-              mountPath: /usr/share/filebeat/filebeat.yml
-              subPath: filebeat.yml
-        {{- end }}
       volumes:
-        - name: {{ .Chart.Name }}-logs-volume
         - name: {{ .Chart.Name }}-config-volume
           configMap:
             name: {{ .Release.Name }}

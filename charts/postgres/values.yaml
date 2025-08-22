@@ -7,7 +7,7 @@ image:
 ports:
   # -- Postgres port
   internal: 5432
-  # -- If define, create NodePort for external usage
+  # -- If defined, create NodePort for external usage
   external:
 
 # -- Custom service name

@@ -23,7 +23,7 @@ ports:
   http: 9200
   # -- ElasticSearch internal node communication port
   communication: 9300
-  # -- If define, create NodePort for external usage
+  # -- If defined, create NodePort for external usage
   external: 32200
 
 resources:

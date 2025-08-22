@@ -1,8 +1,8 @@
 # Helm Chart for java-service
 
-![Version: 1.6.1](https://img.shields.io/badge/Version-1.6.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 1.7.0](https://img.shields.io/badge/Version-1.7.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
-Helm chart for Spring Boot application with logging and tracing
+Helm chart for Spring Boot application with logging and tracing.
 
 ### Installing the Chart
 
@@ -103,64 +103,6 @@ null
 </pre>
 </td>
 			<td>Additional env variables</td>
-		</tr>
-		<tr>
-			<td>filebeat.enabled</td>
-			<td>bool</td>
-			<td><pre lang="json">
-false
-</pre>
-</td>
-			<td>Enable send logs to ELK</td>
-		</tr>
-		<tr>
-			<td>filebeat.image</td>
-			<td>object</td>
-			<td><pre lang="json">
-{
-  "pullPolicy": "IfNotPresent",
-  "repository": "elastic/filebeat",
-  "tag": "7.17.8"
-}
-</pre>
-</td>
-			<td>Filebeat agent image</td>
-		</tr>
-		<tr>
-			<td>filebeat.logstash</td>
-			<td>object</td>
-			<td><pre lang="json">
-{
-  "host": "logstash",
-  "port": 5044
-}
-</pre>
-</td>
-			<td>Logstash address</td>
-		</tr>
-		<tr>
-			<td>filebeat.resources.limits</td>
-			<td>object</td>
-			<td><pre lang="json">
-{
-  "cpu": "50m",
-  "memory": "128Mi"
-}
-</pre>
-</td>
-			<td>Limited resources</td>
-		</tr>
-		<tr>
-			<td>filebeat.resources.requests</td>
-			<td>object</td>
-			<td><pre lang="json">
-{
-  "cpu": "50m",
-  "memory": "128Mi"
-}
-</pre>
-</td>
-			<td>Requested resources</td>
 		</tr>
 		<tr>
 			<td>image</td>
@@ -266,6 +208,24 @@ null
 			<td>Log folder (if filebeat is enabled)</td>
 		</tr>
 		<tr>
+			<td>logging.enabled</td>
+			<td>bool</td>
+			<td><pre lang="json">
+false
+</pre>
+</td>
+			<td>Enable send logs to ELK (set `FLUENT_BIT_ENABLED` env)</td>
+		</tr>
+		<tr>
+			<td>logging.endpoint</td>
+			<td>string</td>
+			<td><pre lang="json">
+"fluent-bit:5170"
+</pre>
+</td>
+			<td>Fluent-bit address (set `FLUENT_BIT_ADDRESS` env)</td>
+		</tr>
+		<tr>
 			<td>memoryUsage</td>
 			<td>float</td>
 			<td><pre lang="json">
@@ -299,7 +259,7 @@ true
 null
 </pre>
 </td>
-			<td>If define, create NodePort for external usage</td>
+			<td>If defined, create NodePort for external usage</td>
 		</tr>
 		<tr>
 			<td>ports.internal</td>
@@ -428,10 +388,10 @@ false
 			<td>tracing.endpoint</td>
 			<td>string</td>
 			<td><pre lang="json">
-"http://localhost:4318/v1/traces"
+"http://jaeger:4318/v1/traces"
 </pre>
 </td>
-			<td>OpenTelemetry collector endpoint</td>
+			<td>OpenTelemetry collector endpoint (set `COLLECTOR_ENDPOINT` env)</td>
 		</tr>
 	</tbody>
 </table>

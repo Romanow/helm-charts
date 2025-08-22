@@ -1,6 +1,6 @@
 # Helm Chart for elasticsearch
 
-![Version: 1.5.0](https://img.shields.io/badge/Version-1.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 7.17.8](https://img.shields.io/badge/AppVersion-7.17.8-informational?style=flat-square)
+![Version: 1.7.0](https://img.shields.io/badge/Version-1.7.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 7.17.8](https://img.shields.io/badge/AppVersion-7.17.8-informational?style=flat-square)
 
 Elasticsearch is a distributed, RESTful search and analytics engine capable of addressing a growing number of use cases.
 
@@ -70,7 +70,7 @@ helm uninstall elasticsearch
 32200
 </pre>
 </td>
-			<td>If define, create NodePort for external usage</td>
+			<td>If defined, create NodePort for external usage</td>
 		</tr>
 		<tr>
 			<td>ports.http</td>

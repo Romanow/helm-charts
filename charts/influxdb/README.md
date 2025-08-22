@@ -1,6 +1,6 @@
 # Helm Chart for influxdb
 
-![Version: 1.5.0](https://img.shields.io/badge/Version-1.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.8.4](https://img.shields.io/badge/AppVersion-1.8.4-informational?style=flat-square)
+![Version: 1.7.0](https://img.shields.io/badge/Version-1.7.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.8.4](https://img.shields.io/badge/AppVersion-1.8.4-informational?style=flat-square)
 
 The Time Series Data Platform where developers build IoT, analytics, and cloud applications.
 
@@ -61,7 +61,7 @@ helm uninstall influxdb
 null
 </pre>
 </td>
-			<td>If define, create NodePort for external usage</td>
+			<td>If defined, create NodePort for external usage</td>
 		</tr>
 		<tr>
 			<td>ports.internal</td>
