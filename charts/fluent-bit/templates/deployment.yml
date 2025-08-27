@@ -40,7 +40,7 @@ spec:
               path: /api/v1/health
               port: 2020
           ports:
-            - name: http
+            - name: {{ .Chart.Name }}
               containerPort: {{ .Values.port }}
           resources:
             requests:

@@ -27,6 +27,10 @@ data:
         Host    {{ .Values.elasticsearch.host }}
         Port    {{ .Values.elasticsearch.port }}
         Index   {{ .Values.elasticsearch.index }}
+    {{- if .Values.elasticsearch.username }}
+        HTTP_User     {{ .Values.elasticsearch.username }}
+        HTTP_Password {{ .Values.elasticsearch.password }}
+    {{ end }}
         Match   *
         Suppress_Type_Name On
     {{ if .Values.debug }}
