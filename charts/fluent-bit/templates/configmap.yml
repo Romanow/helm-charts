@@ -30,7 +30,7 @@ data:
     {{- if .Values.elasticsearch.username }}
         HTTP_User   {{ .Values.elasticsearch.username }}
         HTTP_Passwd {{ .Values.elasticsearch.password }}
-    {{ end }}
+    {{- end }}
         Match       *
         Suppress_Type_Name On
     {{ if .Values.debug }}
