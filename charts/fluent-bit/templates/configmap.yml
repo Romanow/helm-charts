@@ -17,24 +17,24 @@ data:
         Health_Check On
 
     [INPUT]
-        Name    tcp
-        Listen  0.0.0.0
-        Port    {{ .Values.port }}
-        Format  json
+        Name        tcp
+        Listen      0.0.0.0
+        Port        {{ .Values.port }}
+        Format      json
 
     [OUTPUT]
-        Name    es
-        Host    {{ .Values.elasticsearch.host }}
-        Port    {{ .Values.elasticsearch.port }}
-        Index   {{ .Values.elasticsearch.index }}
+        Name        es
+        Host        {{ .Values.elasticsearch.host }}
+        Port        {{ .Values.elasticsearch.port }}
+        Index       {{ .Values.elasticsearch.index }}
     {{- if .Values.elasticsearch.username }}
-        HTTP_User     {{ .Values.elasticsearch.username }}
-        HTTP_Password {{ .Values.elasticsearch.password }}
+        HTTP_User   {{ .Values.elasticsearch.username }}
+        HTTP_Passwd {{ .Values.elasticsearch.password }}
     {{ end }}
-        Match   *
+        Match       *
         Suppress_Type_Name On
     {{ if .Values.debug }}
     [OUTPUT]
-        Name    stdout
-        Match   *
+        Name        stdout
+        Match       *
     {{- end }}
