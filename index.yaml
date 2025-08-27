@@ -341,6 +341,28 @@ entries:
   fluent-bit:
   - apiVersion: v2
     appVersion: 4.0-debug
+    created: "2025-08-27T21:13:52.726740192Z"
+    description: Fluent Bit, lightweight logs and metrics collector and forwarder.
+    digest: ef66f9cfdf69c806a297bdf988265ebf315dfce9f547ca9a332d304c6d0157bb
+    home: https://github.com/Romanow/helm-charts/tree/master/charts/fluent-bit
+    icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/fluent-bit.png
+    keywords:
+    - fluent-bit
+    - logging
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: fluent-bit
+    sources:
+    - https://fluentbit.io/
+    - https://hub.docker.com/r/fluent/fluent-bit
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/fluent-bit-1.7.3/fluent-bit-1.7.3.tgz
+    version: 1.7.3
+  - apiVersion: v2
+    appVersion: 4.0-debug
     created: "2025-08-27T21:06:12.145229095Z"
     description: Fluent Bit, lightweight logs and metrics collector and forwarder.
     digest: 92a6fd6667d467111a009dadf3cf2681641809410b950fb3d6b7eef7b15bc12a
@@ -3669,4 +3691,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.2/prometheus-1.0.2.tgz
     version: 1.0.2
-generated: "2025-08-27T21:06:12.392652042Z"
+generated: "2025-08-27T21:13:52.72703692Z"
