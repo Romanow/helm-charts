@@ -16,7 +16,7 @@ spec:
       protocol: TCP
       port: {{ .Values.ports.http }}
       targetPort: http
-    - name: otlp
+    - name: telemetry
       protocol: TCP
-      port: {{ .Values.ports.otlp }}
-      targetPort: otlp
+      port: {{ .Values.ports.telemetry }}
+      targetPort: telemetry

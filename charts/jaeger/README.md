@@ -1,6 +1,6 @@
 # Helm Chart for jaeger
 
-![Version: 1.6.2](https://img.shields.io/badge/Version-1.6.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.57.0](https://img.shields.io/badge/AppVersion-1.57.0-informational?style=flat-square)
+![Version: 1.7.1](https://img.shields.io/badge/Version-1.7.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.9.0](https://img.shields.io/badge/AppVersion-2.9.0-informational?style=flat-square)
 
 Jaeger is a distributed tracing system released as open source project. It is used for monitoring and troubleshooting microservices-based distributed systems.
 
@@ -38,8 +38,8 @@ helm uninstall jaeger
 			<td><pre lang="json">
 {
   "pullPolicy": "IfNotPresent",
-  "repository": "jaegertracing/all-in-one",
-  "tag": "1.57.0"
+  "repository": "jaegertracing/jaeger",
+  "tag": "2.9.0"
 }
 </pre>
 </td>
@@ -73,12 +73,57 @@ true
 			<td>Ingress name</td>
 		</tr>
 		<tr>
+			<td>metrics.enabled</td>
+			<td>bool</td>
+			<td><pre lang="json">
+false
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>metrics.storage.prometheus.endpoint</td>
+			<td>string</td>
+			<td><pre lang="json">
+"http://prometheus:9090"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>metrics.storage.prometheus.normalize_calls</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>metrics.storage.prometheus.normalize_duration</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>metrics.storage.type</td>
+			<td>string</td>
+			<td><pre lang="json">
+"prometheus"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>ports</td>
 			<td>object</td>
 			<td><pre lang="json">
 {
   "http": 16686,
-  "otlp": 4318
+  "telemetry": 4318
 }
 </pre>
 </td>
@@ -118,16 +163,7 @@ true
 			<td>Custom service name</td>
 		</tr>
 		<tr>
-			<td>storage.elasticsearch.password</td>
-			<td>string</td>
-			<td><pre lang="json">
-"qwerty"
-</pre>
-</td>
-			<td>Elastic password (optional)</td>
-		</tr>
-		<tr>
-			<td>storage.elasticsearch.url</td>
+			<td>traces.storage.elasticsearch.endpoint</td>
 			<td>string</td>
 			<td><pre lang="json">
 "http://elasticsearch:9200"
@@ -136,7 +172,16 @@ true
 			<td>Elastic address</td>
 		</tr>
 		<tr>
-			<td>storage.elasticsearch.username</td>
+			<td>traces.storage.elasticsearch.password</td>
+			<td>string</td>
+			<td><pre lang="json">
+"qwerty"
+</pre>
+</td>
+			<td>Elastic password (optional)</td>
+		</tr>
+		<tr>
+			<td>traces.storage.elasticsearch.username</td>
 			<td>string</td>
 			<td><pre lang="json">
 "logging"
@@ -145,10 +190,19 @@ true
 			<td>Elastic username (optional)</td>
 		</tr>
 		<tr>
-			<td>storage.type</td>
+			<td>traces.storage.prometheus.memory.max_traces</td>
+			<td>int</td>
+			<td><pre lang="json">
+30000
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>traces.storage.type</td>
 			<td>string</td>
 			<td><pre lang="json">
-"elasticsearch"
+"memory"
 </pre>
 </td>
 			<td></td>

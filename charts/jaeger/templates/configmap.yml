@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/component: logging
+    app.kubernetes.io/managed-by: helm
+data:
+  config.yml: |-
+    service:
+      extensions: [jaeger_storage, jaeger_query]
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [jaeger_storage_exporter]
+
+    extensions:
+      jaeger_query:
+        storage:
+          traces: traces-storage
+          {{- if .Values.metrics.enabled }}
+          metrics: metrics-storage
+          {{- end }}
+      jaeger_storage:
+        backends:
+          traces-storage:
+            {{ include "storageConfig" .Values.traces.storage }}
+        {{- if .Values.metrics.enabled }}
+        metric_backends:
+          metrics-storage:
+            {{ include "storageConfig" .Values.metrics.storage }}
+        {{- end }}
+
+    {{- if .Values.metrics.enabled }}
+    connectors:
+      spanmetrics:
+    {{- end }}
+
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+          http:
+            endpoint: "0.0.0.0:{{ .Values.ports.telemetry }}"
+
+    processors:
+      batch:
+
+    exporters:
+      jaeger_storage_exporter:
+        trace_storage: traces-storage
+      {{- if .Values.metrics.enabled }}
+      prometheus:
+        endpoint: "0.0.0.0:8889"
+      {{- end }}

@@ -1,8 +1,8 @@
 # -- Image name and version
 image:
   pullPolicy: IfNotPresent
-  repository: jaegertracing/all-in-one
-  tag: 1.57.0
+  repository: jaegertracing/jaeger
+  tag: 2.9.0
 
 # -- Custom service name
 # @default -- .Release.Name
@@ -11,7 +11,7 @@ serviceName:
 # -- Jaeger ports
 ports:
   http: 16686
-  otlp: 4318
+  telemetry: 4318
 
 ingress:
   # -- Enable ingress
@@ -21,15 +21,28 @@ ingress:
   # -- Domain
   domain: romanow-alex.ru
 
-storage:
-  type: elasticsearch
-  elasticsearch:
-    # -- Elastic address
-    url: http://elasticsearch:9200
-    # -- Elastic username (optional)
-    username: logging
-    # -- Elastic password (optional)
-    password: qwerty
+metrics:
+  enabled: false
+  storage:
+    type: prometheus
+    prometheus:
+      endpoint: http://prometheus:9090
+      normalize_calls: true
+      normalize_duration: true
+
+traces:
+  storage:
+    type: memory
+    elasticsearch:
+      # -- Elastic address
+      endpoint: http://elasticsearch:9200
+      # -- Elastic username (optional)
+      username: logging
+      # -- Elastic password (optional)
+      password: qwerty
+    prometheus:
+      memory:
+        max_traces: 30000
 
 resources:
   # -- Requested resources

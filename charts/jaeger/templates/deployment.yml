@@ -27,23 +27,6 @@ spec:
         - name: {{ .Release.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: SPAN_STORAGE_TYPE
-              value: {{ ternary "elasticsearch" "memory" (eq .Values.storage.type "elasticsearch") }}
-            - name: COLLECTOR_OTLP_ENABLED
-              value: "true"
-            {{- if eq .Values.storage.type "elasticsearch" }}
-            - name: ES_SERVER_URLS
-              value: {{ .Values.storage.elasticsearch.url }}
-            {{- if .Values.storage.elasticsearch.username }}
-            - name: ES_USERNAME
-              value: {{ .Values.storage.elasticsearch.username }}
-            {{- end }}
-            {{- if .Values.storage.elasticsearch.password }}
-            - name: ES_PASSWORD
-              value: {{ .Values.storage.elasticsearch.password }}
-            {{- end }}
-            {{- end }}
           resources:
             requests:
               memory: {{ .Values.resources.requests.memory }}
@@ -54,5 +37,12 @@ spec:
           ports:
             - name: http
               containerPort: {{ .Values.ports.http }}
-            - name: otlp
-              containerPort: {{ .Values.ports.otlp }}
+            - name: telemetry
+              containerPort: {{ .Values.ports.telemetry }}
+          volumeMounts:
+            - name: {{ $.Chart.Name }}-config-volume
+              mountPath: /etc/jaeger/
+      volumes:
+        - name: {{ $.Chart.Name }}-config-volume
+          configMap:
+            name: {{ $.Release.Name }}-config
