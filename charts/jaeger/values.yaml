@@ -12,6 +12,7 @@ serviceName:
 ports:
   http: 16686
   telemetry: 4318
+  metrics: 8888
 
 ingress:
   # -- Enable ingress
@@ -22,27 +23,31 @@ ingress:
   domain: romanow-alex.ru
 
 metrics:
-  enabled: false
+  enabled: true
   storage:
-    type: prometheus
-    prometheus:
-      endpoint: http://prometheus:9090
-      normalize_calls: true
-      normalize_duration: true
-
-traces:
-  storage:
-    type: memory
+    type: elasticsearch
     elasticsearch:
-      # -- Elastic address
-      endpoint: http://elasticsearch:9200
       # -- Elastic username (optional)
       username: logging
       # -- Elastic password (optional)
       password: qwerty
-    prometheus:
-      memory:
-        max_traces: 30000
+      # -- Elastic address
+      server_urls:
+        - http://elasticsearch:9200
+
+traces:
+  storage:
+    type: elasticsearch
+    elasticsearch:
+      # -- Elastic username (optional)
+      username: logging
+      # -- Elastic password (optional)
+      password: qwerty
+      # -- Elastic address
+      server_urls:
+        - http://elasticsearch:9200
+    memory:
+      max_traces: 30000
 
 resources:
   # -- Requested resources

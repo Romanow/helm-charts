@@ -1,5 +1,8 @@
 storage:
   type: memory
 
+metrics:
+  enabled: false
+
 ingress:
   enabled: false

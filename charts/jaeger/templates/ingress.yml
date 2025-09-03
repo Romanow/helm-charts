@@ -15,7 +15,7 @@ spec:
     service:
       name: {{ .Release.Name }}
       port:
-        number: {{ .Values.ports.admin }}
+        number: {{ .Values.ports.http }}
   rules:
     - host: {{ .Values.ingress.name | default .Release.Name }}.{{ .Values.ingress.domain }}
       http:
@@ -26,5 +26,5 @@ spec:
               service:
                 name: {{ .Release.Name }}
                 port:
-                  number: {{ .Values.ports.admin }}
+                  number: {{ .Values.ports.http }}
   {{- end }}

@@ -21,39 +21,29 @@ data:
     extensions:
       jaeger_query:
         storage:
-          traces: traces-storage
+          traces: storage
           {{- if .Values.metrics.enabled }}
-          metrics: metrics-storage
+          metrics: storage
           {{- end }}
       jaeger_storage:
         backends:
-          traces-storage:
+          storage:
             {{ include "storageConfig" .Values.traces.storage }}
         {{- if .Values.metrics.enabled }}
         metric_backends:
-          metrics-storage:
+          storage:
             {{ include "storageConfig" .Values.metrics.storage }}
         {{- end }}
-
-    {{- if .Values.metrics.enabled }}
-    connectors:
-      spanmetrics:
-    {{- end }}
-
     receivers:
       otlp:
         protocols:
           grpc:
           http:
-            endpoint: "0.0.0.0:{{ .Values.ports.telemetry }}"
+            endpoint: "0.0.0.0:4318"
 
     processors:
       batch:
 
     exporters:
       jaeger_storage_exporter:
-        trace_storage: traces-storage
-      {{- if .Values.metrics.enabled }}
-      prometheus:
-        endpoint: "0.0.0.0:8889"
-      {{- end }}
+        trace_storage: storage
