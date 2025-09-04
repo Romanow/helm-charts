@@ -27,25 +27,27 @@ metrics:
   storage:
     type: elasticsearch
     elasticsearch:
-      # -- Elastic username (optional)
-      username: logging
-      # -- Elastic password (optional)
-      password: qwerty
       # -- Elastic address
-      server_urls:
-        - http://elasticsearch:9200
+      server_urls: ["http://elasticsearch:9200"]
+      auth:
+        basic:
+          # -- Elastic username (optional)
+          username: logging
+          # -- Elastic password (optional)
+          password: qwerty
 
 traces:
   storage:
     type: elasticsearch
     elasticsearch:
-      # -- Elastic username (optional)
-      username: logging
-      # -- Elastic password (optional)
-      password: qwerty
       # -- Elastic address
-      server_urls:
-        - http://elasticsearch:9200
+      server_urls: ["http://elasticsearch:9200"]
+      auth:
+        basic:
+          # -- Elastic username (optional)
+          username: logging
+          # -- Elastic password (optional)
+          password: qwerty
     memory:
       max_traces: 30000
 

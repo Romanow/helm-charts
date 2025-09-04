@@ -11,7 +11,7 @@ metadata:
 data:
   config.yml: |-
     service:
-      extensions: [jaeger_storage, jaeger_query]
+      extensions: [jaeger_storage, jaeger_query, healthcheckv2]
       pipelines:
         traces:
           receivers: [otlp]
@@ -19,6 +19,10 @@ data:
           exporters: [jaeger_storage_exporter]
 
     extensions:
+      healthcheckv2:
+        use_v2: true
+        http:
+          endpoint: 0.0.0.0:13133
       jaeger_query:
         storage:
           traces: storage
@@ -34,6 +38,7 @@ data:
           storage:
             {{ include "storageConfig" .Values.metrics.storage }}
         {{- end }}
+
     receivers:
       otlp:
         protocols:

@@ -1,6 +1,6 @@
 # Helm Chart for jaeger
 
-![Version: 1.7.2](https://img.shields.io/badge/Version-1.7.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.9.0](https://img.shields.io/badge/AppVersion-2.9.0-informational?style=flat-square)
+![Version: 1.7.3](https://img.shields.io/badge/Version-1.7.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.9.0](https://img.shields.io/badge/AppVersion-2.9.0-informational?style=flat-square)
 
 Jaeger is a distributed tracing system released as open source project. It is used for monitoring and troubleshooting microservices-based distributed systems.
 
@@ -82,13 +82,22 @@ true
 			<td></td>
 		</tr>
 		<tr>
-			<td>metrics.storage.elasticsearch.password</td>
+			<td>metrics.storage.elasticsearch.auth.basic.password</td>
 			<td>string</td>
 			<td><pre lang="json">
 "qwerty"
 </pre>
 </td>
 			<td>Elastic password (optional)</td>
+		</tr>
+		<tr>
+			<td>metrics.storage.elasticsearch.auth.basic.username</td>
+			<td>string</td>
+			<td><pre lang="json">
+"logging"
+</pre>
+</td>
+			<td>Elastic username (optional)</td>
 		</tr>
 		<tr>
 			<td>metrics.storage.elasticsearch.server_urls</td>
@@ -100,15 +109,6 @@ true
 </pre>
 </td>
 			<td>Elastic address</td>
-		</tr>
-		<tr>
-			<td>metrics.storage.elasticsearch.username</td>
-			<td>string</td>
-			<td><pre lang="json">
-"logging"
-</pre>
-</td>
-			<td>Elastic username (optional)</td>
 		</tr>
 		<tr>
 			<td>metrics.storage.type</td>
@@ -166,13 +166,22 @@ true
 			<td>Custom service name</td>
 		</tr>
 		<tr>
-			<td>traces.storage.elasticsearch.password</td>
+			<td>traces.storage.elasticsearch.auth.basic.password</td>
 			<td>string</td>
 			<td><pre lang="json">
 "qwerty"
 </pre>
 </td>
 			<td>Elastic password (optional)</td>
+		</tr>
+		<tr>
+			<td>traces.storage.elasticsearch.auth.basic.username</td>
+			<td>string</td>
+			<td><pre lang="json">
+"logging"
+</pre>
+</td>
+			<td>Elastic username (optional)</td>
 		</tr>
 		<tr>
 			<td>traces.storage.elasticsearch.server_urls</td>
@@ -184,15 +193,6 @@ true
 </pre>
 </td>
 			<td>Elastic address</td>
-		</tr>
-		<tr>
-			<td>traces.storage.elasticsearch.username</td>
-			<td>string</td>
-			<td><pre lang="json">
-"logging"
-</pre>
-</td>
-			<td>Elastic username (optional)</td>
 		</tr>
 		<tr>
 			<td>traces.storage.memory.max_traces</td>

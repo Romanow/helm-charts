@@ -27,6 +27,17 @@ spec:
         - name: {{ .Release.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args: ["--config", "/etc/jaeger/config.yml"]
+          readinessProbe:
+            timeoutSeconds: 5
+            httpGet:
+              path: /status
+              port: 13133
+          livenessProbe:
+            timeoutSeconds: 5
+            httpGet:
+              path: /status
+              port: 13133
           resources:
             requests:
               memory: {{ .Values.resources.requests.memory }}
