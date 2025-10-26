@@ -38,8 +38,8 @@ helm uninstall kube-state-metrics
 			<td><pre lang="json">
 {
   "pullPolicy": "IfNotPresent",
-  "repository": "bitnami/kube-state-metrics",
-  "tag": "latest"
+  "repository": "bitnamilegacy/kube-state-metrics",
+  "tag": 2
 }
 </pre>
 </td>
