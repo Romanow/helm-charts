@@ -2,7 +2,7 @@
 image:
   pullPolicy: IfNotPresent
   repository: bitnami/kube-state-metrics
-  tag: 2
+  tag: latest
 
 # -- Custom service name
 # @default -- .Release.Name

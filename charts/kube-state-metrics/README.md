@@ -1,6 +1,6 @@
 # Helm Chart for kube-state-metrics
 
-![Version: 1.7.1](https://img.shields.io/badge/Version-1.7.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2](https://img.shields.io/badge/AppVersion-2-informational?style=flat-square)
+![Version: 1.7.2](https://img.shields.io/badge/Version-1.7.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2](https://img.shields.io/badge/AppVersion-2-informational?style=flat-square)
 
 Add-on agent to generate and expose cluster-level metrics.
 
@@ -39,7 +39,7 @@ helm uninstall kube-state-metrics
 {
   "pullPolicy": "IfNotPresent",
   "repository": "bitnami/kube-state-metrics",
-  "tag": 2
+  "tag": "latest"
 }
 </pre>
 </td>
