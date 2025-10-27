@@ -1,7 +1,7 @@
 # -- Image name and version
 image:
   pullPolicy: IfNotPresent
-  repository:  bitnamilegacy/kube-state-metrics
+  repository: bitnamilegacy/kube-state-metrics
   tag: 2
 
 # -- Custom service name
