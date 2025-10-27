@@ -2584,6 +2584,28 @@ entries:
   kube-state-metrics:
   - apiVersion: v2
     appVersion: "2"
+    created: "2025-10-27T10:42:34.792393025Z"
+    description: Add-on agent to generate and expose cluster-level metrics.
+    digest: c2992c0755403b6275baee72bcaed077babe26a4d1dcd93235b05b8be7020b63
+    home: https://github.com/Romanow/helm-charts/tree/master/charts/kube-state-metrics
+    icon: https://raw.githubusercontent.com/Romanow/helm-charts/master/icons/k8s.png
+    keywords:
+    - fluent-bit
+    - logging
+    maintainers:
+    - email: romanowalex@mail.ru
+      name: Romanov Alexey
+      url: https://romanow.github.io
+    name: kube-state-metrics
+    sources:
+    - https://github.com/kubernetes/kube-state-metrics
+    - https://hub.docker.com/r/bitnami/kube-state-metrics
+    type: application
+    urls:
+    - https://github.com/Romanow/helm-charts/releases/download/kube-state-metrics-1.7.2/kube-state-metrics-1.7.2.tgz
+    version: 1.7.2
+  - apiVersion: v2
+    appVersion: "2"
     created: "2025-08-22T20:26:17.498437429Z"
     description: Add-on agent to generate and expose cluster-level metrics.
     digest: 77d83bca53fd203aafd39cc6bcd72666482073e12dfe040bb0ce2fc477a09e27
@@ -3763,4 +3785,4 @@ entries:
     urls:
     - https://github.com/Romanow/helm-charts/releases/download/prometheus-1.0.2/prometheus-1.0.2.tgz
     version: 1.0.2
-generated: "2025-09-04T08:39:50.656843777Z"
+generated: "2025-10-27T10:42:34.792696732Z"
