@@ -1,6 +1,6 @@
 # Helm Chart for java-service
 
-![Version: 1.7.1](https://img.shields.io/badge/Version-1.7.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 1.7.2](https://img.shields.io/badge/Version-1.7.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 Helm chart for Spring Boot application with logging and tracing.
 
@@ -365,6 +365,15 @@ null
 </pre>
 </td>
 			<td>Additional secrets</td>
+		</tr>
+		<tr>
+			<td>serviceAccountName</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>serviceName</td>

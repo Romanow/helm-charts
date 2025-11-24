@@ -7,6 +7,9 @@ image:
 # Memory allocation inside container
 memoryUsage: 75.0
 
+# Service account name
+serviceAccountName:
+
 # Additional Java arguments
 javaOptions:
 
